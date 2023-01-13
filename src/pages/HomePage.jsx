@@ -3,10 +3,9 @@ import '../styles/HomePage.css'
 import dish from '../images/dish.png'
 import logo from '../images/logo.svg'
 import bgEllips from '../images/Ellipse 1.svg'
-import { motion, useScroll } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const HomePage = () => {
-	const { scrollYProgress } = useScroll()
 	return (
 		<div className='home-container'>
 			<motion.img
@@ -36,7 +35,7 @@ const HomePage = () => {
 					Вход
 				</motion.button>
 			</nav>
-			<header>
+			<motion.header>
 				<motion.h1
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
@@ -58,7 +57,7 @@ const HomePage = () => {
 					<button>Заказать </button>
 					<button>Забронировать стол</button>
 				</div>
-			</header>
+			</motion.header>
 		</div>
 	)
 }

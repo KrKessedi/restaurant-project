@@ -25,6 +25,7 @@ nav {
 }
 
 .logo-block {
+	cursor: pointer;
 	background: url('../images/logo.svg') no-repeat;
 	width: 89px;
 	height: 90px;
@@ -76,6 +77,13 @@ nav {
 	font-size: 20px;
 	line-height: 24px;
 	color: rgba(0, 0, 0, 0.65);
+	transition: 0.3s;
+}
+
+.nav__navigate-list > li:hover {
+	color: #af5d40;
+	box-shadow: 0 1.5px 0 black;
+	transition: 0.5s;
 }
 
 .login-navigate-btn {
@@ -115,6 +123,7 @@ header {
 }
 
 .home-title {
+	cursor: default;
 	font-weight: 700;
 	font-size: 13.2vw;
 	line-height: 218px;

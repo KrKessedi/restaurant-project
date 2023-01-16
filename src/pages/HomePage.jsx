@@ -1,7 +1,6 @@
 import React from 'react'
 import '../styles/HomePage.css'
 import dish from '../images/dish.png'
-import logo from '../images/logo.svg'
 import bgEllips from '../images/Ellipse 1.svg'
 import { motion } from 'framer-motion'
 

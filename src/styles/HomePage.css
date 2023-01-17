@@ -95,7 +95,7 @@ nav {
 	border-radius: 30px;
 }
 
-header {
+/* header {
 	background: url('../images/dish-bg.png') no-repeat;
 	background-position: 44.4% 360%;
 	position: relative;
@@ -104,7 +104,7 @@ header {
 	flex-direction: column;
 	align-items: center;
 	animation: bgAnimate 0.6s ease;
-}
+} */
 
 @keyframes bgAnimate {
 	from {

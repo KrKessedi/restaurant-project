@@ -12,17 +12,16 @@ import AboutUs from '../components/AboutUs'
 
 const HomePage = () => {
 	return (
-		<div className='home-container pb-14'>
-			<motion.img
+		<div className='home-container w-full flex flex-col items-center'>
+			{/* <motion.div
 				className='home-top-bg'
-				initial={{ translateY: '-50%' }}
-				animate={{ translateY: 0 }}
+				initial={{ translateY: '-100%' }}
+				animate={{ translateY: '-27%' }}
 				transition={{ duration: 0.5, delay: 0 }}
-				src={bgEllips}
-				alt=''
-			/>
-			<Navbar />
-			<header className='header'>
+			>
+				<div></div>
+			</motion.div> */}
+			<header className='header relative flex flex-col items-center'>
 				<motion.h1
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
@@ -35,19 +34,22 @@ const HomePage = () => {
 					initial={{ translateY: '0%', scale: 0.4 }}
 					animate={{ translateY: 0, scale: 1 }}
 					transition={{ delay: 0, duration: 0.6 }}
-					className='header__dish-image'
+					className='header__dish-image absolute'
 					src={dish}
 					alt=''
 				/>
 			</header>
-			<div className='navigate-block mb-20'>
-				<button className='navigate-btn py-2 px-8'>Меню</button>
-				<button className='navigate-btn py-2 px-8'>Забронировать стол</button>
+			<div className='navigate-block mb-20 flex justify-between items-center mx-auto'>
+				<button className='navigate-btn py-2 px-8 text-center'>Меню</button>
+				<button className='navigate-btn py-2 px-8 text-center'>
+					Забронировать стол
+				</button>
 			</div>
 			<PopularDishes />
 			<DishCategories />
 			<AboutUs />
-			<Footer />
+			{/* Здесь будет компонент о статистике */}
+			{/* Здесь будет компонент о партнерах */}
 		</div>
 	)
 }

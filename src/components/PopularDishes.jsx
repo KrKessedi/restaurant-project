@@ -47,6 +47,20 @@ const PopularDishes = () => {
 			title: 'паста и ризотто',
 			price: 300,
 		},
+		{
+			image: popularDish,
+			rating: 4,
+			id: 6,
+			title: 'паста и ризотто',
+			price: 300,
+		},
+		{
+			image: popularDish,
+			rating: 4,
+			id: 7,
+			title: 'паста и ризотто',
+			price: 300,
+		},
 	]
 	return (
 		<section className='popular-dishes-section mt-1 mb-20'>

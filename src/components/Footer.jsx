@@ -28,8 +28,9 @@ const Footer = () => {
 			navigate: 'https://www.instagram.com/macaronnaya_bishkek/',
 		},
 	]
+
 	return (
-		<footer className='pt-1' id='contacts'>
+		<footer className='pt-1 mx-auto mb-10' id='contacts'>
 			<hr className='footer-line mb-7' />
 			<ul className='address-list flex flex-row justify-between items-center mb-6'>
 				<li>Боконбаева, 183 / Турусбекова</li>
@@ -40,7 +41,11 @@ const Footer = () => {
 			</ul>
 			<div className='social-btn-block flex gap-x-8 justify-center'>
 				{social?.map(item => (
-					<img src={item.image} onClick={() => window.open(item.navigate)} />
+					<img
+						src={item.image}
+						key={item.id}
+						onClick={() => window.open(item.navigate)}
+					/>
 				))}
 			</div>
 		</footer>

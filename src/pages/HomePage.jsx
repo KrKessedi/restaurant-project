@@ -1,13 +1,18 @@
 import React from 'react'
 import '../styles/HomePage.css'
 import dish from '../images/dish.png'
-import logo from '../images/logo.svg'
 import bgEllips from '../images/Ellipse 1.svg'
+
 import { motion } from 'framer-motion'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import PopularDishes from '../components/PopularDishes'
+import DishCategories from '../components/DishCategories'
+import AboutUs from '../components/AboutUs'
 
 const HomePage = () => {
 	return (
-		<div className='home-container'>
+		<div className='home-container pb-14'>
 			<motion.img
 				className='home-top-bg'
 				initial={{ translateY: '-50%' }}
@@ -16,26 +21,8 @@ const HomePage = () => {
 				src={bgEllips}
 				alt=''
 			/>
-			<nav>
-				<div className='logo-block'>
-					<h3 className='logo'>M</h3>
-				</div>
-				<ul className='nav__navigate-list'>
-					<li>Главная</li>
-					<li>О нас </li>
-					<li>Меню</li>
-					<li>О доставке </li>
-					<li>Контакты </li>
-				</ul>
-				<motion.button
-					whileHover={{ scale: 1.08, translateY: -3, scaleY: 1.1 }}
-					transition={{ duration: 0.2 }}
-					className='login-navigate-btn'
-				>
-					Вход
-				</motion.button>
-			</nav>
-			<motion.header>
+			<Navbar />
+			<header className='header'>
 				<motion.h1
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
@@ -52,12 +39,15 @@ const HomePage = () => {
 					src={dish}
 					alt=''
 				/>
-				<div className='header__navigate-block'>
-					<button>Меню</button>
-					<button>Заказать </button>
-					<button>Забронировать стол</button>
-				</div>
-			</motion.header>
+			</header>
+			<div className='navigate-block mb-20'>
+				<button className='navigate-btn py-2 px-8'>Меню</button>
+				<button className='navigate-btn py-2 px-8'>Забронировать стол</button>
+			</div>
+			<PopularDishes />
+			<DishCategories />
+			<AboutUs />
+			<Footer />
 		</div>
 	)
 }

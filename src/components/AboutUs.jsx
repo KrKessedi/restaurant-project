@@ -1,6 +1,5 @@
 import React from 'react'
 import '../styles/AboutUs.css'
-import cleaning from '../images/cleaning.png'
 import bookmark from '../images/bookmark.svg'
 import cap from '../images/cap.svg'
 import peoples from '../images/peoples.svg'

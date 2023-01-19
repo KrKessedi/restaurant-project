@@ -3,8 +3,8 @@ import '../styles/Navbar.css'
 
 const Navbar = () => {
 	return (
-		<nav className='flex justify-between w-11/12 mx-auto mb-16'>
-			<div className='logo-block'>
+		<nav className='flex justify-between w-11/12 mx-auto mb-16 items-center'>
+			<div className='logo-block flex items-center justify-center cursor-pointer'>
 				<h3 className='logo'>M</h3>
 			</div>
 			<ul className='nav__navigate-list flex justify-between'>

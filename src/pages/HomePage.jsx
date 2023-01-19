@@ -13,14 +13,6 @@ import AboutUs from '../components/AboutUs'
 const HomePage = () => {
 	return (
 		<div className='home-container w-full flex flex-col items-center'>
-			{/* <motion.div
-				className='home-top-bg'
-				initial={{ translateY: '-100%' }}
-				animate={{ translateY: '-27%' }}
-				transition={{ duration: 0.5, delay: 0 }}
-			>
-				<div></div>
-			</motion.div> */}
 			<header className='header relative flex flex-col items-center'>
 				<motion.h1
 					initial={{ opacity: 0 }}

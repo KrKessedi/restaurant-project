@@ -1,0 +1,26 @@
+.about-us__title {
+	font-family: 'Times New Roman';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 48px;
+	color: #de6e45;
+}
+
+.description-block__left-block {
+	background: url('../images/cleaning.svg') no-repeat;
+	background-size: 100% 100%;
+	width: 39.6vw;
+}
+
+.about-list-item {
+	width: 41.5vw;
+	box-shadow: -4px -2px 16px #ffffff, 4px 2px 16px rgba(136, 165, 191, 0.54);
+}
+
+.about-list-item > p {
+	font-family: 'Montserrat';
+	font-weight: 500;
+	line-height: 160%;
+	font-size: 1.2vw;
+	color: #313131;
+}

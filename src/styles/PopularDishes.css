@@ -1,0 +1,58 @@
+.popular-dishes-section {
+	width: 100%;
+}
+
+.popular-dishes__title {
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: 700;
+	color: #de6e45;
+}
+
+.popular-dishes__card-block {
+	width: 93%;
+	margin: auto;
+}
+
+.popular-dishes__parent-card {
+	width: 22.6%;
+	height: 355px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.popular-dishes__child-card {
+	width: 100%;
+	height: 84%;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(241, 241, 241, 1);
+}
+.popular-dishes__dish-title {
+	font-family: 'Montserrat';
+	font-weight: 600;
+}
+
+.popular-dishes__rating-block {
+	width: 122px;
+}
+
+.popular-dishes__price {
+	font-family: 'Montserrat';
+	font-weight: 700;
+}
+
+.fill-star {
+	filter: drop-shadow(-1px -1px 14px #fbf187);
+}
+
+.popular-dishes__detail-btn {
+	font-family: 'Montserrat';
+	font-size: 16px;
+	font-weight: 600;
+	background: #de6e45;
+	box-shadow: -4px 5px 29px rgba(222, 110, 69, 0.25),
+		4px -4px 39px rgba(222, 110, 69, 0.4);
+	border-radius: 16px;
+}

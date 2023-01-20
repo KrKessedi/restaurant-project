@@ -1,124 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-.home-container {
-	position: relative;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
 .home-top-bg {
-	width: 100%;
+	width: 1693px;
 	z-index: -1;
+	top: -100px;
 	position: absolute;
-}
-
-nav {
-	width: 91%;
-	height: 90px;
-	margin: 0 auto 65px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.logo-block {
-	cursor: pointer;
-	background: url('../images/logo.svg') no-repeat;
-	width: 89px;
-	height: 90px;
-	/* padding: 27px; */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: 'Times New Roman';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 32px;
-	line-height: 37px;
-	color: #ffffff;
-	animation: 5s logoRotate linear infinite;
-}
-
-.logo {
-	rotate: 0deg;
-	animation: 5s logo linear infinite;
-}
-
-@keyframes logo {
-	from {
-		rotate: 360deg;
-	}
-	to {
-		rotate: 0deg;
-	}
-}
-
-@keyframes logoRotate {
-	from {
-		rotate: 0deg;
-	}
-	to {
-		rotate: 360deg;
-	}
-}
-
-.nav__navigate-list {
-	width: 45%;
-	display: flex;
-	gap: 3.8vw;
-}
-
-.nav__navigate-list > li {
-	cursor: pointer;
-	font-weight: 500;
-	font-size: 20px;
-	line-height: 24px;
-	color: rgba(0, 0, 0, 0.65);
-	transition: 0.3s;
-}
-
-.nav__navigate-list > li:hover {
-	color: #af5d40;
-	box-shadow: 0 1.5px 0 black;
-	transition: 0.5s;
-}
-
-.login-navigate-btn {
-	padding: 0 32px;
-	color: #ffffff;
-	font-weight: 600;
-	height: 44px;
-	background: #de6e45;
-	border-radius: 30px;
+	background: linear-gradient(219.57deg, #f5ba8d 18.05%, #d14019 119.05%);
+	height: 990px;
+	border-radius: 100%;
 }
 
 header {
 	background: url('../images/dish-bg.png') no-repeat;
-	background-position: 44.4% 360%;
-	position: relative;
-	height: 705px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	background-position: 44.4% -590%;
+	height: 689px;
 	animation: bgAnimate 0.6s ease;
 }
 
 @keyframes bgAnimate {
 	from {
-		/* background-image: none; */
 		background-position: 44.4% 1060%;
-		/* background-size: 0; */
-		/* transform: scale(0.3); */
 	}
 
 	to {
-		/* background-image: inherit; */
-		background-position: 44.4% 360%;
-		/* background-size: 100%; */
-		/* transform: scale(1); */
+		background-position: 44.4% -590%;
 	}
 }
 
@@ -134,22 +39,16 @@ header {
 }
 
 .header__dish-image {
-	position: absolute;
 	top: 113px;
 	left: 31.5%;
 }
 
-.header__navigate-block {
-	width: 710px;
+.navigate-block {
+	width: 500px;
 	height: 50px;
-	margin: 0 auto;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 }
 
-.header__navigate-block > button {
-	padding: 8px 32px;
+.navigate-btn {
 	height: 53px;
 	background: #de6e45;
 	border-radius: 53px;
@@ -157,5 +56,4 @@ header {
 	font-size: 24px;
 	color: #ffffff;
 	font-family: 'Montserrat', sans-serif;
-	text-align: center;
 }

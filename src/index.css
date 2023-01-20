@@ -2,11 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+	scroll-behavior: smooth;
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 	text-decoration: none;
+  list-style: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  box-sizing: border-box;
 }
 
 input::-webkit-outer-spin-button,

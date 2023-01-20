@@ -1,0 +1,78 @@
+nav {
+	align-items: center;
+}
+
+.logo-block {
+	cursor: pointer;
+	background: url('../images/logo.svg') no-repeat;
+	width: 89px;
+	height: 90px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Times New Roman';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 37px;
+	color: #ffffff;
+	animation: 5s logoRotate linear infinite;
+}
+
+.logo {
+	rotate: 0deg;
+	animation: 5s logo linear infinite;
+}
+
+@keyframes logo {
+	from {
+		rotate: 360deg;
+	}
+	to {
+		rotate: 0deg;
+	}
+}
+
+@keyframes logoRotate {
+	from {
+		rotate: 0deg;
+	}
+	to {
+		rotate: 360deg;
+	}
+}
+
+.nav__navigate-list {
+	width: 550px;
+}
+
+.nav__navigate-list > li {
+	cursor: pointer;
+	font-weight: 500;
+	font-size: 20px;
+	color: rgba(0, 0, 0, 0.65);
+	transition: 0.3s;
+}
+
+.nav__navigate-list > li:hover {
+	color: #af5d40;
+	box-shadow: 0 1.5px 0 black;
+	transition: 0.5s;
+}
+
+.nav__navigate-block {
+	align-items: center;
+}
+
+.basket-navigate-btn {
+	background: url('../images/basket.svg');
+}
+
+.login-navigate-btn {
+	padding: 0 34px;
+	color: #ffffff;
+	font-weight: 600;
+	height: 44px;
+	background: #de6e45;
+	border-radius: 30px;
+}

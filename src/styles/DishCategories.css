@@ -1,0 +1,21 @@
+.dish-categories-title {
+	font-weight: 700;
+	font-family: 'Times New Roman';
+	color: rgb(222, 110, 69);
+}
+
+.dish-castegories-block {
+	width: 91%;
+	row-gap: 78px;
+}
+
+.dish-categories__card {
+	width: 29.4%;
+	height: 288px;
+	background-color: rgba(241, 241, 241, 1);
+}
+
+.dish-categories__card-title {
+	font-family: 'Montserrat';
+	font-weight: 600;
+}

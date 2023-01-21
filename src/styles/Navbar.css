@@ -7,19 +7,12 @@ nav {
 	background: url('../images/logo.svg') no-repeat;
 	width: 89px;
 	height: 90px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: 'Times New Roman';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 32px;
-	line-height: 37px;
-	color: #ffffff;
 	animation: 5s logoRotate linear infinite;
 }
 
 .logo {
+	font-family: 'Times New Roman';
+	font-size: 32px;
 	rotate: 0deg;
 	animation: 5s logo linear infinite;
 }

@@ -1,7 +1,3 @@
-.popular-dishes-section {
-	width: 100%;
-}
-
 .popular-dishes__title {
 	font-family: 'Times New Roman', Times, serif;
 	font-weight: 700;
@@ -13,20 +9,28 @@
 	margin: auto;
 }
 
+.popular-dishes__card-block::-webkit-scrollbar {
+	height: 10px;
+	display: block;
+	background-color: #dddddd;
+	/* border-radius: 10px; */
+}
+
+.popular-dishes__card-block::-webkit-scrollbar-thumb {
+	background-color: #de6e45;
+	border-radius: 10px;
+}
+
+.popular-dishes__card-block::-webkit-scrollbar-thumb:hover {
+	background-color: #ce3700;
+}
+
 .popular-dishes__parent-card {
-	width: 22.6%;
+	min-width: 22.6%;
 	height: 355px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 }
 
 .popular-dishes__child-card {
-	width: 100%;
-	height: 84%;
-	justify-content: center;
-	align-items: center;
 	background-color: rgba(241, 241, 241, 1);
 }
 .popular-dishes__dish-title {
@@ -49,10 +53,8 @@
 
 .popular-dishes__detail-btn {
 	font-family: 'Montserrat';
-	font-size: 16px;
 	font-weight: 600;
 	background: #de6e45;
 	box-shadow: -4px 5px 29px rgba(222, 110, 69, 0.25),
 		4px -4px 39px rgba(222, 110, 69, 0.4);
-	border-radius: 16px;
 }

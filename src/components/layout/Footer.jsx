@@ -1,9 +1,9 @@
 import React from 'react'
-import '../styles/Footer.css'
-import youtube from '../images/youtube.svg'
-import facebook from '../images/facebook.svg'
-import instagram from '../images/instagram.svg'
-import whatsapp from '../images/whatsapp.svg'
+import '../../styles/Footer.css'
+import youtube from '../../images/youtube.svg'
+import facebook from '../../images/facebook.svg'
+import instagram from '../../images/instagram.svg'
+import whatsapp from '../../images/whatsapp.svg'
 
 const Footer = () => {
 	const social = [
@@ -30,10 +30,14 @@ const Footer = () => {
 	]
 
 	return (
-		<footer className='pt-1 mx-auto mb-10' id='contacts'>
-			<hr className='footer-line mb-7' />
-			<ul className='address-list flex flex-row justify-between items-center mb-6'>
-				<li>Боконбаева, 183 / Турусбекова</li>
+		<footer className='pt-1 mx-auto mb-10 w-[91.1%]' id='contacts'>
+			<hr className='mb-7 w-full h-[1.9px] border-0 bg-black ' />
+			<ul className='flex flex-row justify-between items-center mb-6'>
+				<li
+					onClick={() => window.open('https://goo.gl/maps/dTLGAoKdMdUg2fSS7')}
+				>
+					Боконбаева, 183 / Турусбекова
+				</li>
 				<hr className=' w-4 h-px border-0 bg-black rotate-90' />
 				<li>Отзывы и предложения: +996 551 63 11 11</li>
 				<hr className=' w-4 h-px border-0 bg-black rotate-90' />

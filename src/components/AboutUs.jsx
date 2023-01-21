@@ -1,9 +1,9 @@
 import React from 'react'
-import '../styles/AboutUs.css'
 import bookmark from '../images/bookmark.svg'
 import cap from '../images/cap.svg'
 import peoples from '../images/peoples.svg'
 import hands from '../images/hands.svg'
+import cleaning from '../images/cleaning.svg'
 
 const AboutUs = () => {
 	const list = [
@@ -34,20 +34,22 @@ const AboutUs = () => {
 	]
 	return (
 		<section className='about-us-section mb-20' id='about-us'>
-			<h2 className='about-us__title w-full text-center mb-1'>О Нас</h2>
+			<h2 className='about-us__title w-full text-center mb-1 font-["Times_New_Roman"] font-bold text-5xl text-my-orange '>
+				О Нас
+			</h2>
 			<div className='about-us__description-block w-full flex justify-between'>
-				<div className='description-block__left-block'>
-					{/* <img src={cleaning} alt='' className='w-full' /> */}
-				</div>
+				<img src={cleaning} alt='' className='w-[39.6vw]' />
 				<div className='description-block__right-block w-1/2 pt'>
-					<ul className='about-us__list flex flex-col gap-y-8  '>
+					<ul className='about-us__list flex flex-col pt-8 gap-y-[60px]  '>
 						{list?.map(item => (
 							<li
 								key={item.id}
-								className='about-list-item flex items-center py-3 px-5 pr-10 gap-x-6 rounded-2xl bg-white'
+								className='w-[41.5vw] shadow-[-4px_-2px_16px_#ffffff_,_4px_2px_16px_#88a5bf8a] flex items-center py-3 px-5 pr-10 gap-x-6 rounded-2xl bg-white'
 							>
 								<img src={item.image} alt='' width={item.imageWidth} />
-								<p className=''>{item.desc}</p>
+								<p className='font-["Montseratt"] font-medium leading-[160%] text-[1.2vw] text-[#313131]'>
+									{item.desc}
+								</p>
 							</li>
 						))}
 					</ul>

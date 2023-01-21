@@ -24,12 +24,12 @@ module.exports = {
 			'2sm': { max: '424px' },
 			// => @media (max-width: 424px) { ... }
 		},
-		colors: {
-			'my-orange': '#de6e45',
-			'my-light-gray': '#f1f1f1',
-			white: '#ffffff',
+		extend: {
+			colors: {
+				'my-orange': '#de6e45',
+				'my-light-gray': '#f1f1f1',
+			},
 		},
-		extend: {},
 	},
 	plugins: [],
 }

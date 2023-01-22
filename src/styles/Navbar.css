@@ -25,7 +25,11 @@
 	}
 }
 
-nav > ul > li {
+header {
+  background: linear-gradient(200deg, #F5BA8D 2%, #D14019 110%);
+}
+
+nav > div > ul > li {
 	@apply cursor-pointer font-semibold text-lg text-[#000000a6] hover:text-[#af5d40] hover:shadow-[0_1.5px_0_black] transition hover:transition list-disc uppercase;
 }
 

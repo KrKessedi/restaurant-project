@@ -21,7 +21,7 @@ module.exports = {
 			'2sm': { max: '639px' },
 			// => @media (max-width: 639px) { ... }
 
-			'2sm': { max: '424px' },
+			'3sm': { max: '424px' },
 			// => @media (max-width: 424px) { ... }
 		},
 		extend: {

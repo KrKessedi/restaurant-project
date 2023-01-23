@@ -76,10 +76,10 @@ const DishCategories = () => {
 			<h2 className='dish-categories-title text-5xl w-full text-center font-bold font-["Times_New_Roman"] text-my-orange '>
 				Категории блюд
 			</h2>
-			<div className='dish-castegories-block w-[91%] flex flex-wrap justify-between mx-auto pt-14 gap-y-16 '>
+			<div className='dish-castegories-block w-[91%] flex flex-wrap justify-between mx-auto pt-14 gap-y-16 md:gap-y-5 '>
 				{categories?.map(item => (
 					<div
-						className='dish-categories__card relative flex flex-col w-[29.4%] h-72 justify-end text-center rounded-2xl pb-6 overflow-hidden bg-my-light-gray'
+						className='dish-categories__card relative flex flex-col w-[29.4%] md:w-[32%] h-72 md:h-64 justify-end text-center rounded-2xl pb-6 overflow-hidden bg-my-light-gray'
 						key={item.id}
 					>
 						<motion.img

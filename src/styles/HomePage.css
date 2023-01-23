@@ -3,9 +3,10 @@
 }
 
 header {
-	background: url('../images/dish-bg.png') no-repeat;
+	background: url('../images/dish-bg.svg') no-repeat;
 	background-position: 44.4% -590%;
 	animation: bgAnimate 0.6s ease;
+	/* background-size: 82% 100.88%; */
 }
 
 @keyframes bgAnimate {

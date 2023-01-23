@@ -4,7 +4,7 @@
 
 @layer components {
 	.modal-container {
-		@apply fixed flex top-0 left-0 w-full h-full bg-black/50 backdrop-blur-[2px]  justify-center items-center 2sm:px-4;
+		@apply fixed flex top-0 left-0 w-full h-full bg-black/50 backdrop-blur-[2px]  justify-center items-center 2sm:px-4 z-50;
 	}
 	.modal-block {
 		@apply mx-auto w-[700px] bg-white rounded-[30px] p-[36px] flex flex-col 2xl:w-[500px];

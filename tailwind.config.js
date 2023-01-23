@@ -24,7 +24,6 @@ module.exports = {
 			'3sm': { max: '424px' },
 			// => @media (max-width: 424px) { ... }
 		},
-
 		extend: {
 			colors: {
 				'my-orange': '#de6e45',

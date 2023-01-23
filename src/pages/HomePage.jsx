@@ -14,12 +14,18 @@ import NewPassword from '../components/auth/NewPassword'
 const HomePage = () => {
 	return (
 		<div className='home-container w-full flex flex-col items-center'>
+			<motion.div
+				className='home-top-bg w-[1693px] z-[-1] -top-[105px] absolute h-[990px] rounded-[100%]'
+				initial={{ translateY: '-100%' }}
+				animate={{ translateY: '-30%' }}
+				transition={{ duration: 0.5, delay: 0 }}
+			></motion.div>
 			<header className='h-[689px] relative flex flex-col items-center bg-no-repeat '>
 				<motion.h1
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ delay: 0, duration: 1 }}
-					className='home-title cursor-default font-bold text-[13.2vw] leading-[218px] m-x-auto text-white mb-[33%] font-["Times_New_Roman"] '
+					className='cursor-default font-bold text-[13.2vw] leading-[218px] m-x-auto text-white mb-[33%] font-["Times_New_Roman"] '
 				>
 					МАКАРОННАЯ
 				</motion.h1>
@@ -41,7 +47,7 @@ const HomePage = () => {
 			<AboutUs />
 			{/* Здесь будет компонент о статистике */}
 			{/* Здесь будет компонент о партнерах */}
-			<NewPassword />
+			{/* <NewPassword /> */}
 		</div>
 	)
 }

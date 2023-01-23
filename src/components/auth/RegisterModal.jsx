@@ -1,15 +1,20 @@
 import React from 'react'
 
-const RegisterModal = () => {
+const RegisterModal = ({ setModal, setModalFlag }) => {
 	return (
-		<div className='modal-container'>
-			<div className='modal-block'>
+		<div className='modal-container' onClick={() => setModalFlag(false)}>
+			<div
+				className='modal-block'
+				onClick={(e) => {
+					e.stopPropagation()
+				}}
+			>
 				<h3 className='modal-title'>Регистрация</h3>
 				<span className='modal-text'>Присоединяйтесь,</span>
 				<span className='modal-text modal-text-bold'>
 					это не займёт много времени!
 				</span>
-				{/* <div className='modal-input-block'> */}
+
 				<input type='text' className='modal-input' placeholder='Имя' />
 				<input
 					type='text'
@@ -22,9 +27,13 @@ const RegisterModal = () => {
 					className='modal-input'
 					placeholder='Повторите пароль'
 				/>
-				{/* </div> */}
-				<button className='modal-btn'>Зарегистирироваться</button>
-				<p className='modal-footer'>Авторизоваться</p>
+
+				<button className='modal-btn' onClick={() => setModalFlag(false)}>
+					Зарегистирироваться
+				</button>
+				<p className='modal-footer' onClick={() => setModal('login')}>
+					Авторизоваться
+				</p>
 			</div>
 		</div>
 	)

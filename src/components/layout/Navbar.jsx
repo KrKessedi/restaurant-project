@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../../styles/Navbar.css'
-import LoginModal from '../auth/LoginModal'
+import AuthModal from '../auth/AuthModal'
 
 const Navbar = () => {
 	const navigate = useNavigate()
+	const [modalFlag, setModalFlag] = useState(false)
 	return (
 		<>
-			<nav className='flex justify-between w-11/12 mx-auto mb-16 items-center'>
-				<div className='logo-block flex items-center justify-center cursor-pointer w-[89px] h-[90px]  '>
-					<h3 className='logo font-["Times_New_Roman"] text-[32px] text-white '>
+			{modalFlag ? <AuthModal setModalFlag={setModalFlag} /> : null}
+			<nav className='flex justify-between w-11/12 lg:w-[95%] mx-auto mb-16 items-center'>
+				<div className='logo-block flex items-center justify-center cursor-pointer w-[89px] h-[90px]'>
+					<h3 className='logo font-["Times_New_Roman"] text-[32px] text-white'>
 						M
 					</h3>
 				</div>
-				<ul className='w-[750px] flex justify-between'>
+				<ul className='w-[750px] lg:w-[700px] flex justify-between'>
 					<li className='list-none'>
 						<a href='#'>Главная</a>
 					</li>
@@ -33,9 +35,12 @@ const Navbar = () => {
 						<a href='#contacts'>Контакты</a>
 					</li>
 				</ul>
-				<div className=' w-44 flex justify-between items-center'>
+				<div className=' w-44 lg:w-36 flex justify-between items-center'>
 					<button className='basket-navigate-btn w-7 h-6'></button>
-					<button className='login-navigate-btn h-11 bg-my-orange rounded-[30px] px-9 text-white font-semibold '>
+					<button
+						className='login-navigate-btn h-11 bg-my-orange rounded-[30px] px-9 text-white font-semibold'
+						onClick={() => setModalFlag(true)}
+					>
 						Вход
 					</button>
 				</div>

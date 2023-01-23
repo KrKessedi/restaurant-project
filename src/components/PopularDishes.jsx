@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import popularDish from '../images/image 97.svg'
 import fullStar from '../images/star-fill.svg'
 import emptyStar from '../images/star-empty.svg'
@@ -67,18 +67,22 @@ const PopularDishes = () => {
 			<h2 className='popular-dishes__title w-full text-center mb-7 text-5xl font-["Times_New_Roman"] text-my-orange font-bold '>
 				Популярные блюда
 			</h2>
-			<div className='popular-dishes__card-block flex gap-x-8 overflow-x-scroll w-[93%] m-auto justify-between flex-row pb-7 scroll-smooth'>
+			<div className='popular-dishes__card-block flex gap-x-8 overflow-x-scroll w-[93%] m-auto justify-between flex-row pb-7 scroll-smooth md:w-[94%] '>
 				{dishes?.map(item => (
 					<div
-						className='min-w-[22.6%] h-[355px] mx-px relative flex flex-col items-center justify-center'
+						className='min-w-[22.6%] md:min-w-[31%] h-[355px] relative flex flex-col items-center justify-center'
 						key={item.id}
 					>
-						<img src={item.image} alt='' className=' w-52 absolute top-0' />
+						<img
+							src={item.image}
+							alt=''
+							className=' w-52 absolute top-0 md:w-44 md:-top-1'
+						/>
 						<div className='rounded-2xl pt-40 flex flex-col justify-center items-center w-full h-5/6 bg-my-light-gray '>
-							<h5 className='font-semibold font-["Montserat"] text-xl mb-3 uppercase'>
+							<h5 className='font-semibold font-["Montserat"] text-xl mb-3 uppercase md:text-lg'>
 								{item.title}
 							</h5>
-							<div className=' w-[122px] flex mb-1'>
+							<div className=' w-[122px] flex mb-1 justify-center items-start'>
 								<Rating
 									className=' mr-4'
 									emptySymbol={<img src={emptyStar} className='mr-1' />}
@@ -97,7 +101,7 @@ const PopularDishes = () => {
 								{item.price} сом
 							</h5>
 						</div>
-						<button className=' font-semibold font-["Montserat"] w-56 rounded-2xl uppercase absolute bottom-2 text-white py-2 px-5 bg-my-orange shadow-[-4px_5px_29px_#de6e4540_,_4px_-4px_39px_#de6e4566] '>
+						<button className=' font-semibold font-["Montserat"] w-56 rounded-2xl uppercase absolute bottom-2 text-white py-2 px-5 bg-my-orange shadow-[-4px_5px_29px_#de6e4540_,_4px_-4px_39px_#de6e4566] md:w-44 md:text-xs '>
 							узнать подробнее
 						</button>
 					</div>

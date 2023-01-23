@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import '../styles/DishCategories.css'
+// import '../styles/DishCategories.css'
 import breakfasts from '../images/breakfast.svg'
 import soups from '../images/soups.svg'
 import hotDish from '../images/hot dish.svg'
@@ -70,15 +70,16 @@ const DishCategories = () => {
 			image: drinks,
 		},
 	]
+
 	return (
 		<section className='dish-categories w-full mb-20' id='menu'>
-			<h2 className='dish-categories-title text-5xl w-full text-center'>
+			<h2 className='dish-categories-title text-5xl w-full text-center font-bold font-["Times_New_Roman"] text-my-orange '>
 				Категории блюд
 			</h2>
-			<div className='dish-castegories-block flex flex-wrap justify-between mx-auto pt-14'>
+			<div className='dish-castegories-block w-[91%] flex flex-wrap justify-between mx-auto pt-14 gap-y-16 '>
 				{categories?.map(item => (
 					<div
-						className='dish-categories__card relative flex flex-col justify-end text-center rounded-2xl pb-6 overflow-hidden'
+						className='dish-categories__card relative flex flex-col w-[29.4%] h-72 justify-end text-center rounded-2xl pb-6 overflow-hidden bg-my-light-gray'
 						key={item.id}
 					>
 						<motion.img
@@ -89,7 +90,7 @@ const DishCategories = () => {
 							alt=''
 							className='dash-categories__card-image absolute'
 						/>
-						<h5 className='dish-categories__card-title text-xl'>
+						<h5 className='dish-categories__card-title text-xl font-semibold font-["Montserrat] '>
 							{item.title}
 						</h5>
 					</div>

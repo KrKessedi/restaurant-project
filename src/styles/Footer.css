@@ -1,16 +1,3 @@
-footer {
-	width: 91.1%;
-}
-.footer-line {
-	width: 100%;
-	height: 1.9px;
-	border: none;
-	background-color: black;
-}
-
-.address-list > li {
-	text-transform: uppercase;
-	font-family: 'Montserrat';
-	font-weight: 600;
-	font-size: 19px;
+footer > ul li {
+	@apply uppercase text-[20px] font-bold;
 }

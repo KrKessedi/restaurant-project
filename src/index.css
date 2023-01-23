@@ -2,18 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-	scroll-behavior: smooth;
+@layer components {
+	.modal-container {
+		@apply fixed flex top-0 left-0 w-full h-full bg-black/50 backdrop-blur-[2px]  justify-center items-center 2sm:px-4;
+	}
+	.modal-block {
+		@apply mx-auto w-[700px] bg-white rounded-[30px] p-[36px] flex flex-col 2xl:w-[500px];
+	}
+	.modal-title {
+		@apply text-my-orange font-bold text-6xl font-montserrat leading-[59px] mb-10 2xl:text-4xl;
+	}
+	.modal-text {
+		@apply 2xl:text-xl font-montserrat text-3xl;
+	}
+	.modal-text-bold {
+		@apply text-[#000000B2] font-medium mb-8;
+	}
+	.modal-input-block {
+		@apply flex flex-col justify-between h-72 mb-10;
+	}
+	.modal-input {
+		@apply text-xl border-2 border-my-orange py-[10px] px-[20px] rounded-[30px] font-montserrat mb-7;
+	}
+	.modal-btn {
+		@apply text-3xl font-montserrat rounded-[30px] bg-my-orange text-white py-[12px] px-5 mb-8 mt-3;
+	}
+	.modal-footer {
+		@apply text-my-orange mx-auto text-xl font-semibold cursor-pointer;
+	}
 }
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
 
 * {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	text-decoration: none;
-  list-style: none;
-  font-family: 'Source Sans Pro', sans-serif;
-  box-sizing: border-box;
+	@apply m-0 p-0 list-none font-['Source_Sans_Pro'] box-border scroll-smooth;
 }
 
 input::-webkit-outer-spin-button,

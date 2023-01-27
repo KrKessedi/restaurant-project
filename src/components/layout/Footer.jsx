@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/Footer.css'
+// import '../../styles/Footer.css';
 import youtube from '../../images/youtube.svg'
 import facebook from '../../images/facebook.svg'
 import instagram from '../../images/instagram.svg'
@@ -49,6 +49,7 @@ const Footer = () => {
 						src={item.image}
 						key={item.id}
 						onClick={() => window.open(item.navigate)}
+						alt='icons'
 					/>
 				))}
 			</div>

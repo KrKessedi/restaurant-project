@@ -1,5 +1,4 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 // import '../styles/DishCategories.css'
 import breakfasts from '../images/breakfast.svg'
@@ -13,7 +12,6 @@ import sauces from '../images/sauces.svg'
 import drinks from '../images/drinks.svg'
 
 const DishCategories = () => {
-	const navigate = useNavigate()
 	const categories = [
 		{
 			id: 1,
@@ -73,24 +71,19 @@ const DishCategories = () => {
 
 	return (
 		<section className='dish-categories w-full mb-20' id='menu'>
-			<h2 className='dish-categories-title text-5xl w-full text-center font-bold font-["Times_New_Roman"] text-my-orange '>
-				Категории блюд
-			</h2>
+			<h2 className='section-title'>Категории блюд</h2>
 			<div className='dish-castegories-block w-[91%] flex flex-wrap justify-between mx-auto pt-14 gap-y-16 md:gap-y-5 '>
 				{categories?.map(item => (
 					<div
-						className='dish-categories__card relative flex flex-col w-[29.4%] md:w-[32%] h-72 md:h-64 justify-end text-center rounded-2xl pb-6 overflow-hidden bg-my-light-gray'
+						className='dish-categories__card relative flex flex-col w-[29.4%] md:w-[32%] h-72 lg:h-60 md:h-64 justify-end text-center rounded-2xl overflow-hidden bg-my-light-gray pb-6 hover:shadow-[0_-20px_50px_-12px_#ff5112a7] hover:duration-300 duration-300 2sm:h-52'
 						key={item.id}
 					>
-						<motion.img
-							initial={{ translateX: '-25%', translateY: '-25%' }}
-							transition={{ delay: 0, duration: 0.8 }}
-							whileHover={{ translateX: '-18%', translateY: '-18%' }}
+						<img
 							src={item.image}
 							alt=''
-							className='dash-categories__card-image absolute'
+							className='card dash-categories__card-image absolute -translate-x-[22%] -translate-y-[30%] duration-[1600ms] md:-translate-x-[24%] md:-translate-y-[38%] sm:-translate-x-[28%] sm:-translate-y-[50%] '
 						/>
-						<h5 className='dish-categories__card-title text-xl font-semibold font-["Montserrat] '>
+						<h5 className='dish-categories__card-title text-xl font-semibold font-["Montserrat]'>
 							{item.title}
 						</h5>
 					</div>

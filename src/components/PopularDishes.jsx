@@ -1,9 +1,8 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import popularDish from '../images/image 97.svg'
 import fullStar from '../images/star-fill.svg'
 import emptyStar from '../images/star-empty.svg'
 import Rating from 'react-rating'
-import '../styles/PopularDishes.css'
 
 const PopularDishes = () => {
 	const dishes = [
@@ -64,21 +63,19 @@ const PopularDishes = () => {
 
 	return (
 		<section className='popular-dishes-section mt-1 mb-20 w-full'>
-			<h2 className='popular-dishes__title w-full text-center mb-7 text-5xl font-["Times_New_Roman"] text-my-orange font-bold '>
-				Популярные блюда
-			</h2>
+			<h2 className='section-title'>Популярные блюда</h2>
 			<div className='popular-dishes__card-block flex gap-x-8 overflow-x-scroll w-[93%] m-auto justify-between flex-row pb-7 scroll-smooth md:w-[94%] '>
 				{dishes?.map(item => (
 					<div
-						className='min-w-[22.6%] md:min-w-[31%] h-[355px] relative flex flex-col items-center justify-center'
+						className='min-w-[23.3%] md:min-w-[31%] lg:min-w-[28%] sm:min-w-[38%] sm:h-[320px] h-[355px] relative flex flex-col items-center justify-center'
 						key={item.id}
 					>
 						<img
 							src={item.image}
 							alt=''
-							className=' w-52 absolute top-0 md:w-44 md:-top-1'
+							className=' w-52 absolute top-0 md:w-44 md:-top-1 sm:w-40'
 						/>
-						<div className='rounded-2xl pt-40 flex flex-col justify-center items-center w-full h-5/6 bg-my-light-gray '>
+						<div className='rounded-2xl pt-40 sm:pt-28 flex flex-col justify-center items-center w-full h-5/6 bg-my-light-gray '>
 							<h5 className='font-semibold font-["Montserat"] text-xl mb-3 uppercase md:text-lg'>
 								{item.title}
 							</h5>

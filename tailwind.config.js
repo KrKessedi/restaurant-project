@@ -6,7 +6,7 @@ module.exports = {
 			'2xl': { max: '1535px' },
 			// => @media (max-width: 1535px) { ... }
 
-			xl: { max: '1439px' },
+			xl: { max: '1440px' },
 			// => @media (max-width: 1439px) { ... }
 
 			lg: { max: '1279px' },
@@ -24,10 +24,22 @@ module.exports = {
 			'3sm': { max: '424px' },
 			// => @media (max-width: 424px) { ... }
 		},
+
 		extend: {
 			colors: {
 				'my-orange': '#de6e45',
 				'my-light-gray': '#f1f1f1',
+			},
+			fontFamily: {
+				montserrat: ['Montserrat Alternates', 'sans-serif'],
+				poiret: ['Poiret One', 'cursive'],
+				times: ['Times_New_Roman'],
+			},
+			zIndex: {
+				1: 1,
+				'-1': '-1',
+				2: 2,
+				'-2': '-2',
 			},
 		},
 	},

@@ -34,9 +34,7 @@ const AboutUs = () => {
 	]
 	return (
 		<section className='about-us-section mb-20' id='about-us'>
-			<h2 className='about-us__title w-full text-center mb-1 font-["Times_New_Roman"] font-bold text-5xl text-my-orange '>
-				О Нас
-			</h2>
+			<h2 className='section-title'>О Нас</h2>
 			<div className='about-us__description-block w-full flex justify-between items-center'>
 				<img src={cleaning} alt='' className='w-[39.6vw]' />
 				<div className='description-block__right-block w-1/2 pt'>

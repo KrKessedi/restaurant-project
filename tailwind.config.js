@@ -21,14 +21,19 @@ module.exports = {
 			'2sm': { max: '639px' },
 			// => @media (max-width: 639px) { ... }
 
-			'3sm': { max: '424px' },
+			'3sm': { max: '520px' },
 			// => @media (max-width: 424px) { ... }
+			'4sm': { max: '420px' },
 		},
 
 		extend: {
 			colors: {
 				'my-orange': '#de6e45',
 				'my-light-gray': '#f1f1f1',
+				white: '#ffffff',
+			},
+			fontFamily: {
+				montserrat: ['Montserrat', 'sans-serif'],
 			},
 			fontFamily: {
 				montserrat: ['Montserrat Alternates', 'sans-serif'],

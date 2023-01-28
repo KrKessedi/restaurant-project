@@ -2,7 +2,7 @@ import { social } from '../Footer'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 
-const BurgerMenu = ({ burger, setBurger }) => {
+const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 	const list = [
 		{ id: 1, title: 'Главная', to: '#' },
 		{ id: 2, title: 'О нас', to: '#about-us' },
@@ -47,7 +47,9 @@ const BurgerMenu = ({ burger, setBurger }) => {
 						whileHover={{ translateY: '-2px' }}
 						className='basket-navigate-btn w-7 h-6'
 					></motion.button>
-					<button className='login-navigate-btn h-11 bg-my-orange rounded-[30px] px-9 text-white font-semibold '>
+					<button className='login-navigate-btn h-11 bg-my-orange rounded-[30px] px-9 text-white font-semibold '
+							onClick={() => setModalFlag(true)}
+							>
 						Вход
 					</button>
 				</div>

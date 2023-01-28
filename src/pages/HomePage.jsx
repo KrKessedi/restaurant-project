@@ -5,11 +5,6 @@ import { motion } from 'framer-motion'
 import PopularDishes from '../components/PopularDishes'
 import DishCategories from '../components/DishCategories'
 import AboutUs from '../components/AboutUs'
-import RegisterModal from '../components/auth/RegisterModal'
-import LoginModal from '../components/auth/LoginModal'
-import PasswordRecovery from '../components/auth/PasswordRecovery'
-import Confirmation from '../components/auth/Confirmation'
-import NewPassword from '../components/auth/NewPassword'
 
 const HomePage = () => {
 	return (
@@ -47,7 +42,6 @@ const HomePage = () => {
 			<AboutUs />
 			{/* Здесь будет компонент о статистике */}
 			{/* Здесь будет компонент о партнерах */}
-			{/* <NewPassword /> */}
 		</div>
 	)
 }

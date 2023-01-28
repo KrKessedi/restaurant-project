@@ -11,25 +11,53 @@ const AuthModal = ({ setModalFlag }) => {
 	let modals = [
 		{
 			id: 'login',
-			modal: <LoginModal setModal={setModal} setModalFlag={setModalFlag} />,
+			modal: (
+				<LoginModal
+					key='login'
+					setModal={setModal}
+					setModalFlag={setModalFlag}
+				/>
+			),
 		},
 		{
 			id: 'register',
-			modal: <RegisterModal setModal={setModal} setModalFlag={setModalFlag} />,
+			modal: (
+				<RegisterModal
+					key='register'
+					setModal={setModal}
+					setModalFlag={setModalFlag}
+				/>
+			),
 		},
 		{
 			id: 'passwordRecovery',
 			modal: (
-				<PasswordRecovery setModal={setModal} setModalFlag={setModalFlag} />
+				<PasswordRecovery
+					key='passwordRecovery'
+					setModal={setModal}
+					setModalFlag={setModalFlag}
+				/>
 			),
 		},
 		{
 			id: 'confirmation',
-			modal: <Confirmation setModal={setModal} setModalFlag={setModalFlag} />,
+			modal: (
+				<Confirmation
+					key='confirmation'
+					setModal={setModal}
+					setModalFlag={setModalFlag}
+				/>
+			),
 		},
 		{
 			id: 'newPassword',
-			modal: <NewPassword setModal={setModal} setModalFlag={setModalFlag} />,
+			modal: (
+				<NewPassword
+					key='newPassword'
+					setModal={setModal}
+					setModalFlag={setModalFlag}
+				/>
+			),
 		},
 	]
 	return <>{modals.map((item) => (item.id === modal ? item.modal : null))}</>

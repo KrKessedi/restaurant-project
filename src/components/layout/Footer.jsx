@@ -44,7 +44,7 @@ const Footer = () => {
 				<li>доставка: +996 551 63 11 11</li>
 			</ul>
 			<div className='social-btn-block flex gap-x-8 justify-center'>
-				{social?.map(item => (
+				{social?.map((item) => (
 					<img
 						src={item.image}
 						key={item.id}

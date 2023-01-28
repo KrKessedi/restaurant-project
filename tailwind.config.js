@@ -6,7 +6,7 @@ module.exports = {
 			'2xl': { max: '1535px' },
 			// => @media (max-width: 1535px) { ... }
 
-			xl: { max: '1439px' },
+			xl: { max: '1440px' },
 			// => @media (max-width: 1439px) { ... }
 
 			lg: { max: '1279px' },
@@ -25,6 +25,7 @@ module.exports = {
 			// => @media (max-width: 424px) { ... }
 			'4sm': { max: '420px' },
 		},
+
 		extend: {
 			colors: {
 				'my-orange': '#de6e45',
@@ -33,6 +34,17 @@ module.exports = {
 			},
 			fontFamily: {
 				montserrat: ['Montserrat', 'sans-serif'],
+			},
+			fontFamily: {
+				montserrat: ['Montserrat Alternates', 'sans-serif'],
+				poiret: ['Poiret One', 'cursive'],
+				times: ['Times_New_Roman'],
+			},
+			zIndex: {
+				1: 1,
+				'-1': '-1',
+				2: 2,
+				'-2': '-2',
 			},
 		},
 	},

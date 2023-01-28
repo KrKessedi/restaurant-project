@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react'
 // import { motion } from 'framer-motion';
-import { Outlet } from 'react-router-dom';
-import Footer from './Footer';
-import Navbar from './Navbar';
-import '../../styles/HomePage.css';
+import { Outlet } from 'react-router-dom'
+import Footer from './Footer'
+import BurgerMenu from './navbar/BurgerMenu'
+import Navbar from './navbar/Navbar'
+// import '../../styles/HomePage.css'
 
 const Layout = () => {
-  return (
-    <div>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </div>
-  );
-};
+	const [burger, setBurger] = useState(false)
+	const [modalFlag, setModalFlag] = useState(false)
 
-export default Layout;
+	
+
+	return (
+		<div className='overflow-hidden relative'>
+			<BurgerMenu setBurger={setBurger} burger={burger} setModalFlag={setModalFlag} />
+
+			<Navbar burger={burger} setBurger={setBurger} modalFlag={modalFlag}
+setModalFlag={setModalFlag}/>
+			<Outlet />
+			<Footer />
+		</div>
+	)
+}
+
+export default Layout
 
 // return (
 //   <div className='relative overflow-x-hidden flex flex-col items-center'>

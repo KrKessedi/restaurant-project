@@ -1,7 +1,0 @@
-.popular-dishes__card-block::-webkit-scrollbar {
-	@apply h-2 rounded-xl bg-[#dddddd] block;
-}
-
-.popular-dishes__card-block::-webkit-scrollbar-thumb {
-	@apply rounded-xl bg-[#de6e45] hover:bg-[#ce3700];
-}

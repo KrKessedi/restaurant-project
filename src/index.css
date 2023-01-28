@@ -2,29 +2,169 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+	.modal-container {
+		@apply fixed flex top-0 left-0 w-full h-full bg-black/50 backdrop-blur-[2px]  justify-center items-center 2sm:px-8 z-50;
+	}
+	.modal-block {
+		@apply mx-auto w-[700px] bg-white rounded-[30px] p-[36px] flex flex-col 2xl:w-[500px];
+	}
+	.modal-title {
+		@apply text-my-orange font-bold text-6xl font-montserrat leading-[59px] mb-10 2xl:text-4xl 3sm:text-[7vw] 3sm:mb-[4vw] 4sm:mb-[2vw] 4sm:leading-[8vw] 4sm:text-[6vw];
+	}
+	.modal-text {
+		@apply 2xl:text-xl font-montserrat text-3xl 3sm:text-[4vw] 4sm:leading-[6vw];
+	}
+	.modal-text-bold {
+		@apply text-[#000000B2] font-medium mb-8 3sm:mb-[5vw] 4sm:mb-[3vw];
+	}
+	.modal-form {
+		@apply flex flex-col;
+	}
+	.modal-input {
+		@apply text-xl border-2 border-my-orange py-[10px] px-[20px] rounded-[30px] font-montserrat mb-7 3sm:text-base 3sm:mb-6 4sm:mb-[5vw] 4sm:py-[2vw] 4sm:text-sm;
+	}
+	.modal-btn {
+		@apply text-3xl font-montserrat rounded-[30px] bg-my-orange text-white py-[12px] px-5 mb-8 mt-3 3sm:text-xl 4sm:text-[4vw] 4sm:py-[2vw] 2sm:text-2xl 4sm:mt-[2vw] 4sm:mb-[4vw];
+	}
+	.modal-footer {
+		@apply text-my-orange mx-auto text-xl font-semibold cursor-pointer 4sm:text-[4vw];
+	}
+}
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Poiret+One&display=swap');
+
 * {
-	@apply m-0 p-0 list-none font-['Source_Sans_Pro'] box-border scroll-smooth;
+	@apply m-0 p-0 list-none font-['Source_Sans_Pro'] box-border scroll-smooth cursor-default;
 }
 
 @layer base {
-  .container {
-    @apply max-w-[1440px]
-  }
+	.container {
+		@apply max-w-[1440px];
+	}
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-	-webkit-appearance: none !important;
-	appearance: none !important;
-	margin: 0 !important;
+	@apply appearance-none;
 }
 
 ::-webkit-scrollbar {
-	display: none;
+	@apply hidden;
 }
 
 input:focus {
-	outline: none;
+	@apply outline-0;
+}
+
+@layer components {
+	.logo-block {
+		background: url('./images/logo.svg') no-repeat;
+		animation: 10s logoRotate linear infinite;
+	}
+
+	.logo {
+		animation: 10s logo linear infinite;
+	}
+
+	@keyframes logo {
+		from {
+			rotate: 360deg;
+		}
+		to {
+			rotate: 0deg;
+		}
+	}
+
+	@keyframes logoRotate {
+		from {
+			rotate: 0deg;
+		}
+		to {
+			rotate: 360deg;
+		}
+	}
+
+	header {
+		background: linear-gradient(
+			200deg,
+			rgb(245, 186, 141, 0.9) 2%,
+			rgba(209, 65, 25, 0.9) 110%
+		);
+	}
+
+	nav > div > ul > li,
+	nav ~ ul > li {
+		@apply cursor-pointer font-semibold text-lg text-[#000000a6] hover:text-[#ffffff] hover:shadow-[0_1.5px_0_black] md:text-base transition hover:transition uppercase;
+	}
+
+	.disc {
+		@apply text-3xl md:text-[28px] hover:shadow-none hover:text-[#000000a6] cursor-default;
+	}
+
+	.basket-navigate-btn {
+		background: url('./images/basket.svg');
+	}
+
+	.delivery-btn {
+		@apply text-2xl font-poiret py-3 px-8 mr-2 border-4 border-my-orange rounded-full font-medium hover:bg-my-orange hover:text-white hover:font-semibold transition duration-300 sm:text-base sm:font-semibold 2sm:py-2 2sm:px-5 2sm:border-2 2sm:text-sm;
+	}
+
+	.popular-dishes__card-block::-webkit-scrollbar {
+		@apply h-2 rounded-xl bg-[#dddddd] block;
+	}
+
+	.popular-dishes__card-block::-webkit-scrollbar-thumb {
+		@apply rounded-xl bg-[#de6e45] hover:bg-[#ce3700a7];
+	}
+
+	@keyframes bgAnimate {
+		from {
+			background-position: 44.4% 1060%;
+		}
+
+		to {
+			background-position: 44.4% -590%;
+		}
+	}
+
+	.navigate-btn {
+		@apply h-14 bg-my-orange rounded-full font-medium text-2xl text-white py-2 px-8 text-center;
+	}
+
+	footer > ul > li {
+		@apply uppercase text-xl lg:text-[1.5vw] sm:text-[2vw] 2sm:text-[3vw] lg:font-semibold font-bold;
+	}
+
+	.section-title {
+		@apply w-full text-center mb-7 text-5xl font-times text-my-orange font-bold sm:text-4xl;
+	}
+
+	.burger-menu-footer > ul > li {
+		@apply text-sm font-semibold;
+	}
+
+	.dish-categories__card:hover .card {
+		@apply -translate-x-[18%] -translate-y-[20%] duration-[1600ms];
+	}
+
+	.go-addres-btn {
+		@apply opacity-0 duration-300;
+	}
+
+	.addres:hover .go-addres-btn {
+		@apply opacity-0 duration-200;
+	}
+
+	body.burger-menu {
+		@apply h-[100vh] overflow-y-hidden;
+	}
+
+	.about-us__list > li:nth-child(3) {
+		@apply hidden 2sm:flex overflow-hidden rounded-2xl h-40 justify-center items-center p-0;
+	}
+
+	.about-us__list > li:nth-child(3) > p {
+		@apply 2sm:hidden;
+	}
 }

@@ -2,17 +2,21 @@ import React, { useState } from 'react'
 // import { motion } from 'framer-motion';
 import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
+import BurgerMenu from './navbar/BurgerMenu'
 import Navbar from './navbar/Navbar'
 // import '../../styles/HomePage.css'
 
 const Layout = () => {
-	const [s, setEs] = useState('qwert')
+	const [burger, setBurger] = useState(false)
+
 	return (
-		<>
-			<Navbar />
-			<Outlet s={s} />
+		<div className='overflow-hidden relative'>
+			<BurgerMenu setBurger={setBurger} burger={burger} />
+
+			<Navbar burger={burger} setBurger={setBurger} />
+			<Outlet />
 			<Footer />
-		</>
+		</div>
 	)
 }
 

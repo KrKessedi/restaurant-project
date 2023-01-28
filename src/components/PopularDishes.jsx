@@ -64,10 +64,10 @@ const PopularDishes = () => {
 	return (
 		<section className='popular-dishes-section mt-1 mb-20 w-full'>
 			<h2 className='section-title'>Популярные блюда</h2>
-			<div className='popular-dishes__card-block flex gap-x-8 overflow-x-scroll w-[93%] m-auto justify-between flex-row pb-7 scroll-smooth md:w-[94%] '>
+			<div className='popular-dishes__card-block flex gap-x-8 overflow-x-scroll w-[93%] m-auto justify-between flex-row pb-7 scroll-smooth md:w-[94%] snap-x'>
 				{dishes?.map(item => (
 					<div
-						className='min-w-[23.3%] md:min-w-[31%] lg:min-w-[28%] sm:min-w-[38%] sm:h-[320px] h-[355px] relative flex flex-col items-center justify-center'
+						className='snap-center min-w-[23.3%] md:min-w-[31%] lg:min-w-[28%] sm:min-w-[38%] 2sm:min-w-[65%] 2sm:snap-start sm:h-[320px] h-[355px] relative flex flex-col items-center justify-center'
 						key={item.id}
 					>
 						<img

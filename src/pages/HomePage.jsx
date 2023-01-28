@@ -10,14 +10,14 @@ import WelcomePage from '../components/WelcomePage'
 const HomePage = () => {
 	return (
 		// <div onClick={() => setBurger(false)}>
-		<div>
+		<>
 			<WelcomePage />
 			<PopularDishes />
 			<DishCategories />
 			<AboutUs />
 			{/* Здесь будет компонент о статистике */}
 			{/* Здесь будет компонент о партнерах */}
-		</div>
+		</>
 	)
 }
 

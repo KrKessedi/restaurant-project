@@ -31,18 +31,18 @@ const ReservePage = () => {
     <div className='w-full h-full flex items-center justify-center py-10'>
       <div className='container'>
         <div className='w-full h-full'>
-          <h2 className='font-montserrat text-brown text-4xl font-semibold mb-4'>
+          <h2 className='font-montserrat text-my-brown text-4xl font-semibold mb-4'>
             ЗАБРОНИРОВАТЬ СТОЛ
           </h2>
           <div className='flex mb-10'>
-            <div className='flex-1 mr-4 border-2 rounded-[8px] p-5 border-brown w-[500px] flex flex-col justify-between'>
+            <div className='flex-1 mr-4 border-2 rounded-[8px] p-5 border-my-brown w-[500px] flex flex-col justify-between'>
               <h3 className='text-black font-montserrat text-2xl font-normal mb-2'>
                 Первый зал
               </h3>
               <img src={first} alt='first room' />
             </div>
 
-            <div className='flex-[0.6]  border-2 rounded-[8px] p-3 border-brown'>
+            <div className='flex-[0.6]  border-2 rounded-[8px] p-3 border-my-brown'>
               <h3 className='text-black font-montserrat text-xl font-normal text-center'>
                 Забронированные столы
               </h3>
@@ -55,25 +55,29 @@ const ReservePage = () => {
                   >
                     <span className='text-my-orange'>
                       Номер стола:
-                      <b className='text-my-brown text-xl ml-1'>{el.number}</b>
+                      <b className='text-my-my-brown text-xl ml-1'>
+                        {el.number}
+                      </b>
                     </span>
                     <span className='text-my-orange'>
                       Количество человек:
-                      <b className='text-my-brown text-xl ml-1'>{el.seats}</b>
+                      <b className='text-my-my-brown text-xl ml-1'>
+                        {el.seats}
+                      </b>
                     </span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className='flex-1 ml-4 border-2 rounded-[8px] p-5 border-brown w-[500px] flex flex-col justify-between'>
+            <div className='flex-1 ml-4 border-2 rounded-[8px] p-5 border-my-brown w-[500px] flex flex-col justify-between'>
               <h3 className='text-black font-montserrat text-2xl font-normal mb-2'>
                 Второй зал
               </h3>
               <img src={second} alt='second room' />
             </div>
           </div>
-          <div className='flex p-4 items-center justify-center flex-wrap border-2 border-brown rounded-[8px]'>
-            <div className='flex-[2] flex items-center justify-start border-2 border-brown rounded-[8px] p-3'>
+          <div className='flex p-4 items-center justify-center flex-wrap border-2 border-my-brown rounded-[8px]'>
+            <div className='flex-[2] flex items-center justify-start border-2 border-my-brown rounded-[8px] p-3'>
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className='flex items-start justify-center flex-col'

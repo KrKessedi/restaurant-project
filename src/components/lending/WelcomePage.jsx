@@ -6,7 +6,7 @@ const WelcomePage = () => {
   return (
     <section
       id='home'
-      className='flex items-center justify-center h-[calc(100vh_-_92px)] mb-8 sm:h-[77vh] 2sm:h-[60vh]'
+      className='flex items-center justify-center bg-bgWel bg-no-repeat bg-contain bg-center h-[calc(100vh_-_92px)] mb-8 sm:h-[77vh] 2sm:h-[60vh]'
     >
       <div className='container md:mx-auto'>
         <div className='flex flex-col items-center justify-center'>

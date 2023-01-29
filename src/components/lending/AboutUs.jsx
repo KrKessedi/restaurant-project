@@ -1,9 +1,9 @@
 import React from 'react'
-import bookmark from '../images/bookmark.svg'
-import cap from '../images/cap.svg'
-import peoples from '../images/peoples.svg'
-import hands from '../images/hands.svg'
-import cleaning from '../images/cleaning.png'
+import bookmark from '../../images/bookmark.svg'
+import cap from '../../images/cap.svg'
+import peoples from '../../images/peoples.svg'
+import hands from '../../images/hands.svg'
+import cleaning from '../../images/cleaning.png'
 
 const AboutUs = () => {
 	const list = [

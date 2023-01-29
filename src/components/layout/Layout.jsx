@@ -7,17 +7,23 @@ import Navbar from './navbar/Navbar'
 // import '../../styles/HomePage.css'
 
 const Layout = () => {
-	const [burger, setBurger] = useState(false)
 	const [modalFlag, setModalFlag] = useState(false)
-
-	
+	const [burger, setBurger] = useState(false)
 
 	return (
 		<div className='overflow-hidden relative'>
-			<BurgerMenu setBurger={setBurger} burger={burger} setModalFlag={setModalFlag} />
+			<BurgerMenu
+				setBurger={setBurger}
+				burger={burger}
+				setModalFlag={setModalFlag}
+			/>
 
-			<Navbar burger={burger} setBurger={setBurger} modalFlag={modalFlag}
-setModalFlag={setModalFlag}/>
+			<Navbar
+				burger={burger}
+				setBurger={setBurger}
+				modalFlag={modalFlag}
+				setModalFlag={setModalFlag}
+			/>
 			<Outlet />
 			<Footer />
 		</div>

@@ -6,11 +6,10 @@ import Navbar from './navbar/Navbar'
 // import '../../styles/HomePage.css'
 
 const Layout = () => {
-	const [s, setEs] = useState('qwert')
 	return (
 		<>
 			<Navbar />
-			<Outlet s={s} />
+			<Outlet />
 			<Footer />
 		</>
 	)

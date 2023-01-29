@@ -7,7 +7,6 @@ const userSlice = createSlice({
 		isFetching: false,
 		error: false,
 	},
-
 	reducers: {
 		loginStart: (state) => {
 			state.isFetching = true

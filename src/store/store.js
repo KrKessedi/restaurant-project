@@ -1,5 +1,6 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import userReducer from "./userSlice";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import userReducer from './userSlice';
+import tableReducer from './tableSlice';
 import {
   persistStore,
   persistReducer,
@@ -9,17 +10,18 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   version: 1,
   storage,
 };
 
 const rootReducer = combineReducers({
   user: userReducer,
+  table: tableReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

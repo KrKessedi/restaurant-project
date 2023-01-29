@@ -30,10 +30,8 @@ module.exports = {
 			colors: {
 				'my-orange': '#de6e45',
 				'my-light-gray': '#f1f1f1',
+        'brown': '#523526',
 				white: '#ffffff',
-			},
-			fontFamily: {
-				montserrat: ['Montserrat', 'sans-serif'],
 			},
 			fontFamily: {
 				montserrat: ['Montserrat Alternates', 'sans-serif'],

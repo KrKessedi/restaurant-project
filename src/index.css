@@ -168,3 +168,11 @@ input:focus {
 		@apply 2sm:hidden;
 	}
 }
+
+.input {
+  width: 280px;
+  height: 50px;
+  border: 1px solid brown;
+  border-radius: 8px;
+  padding: 6px 12px;
+}

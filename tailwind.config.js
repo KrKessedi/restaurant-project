@@ -22,15 +22,17 @@ module.exports = {
 			// => @media (max-width: 639px) { ... }
 
 			'3sm': { max: '520px' },
-			// => @media (max-width: 424px) { ... }
+			// => @media (max-width: 520px) { ... }
+
 			'4sm': { max: '420px' },
+			// => @media (max-width: 420px) { ... }
 		},
 
 		extend: {
 			colors: {
 				'my-orange': '#de6e45',
 				'my-light-gray': '#f1f1f1',
-				white: '#ffffff',
+				'my-brown': '#523526',
 			},
 			fontFamily: {
 				montserrat: ['Montserrat', 'sans-serif'],

@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Poiret+One&display=swap');
+
+* {
+	@apply m-0 p-0 list-none font-['Source_Sans_Pro'] box-border scroll-smooth cursor-default;
+}
+
+@layer base {
+	.container {
+		@apply max-w-[1440px];
+	}
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	@apply appearance-none;
+}
+
+::-webkit-scrollbar {
+	@apply hidden;
+}
+
+input:focus {
+	@apply outline-0;
+}
+
 @layer components {
 	.modal-container {
 		@apply fixed flex top-0 left-0 w-full h-full bg-black/50 backdrop-blur-[2px]  justify-center items-center 2sm:px-8 z-50;
@@ -30,34 +56,8 @@
 	.modal-footer {
 		@apply text-my-orange mx-auto text-xl font-semibold cursor-pointer 4sm:text-[4vw];
 	}
-}
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Poiret+One&display=swap');
 
-* {
-	@apply m-0 p-0 list-none font-['Source_Sans_Pro'] box-border scroll-smooth cursor-default;
-}
-
-@layer base {
-	.container {
-		@apply max-w-[1440px];
-	}
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	@apply appearance-none;
-}
-
-::-webkit-scrollbar {
-	@apply hidden;
-}
-
-input:focus {
-	@apply outline-0;
-}
-
-@layer components {
+	/* @layer components { */
 	.logo-block {
 		background: url('./images/logo.svg') no-repeat;
 		animation: 10s logoRotate linear infinite;
@@ -148,12 +148,16 @@ input:focus {
 		@apply -translate-x-[18%] -translate-y-[20%] duration-[1600ms];
 	}
 
-	.go-addres-btn {
-		@apply opacity-0 duration-300;
+	.addres:hover .go-addres-btn {
+		@apply opacity-100 duration-200;
 	}
 
-	.addres:hover .go-addres-btn {
-		@apply opacity-0 duration-200;
+	.tell:hover .go-tell-btn {
+		@apply opacity-100 duration-200;
+	}
+
+	.delivery-tell:hover .go-delivery-btn {
+		@apply opacity-100 duration-200;
 	}
 
 	body.burger-menu {
@@ -166,5 +170,9 @@ input:focus {
 
 	.about-us__list > li:nth-child(3) > p {
 		@apply 2sm:hidden;
+	}
+
+	.contact-container > div > ul > li {
+		@apply text-2xl text-[#313131] md:text-xl 3sm:text-center;
 	}
 }

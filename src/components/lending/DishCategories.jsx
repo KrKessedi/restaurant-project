@@ -1,14 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import breakfasts from '../images/breakfast.svg'
-import soups from '../images/soups.svg'
-import hotDish from '../images/hot dish.svg'
-import pastAndRisotto from '../images/pasta and risotto.svg'
-import snacks from '../images/snacks.svg'
-import childrensMenu from "../images/children's menu.svg"
-import salads from '../images/salads.svg'
-import sauces from '../images/sauces.svg'
-import drinks from '../images/drinks.svg'
+import breakfasts from '../../images/breakfast.svg'
+import soups from '../../images/soups.svg'
+import hotDish from '../../images/hot dish.svg'
+import pastAndRisotto from '../../images/pasta and risotto.svg'
+import snacks from '../../images/snacks.svg'
+import childrensMenu from "../../images/children's menu.svg"
+import salads from '../../images/salads.svg'
+import sauces from '../../images/sauces.svg'
+import drinks from '../../images/drinks.svg'
 
 const DishCategories = () => {
 	const categories = [

@@ -1,7 +1,7 @@
 import React from 'react'
-import popularDish from '../images/image 97.svg'
-import fullStar from '../images/star-fill.svg'
-import emptyStar from '../images/star-empty.svg'
+import popularDish from '../../images/image 97.svg'
+import fullStar from '../../images/star-fill.svg'
+import emptyStar from '../../images/star-empty.svg'
 import Rating from 'react-rating'
 
 const PopularDishes = () => {

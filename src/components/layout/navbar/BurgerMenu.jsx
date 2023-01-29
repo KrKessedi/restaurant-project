@@ -1,14 +1,13 @@
-import { social } from '../Footer'
 import { motion } from 'framer-motion'
-import { useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 
 const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 	const list = [
-		{ id: 1, title: 'Главная', to: '#' },
-		{ id: 2, title: 'О нас', to: '#about-us' },
-		{ id: 4, title: 'Меню', to: '#menu' },
-		{ id: 5, title: 'Забронировать стол', to: '#reserved' },
-		{ id: 6, title: 'Контакты', to: '#contacts' },
+		{ id: 1, title: 'Главная', to: '/' },
+		{ id: 2, title: 'О нас', to: '/about-us' },
+		{ id: 4, title: 'Меню', to: '/menu' },
+		{ id: 5, title: 'Забронировать стол', to: '/reserved' },
+		{ id: 6, title: 'Контакты', to: '/contacts' },
 	]
 
 	const style = [
@@ -28,6 +27,7 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 		<div
 			style={burger ? style[0] : style[1]}
 			className=' burger-menu flex justify-end items-start absolute top-0 left-0 w-full min-h-[100vh]'
+			onClick={() => setBurger(false)}
 		>
 			<div
 				style={burger ? { display: 'block' } : { display: 'none' }}
@@ -35,6 +35,7 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 				onClick={() => setBurger(false)}
 			></div>
 			<div
+				onClick={e => e.stopPropagation()}
 				style={
 					burger
 						? { transform: 'translateX(0)', transition: '.5s' }
@@ -47,20 +48,21 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 						whileHover={{ translateY: '-2px' }}
 						className='basket-navigate-btn w-7 h-6'
 					></motion.button>
-					<button className='login-navigate-btn h-11 bg-my-orange rounded-[30px] px-9 text-white font-semibold '
-							onClick={() => setModalFlag(true)}
-							>
+					<button
+						className='login-navigate-btn h-11 bg-my-orange rounded-[30px] px-9 text-white font-semibold'
+						onClick={() => setModalFlag(true)}
+					>
 						Вход
 					</button>
 				</div>
 				<ul className='flex flex-col gap-y-6 mb-[180px]'>
 					{list?.map(item => (
 						<li
-							className='text-[#523526] font-semibold hover:text-my-orange hover:duration-200 duration-150'
+							className='text-my-brown font-semibold hover:text-my-orange hover:duration-200 duration-150'
 							key={item.id}
 							onClick={() => setBurger(false)}
 						>
-							<a href={item.to}>{item.title}</a>
+							<Link to={item.to}>{item.title}</Link>
 						</li>
 					))}
 				</ul>

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import BurgerMenu from './BurgerMenu'
 import burgerBtn from '../../../images/burger-btn.svg'
 import AuthModal from '../../auth/AuthModal'
 
-const Navbar = ({ burger, setBurger, modalFlag,	setModalFlag }) => {
+const Navbar = ({ burger, setBurger, modalFlag, setModalFlag }) => {
 	// const [burger, setBurger] = useState(false)
 	// export setBurger
 	// const [modalFlag, setModalFlag] = useState(false)
@@ -15,7 +15,7 @@ const Navbar = ({ burger, setBurger, modalFlag,	setModalFlag }) => {
 		<>
 			{modalFlag ? <AuthModal setModalFlag={setModalFlag} /> : null}
 			<header className='sticky backdrop-blur shadow-xl rounded-bl-2xl rounded-br-2xl top-0 px-20 xl:px-16 lg:px-6 w-full flex flex-col sm:flex-row-reverse sm:justify-between items-center justify-center z-1'>
-					<img
+				<img
 					onClick={() => setBurger(!burger)}
 					className='hidden sm:block w-8 hover:-translate-y-[3px] hover:duration-200 duration-200 active:translate-y-1 '
 					src={burgerBtn}
@@ -25,7 +25,7 @@ const Navbar = ({ burger, setBurger, modalFlag,	setModalFlag }) => {
 				<nav className='w-full sm:w-[56%] flex items-center justify-between md:px-10 sm:px-0'>
 					<div
 						onClick={() => navigate('/')}
-							className='logo-block flex items-center justify-center cursor-pointer w-[90px] h-[89px] '
+						className='logo-block flex items-center justify-center cursor-pointer w-[90px] h-[89px] '
 					>
 						<h3 className='logo font-times text-[32px] text-white md:h-12 '>
 							M
@@ -34,23 +34,23 @@ const Navbar = ({ burger, setBurger, modalFlag,	setModalFlag }) => {
 					<div className='md:hidden flex items-center justify-around w-[80%]'>
 						<ul className='w-[750px] lg:w-[690px] md:w-[670px] flex justify-between items-end'>
 							<li>
-								<a href='#home'>Главная</a>
+								<Link to='/'>Главная</Link>
 							</li>
 							<li className='disc'>•</li>
 							<li>
-								<a href='#about-us'>О нас</a>
+								<Link to='/about-us'>О нас</Link>
 							</li>
 							<li className='disc'>•</li>
 							<li>
-								<a href='#menu'>Меню</a>
-							</li>
-								<li className='disc'>•</li>
-							<li>
-								<a href='#reserved'>Забронировать стол </a>
+								<Link to='/menu'>Меню</Link>
 							</li>
 							<li className='disc'>•</li>
 							<li>
-								<a href='#contacts'>Контакты</a>
+								<Link to='/reserved'>Забронировать стол </Link>
+							</li>
+							<li className='disc'>•</li>
+							<li>
+								<Link to='/contacts'>Контакты</Link>
 							</li>
 						</ul>
 					</div>
@@ -69,26 +69,26 @@ const Navbar = ({ burger, setBurger, modalFlag,	setModalFlag }) => {
 				</nav>
 				<ul className=' hidden w-[70%] sm:hidden md:flex justify-between items-end md:items-center pb-5'>
 					<li>
-						<a href='#home'>Главная</a>
+						<Link to='/'>Главная</Link>
 					</li>
 					<li className='disc'>•</li>
 					<li>
-						<a href='#about-us'>О нас</a>
+						<Link to='/about-us'>О нас</Link>
 					</li>
 					<li className='disc'>•</li>
 					<li>
-						<a href='#menu'>Меню</a>
-					</li>
-						<li className='disc'>•</li>
-					<li>
-						<a href='#reserved'>Забронировать стол </a>
+						<Link to='/menu'>Меню</Link>
 					</li>
 					<li className='disc'>•</li>
 					<li>
-						<a href='#contacts'>Контакты</a>
+						<Link to='/reserved'>Забронировать стол </Link>
+					</li>
+					<li className='disc'>•</li>
+					<li>
+						<Link to='/contacts'>Контакты</Link>
 					</li>
 				</ul>
-				</header>
+			</header>
 		</>
 	)
 }

@@ -48,7 +48,7 @@ const ContactPage = () => {
 			</div>
 			<div className='sm:w-full flex justify-end'>
 				<iframe
-					className='w-[48.438vw] h-[72vh] sm:h-[500px] shadow-2xl sm:w-[70vw] rounded-2xl md:h-[65vh] 3sm:w-full'
+					className='w-[48.438vw] h-[72vh] sm:h-[500px] shadow-[0_-15px_30px_-10px_rgb(0,0,0,0.3)_,_0_18px_5px_-10px#de6e45] sm:w-[70vw] rounded-2xl md:h-[65vh] 3sm:w-full'
 					src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4618.684037928029!2d74.5845777667019!3d42.870579545561924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec989750ffe25%3A0xb2826e0b1ffec277!2z0JzQsNC60LDRgNC-0L3QvdCw0Y8!5e0!3m2!1sru!2skg!4v1674927063591!5m2!1sru!2skg'
 					loading='lazy'
 				></iframe>

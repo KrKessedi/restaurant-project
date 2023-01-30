@@ -1,15 +1,8 @@
 import { motion } from 'framer-motion'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useLocation } from 'react-router-dom'
+import { list } from './Navbar'
 
 const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
-	const list = [
-		{ id: 1, title: 'Главная', to: '/' },
-		{ id: 2, title: 'О нас', to: '/about-us' },
-		{ id: 4, title: 'Меню', to: '/menu' },
-		{ id: 5, title: 'Забронировать стол', to: '/reserved' },
-		{ id: 6, title: 'Контакты', to: '/contacts' },
-	]
-
 	const style = [
 		{
 			zIndex: 10,
@@ -22,6 +15,9 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 			background: 'rgb(0, 0, 0,0)',
 		},
 	]
+
+	const navigate = useNavigate()
+	const { pathname } = useLocation()
 
 	return (
 		<div
@@ -45,6 +41,7 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 			>
 				<div className='w-full flex flex-row-reverse justify-between items-center mb-8'>
 					<motion.button
+						onClick={() => navigate('/basket')}
 						whileHover={{ translateY: '-2px' }}
 						className='basket-navigate-btn w-7 h-6'
 					></motion.button>
@@ -58,6 +55,11 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 				<ul className='flex flex-col gap-y-6 mb-[180px]'>
 					{list?.map(item => (
 						<li
+							style={
+								pathname == item.to
+									? { color: '#de6e45', boxShadow: '0 1.5px 0 #de6e45' }
+									: null
+							}
 							className='text-my-brown font-semibold hover:text-my-orange hover:duration-200 duration-150'
 							key={item.id}
 							onClick={() => setBurger(false)}

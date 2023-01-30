@@ -8,6 +8,18 @@ import {
 	registerSuccess,
 } from './userSlice'
 
+import {
+	getDishInLocalStorageStart,
+	getDishInLocalStorageSuccess,
+	getDishInLocalStorageFailure,
+	deleteDishInLocalStorageStart,
+	deleteDishInLocalStorageSuccess,
+	deleteDishInLocalStorageFailure,
+	updateDishInLocalStorageStart,
+	updateDishInLocalStorageSuccess,
+	updateDishInLocalStorageFailure,
+} from './store'
+
 const BASE_URL = 'https://macarons.pythonanywhere.com/'
 
 export const publicReq = axios.create({
@@ -35,3 +47,5 @@ export const register = async (dispatch, user) => {
 		dispatch(registerFailure())
 	}
 }
+
+export const getDishes = async (dispatch, user) => {}

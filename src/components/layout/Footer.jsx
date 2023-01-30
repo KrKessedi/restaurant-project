@@ -31,7 +31,6 @@ export const social = [
 
 const Footer = () => {
 	const { pathname } = useLocation()
-	console.log(pathname)
 	return (
 		<footer
 			style={pathname == '/contacts' ? { display: 'none' } : null}

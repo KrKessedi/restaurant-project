@@ -11,7 +11,7 @@ const Layout = () => {
 	const [burger, setBurger] = useState(false)
 
 	return (
-		<div className='overflow-hidden relative'>
+		<div className='overflow-hidden relative pt-32'>
 			<BurgerMenu
 				setBurger={setBurger}
 				burger={burger}

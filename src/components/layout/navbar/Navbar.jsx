@@ -10,7 +10,7 @@ export const list = [
 	{ id: 1, title: 'Главная', to: '/' },
 	{ id: 2, title: 'О нас', to: '/about-us' },
 	{ id: 4, title: 'Меню', to: '/menu' },
-	{ id: 5, title: 'Забронировать стол', to: '/reserved' },
+	{ id: 5, title: 'Забронировать стол', to: '/reserve' },
 	{ id: 6, title: 'Контакты', to: '/contacts' },
 ]
 

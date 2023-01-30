@@ -107,7 +107,7 @@ input:focus {
 	}
 
 	.delivery-btn {
-		@apply text-2xl font-poiret py-3 px-8 mr-2 border-4 border-my-orange rounded-full font-medium hover:bg-my-orange hover:text-white hover:font-semibold transition duration-300 sm:text-base sm:font-semibold 2sm:py-2 2sm:px-5 2sm:border-2 2sm:text-sm;
+		@apply text-2xl font-poiret py-3 px-8 mr-2 border-4 border-my-orange rounded-full font-medium bg-my-orange text-white hover:font-semibold transition duration-300 sm:text-base sm:font-semibold 2sm:py-2 2sm:px-5 2sm:border-2 2sm:text-sm;
 	}
 
 	.popular-dishes__card-block::-webkit-scrollbar {
@@ -184,4 +184,12 @@ input:focus {
 	.contact-container > div > ul > li {
 		@apply text-2xl text-[#313131] md:text-xl 3sm:text-center;
 	}
+}
+
+.input {
+  width: 280px;
+  height: 50px;
+  border: 1px solid #523526;
+  border-radius: 8px;
+  padding: 6px 12px;
 }

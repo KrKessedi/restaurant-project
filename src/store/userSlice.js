@@ -35,7 +35,7 @@ const userSlice = createSlice({
 			state.error = true
 		},
 		setLogout: (state) => {
-			state.user = null
+			state.currentUser = null
 		},
 		passwordRecovery(state, actions) {},
 	},
@@ -48,6 +48,7 @@ export const {
 	registerStart,
 	registerSuccess,
 	registerFailure,
+	setLogout,
 } = userSlice.actions
 
 export default userSlice.reducer

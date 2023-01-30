@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-// import '../styles/DishCategories.css'
 import breakfasts from '../images/breakfast.svg'
 import soups from '../images/soups.svg'
 import hotDish from '../images/hot dish.svg'
@@ -75,13 +74,13 @@ const DishCategories = () => {
 			<div className='dish-castegories-block w-[91%] flex flex-wrap justify-between mx-auto pt-14 gap-y-16 md:gap-y-5 '>
 				{categories?.map(item => (
 					<div
-						className='dish-categories__card relative flex flex-col w-[29.4%] md:w-[32%] h-72 lg:h-60 md:h-64 justify-end text-center rounded-2xl overflow-hidden bg-my-light-gray pb-6 hover:shadow-[0_-20px_50px_-12px_#ff5112a7] hover:duration-300 duration-300 2sm:h-52'
+						className='dish-categories__card relative flex flex-col w-[29.4%] md:w-[32%] 2sm:w-[46%] h-72 lg:h-60 md:h-64 justify-end text-center rounded-2xl overflow-hidden bg-my-light-gray pb-6 hover:shadow-[0_-20px_50px_-12px_#ff5112a7] hover:duration-300 duration-300 2sm:h-52'
 						key={item.id}
 					>
 						<img
 							src={item.image}
 							alt=''
-							className='card dash-categories__card-image absolute -translate-x-[22%] -translate-y-[30%] duration-[1600ms] md:-translate-x-[24%] md:-translate-y-[38%] sm:-translate-x-[28%] sm:-translate-y-[50%] '
+							className='card dash-categories__card-image absolute -translate-x-[22%] -translate-y-[30%] duration-[1600ms] md:-translate-x-[24%] md:-translate-y-[38%] sm:-translate-x-[28%] sm:-translate-y-[50%] 2sm:-translate-x-[28%] 2sm:-translate-y-[30%]'
 						/>
 						<h5 className='dish-categories__card-title text-xl font-semibold font-["Montserrat]'>
 							{item.title}

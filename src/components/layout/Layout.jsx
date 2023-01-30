@@ -2,16 +2,31 @@ import React, { useState } from 'react'
 // import { motion } from 'framer-motion';
 import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
+import BurgerMenu from './navbar/BurgerMenu'
 import Navbar from './navbar/Navbar'
 // import '../../styles/HomePage.css'
 
 const Layout = () => {
+	const [burger, setBurger] = useState(false)
+	const [modalFlag, setModalFlag] = useState(false)
+
 	return (
-		<>
-			<Navbar />
+		<div className='overflow-hidden relative'>
+			<BurgerMenu
+				setBurger={setBurger}
+				burger={burger}
+				setModalFlag={setModalFlag}
+			/>
+
+			<Navbar
+				burger={burger}
+				setBurger={setBurger}
+				modalFlag={modalFlag}
+				setModalFlag={setModalFlag}
+			/>
 			<Outlet />
 			<Footer />
-		</>
+		</div>
 	)
 }
 

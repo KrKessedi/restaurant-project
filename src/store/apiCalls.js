@@ -6,6 +6,7 @@ import {
 	registerFailure,
 	registerStart,
 	registerSuccess,
+	setLogout,
 } from './userSlice'
 
 const BASE_URL = 'https://macarons.pythonanywhere.com/'
@@ -35,4 +36,8 @@ export const register = async (dispatch, user) => {
 		console.log(err)
 		dispatch(registerFailure())
 	}
+}
+
+export const logout = async (dispatch) => {
+	dispatch(setLogout())
 }

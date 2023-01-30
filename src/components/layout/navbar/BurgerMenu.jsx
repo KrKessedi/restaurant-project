@@ -73,4 +73,4 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 	)
 }
 
-export default BurgerMenu;
+export default BurgerMenu

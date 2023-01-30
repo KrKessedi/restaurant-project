@@ -34,6 +34,18 @@ export const login = async (dispatch, user) => {
 };
 
 export const register = async (dispatch, user) => {
+	dispatch(registerStart())
+	console.log(user)
+	try {
+		const res = await publicReq.post(`accounts/register/`, user)
+		dispatch(registerSuccess(user))
+	} catch (err) {
+		console.log(err)
+		dispatch(registerFailure())
+	}
+}
+
+export const getDishes = async (dispatch, user) => {}
   dispatch(registerStart());
   console.log(user);
   try {

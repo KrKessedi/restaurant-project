@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import Layout from './components/layout/Layout';
 import ReservePage from './pages/ReservePage';
 import ContactPage from './pages/ContactPage';
+import BasketPage from './pages/BasketPage'
 
 const MainRoutes = () => {
   return (
@@ -12,6 +13,7 @@ const MainRoutes = () => {
         <Route index element={<HomePage />} />
         <Route path='reserve' element={<ReservePage />} />
         <Route path='contacts' element={<ContactPage />} />
+        <Route path='/basket' element={<BasketPage />} />
       </Route>
     </Routes>
   );

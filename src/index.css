@@ -93,17 +93,17 @@ input:focus {
 		);
 	}
 
-	nav > div > ul > li,
-	nav ~ ul > li {
-		@apply cursor-pointer font-semibold text-lg text-[#000000a6] hover:text-[#ffffff] hover:shadow-[0_1.5px_0_black] md:text-base transition hover:transition uppercase;
+	nav > div > ul > li > p,
+	nav ~ ul > li > p {
+		@apply cursor-pointer font-semibold text-lg text-[#000000a6] hover:text-[#ffffff] md:text-base transition hover:transition uppercase;
 	}
 
 	.disc {
 		@apply text-3xl md:text-[28px] hover:shadow-none hover:text-[#000000a6] cursor-default;
 	}
 
-	.basket-navigate-btn {
-		background: url('./images/basket.svg');
+	.disc:last-child {
+		@apply hidden;
 	}
 
 	.delivery-btn {
@@ -115,6 +115,15 @@ input:focus {
 	}
 
 	.popular-dishes__card-block::-webkit-scrollbar-thumb {
+		@apply rounded-xl bg-[#de6e45] hover:bg-[#ce3700a7];
+	}
+
+	/* .basket-card-container */
+	.basket-card-container::-webkit-scrollbar {
+		@apply w-2 rounded-xl bg-[#dddddd] block h-0;
+	}
+
+	.basket-card-container::-webkit-scrollbar-thumb {
 		@apply rounded-xl bg-[#de6e45] hover:bg-[#ce3700a7];
 	}
 

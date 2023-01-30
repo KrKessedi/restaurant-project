@@ -1,5 +1,6 @@
-import React from 'react'
-import { social } from '../components/layout/Footer'
+/* eslint-disable jsx-a11y/iframe-has-title */
+import React from 'react';
+import { social } from '../components/layout/Footer';
 
 const ContactPage = () => {
 	return (
@@ -57,4 +58,4 @@ const ContactPage = () => {
 	)
 }
 
-export default ContactPage
+export default ContactPage;

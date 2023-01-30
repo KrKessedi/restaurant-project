@@ -1,33 +1,33 @@
-import React from 'react'
+import React from 'react';
 // import '../../styles/Footer.css';
-import youtube from '../../images/youtube.svg'
-import facebook from '../../images/facebook.svg'
-import instagram from '../../images/instagram.svg'
-import whatsapp from '../../images/whatsapp.svg'
-import { useLocation } from 'react-router-dom'
+import youtube from '../../images/youtube.svg';
+import facebook from '../../images/facebook.svg';
+import instagram from '../../images/instagram.svg';
+import whatsapp from '../../images/whatsapp.svg';
+import { useLocation } from 'react-router-dom';
 
 export const social = [
-	{
-		id: 1,
-		image: youtube,
-		navigate: 'https://www.youtube.com/channel/UCFT_VAA1FDi3Y1OKF9CiJtw',
-	},
-	{
-		id: 2,
-		image: facebook,
-		navigate: 'https://www.instagram.com/macaronnaya_bishkek/',
-	},
-	{
-		id: 3,
-		image: instagram,
-		navigate: 'https://www.instagram.com/macaronnaya_bishkek/',
-	},
-	{
-		id: 4,
-		image: whatsapp,
-		navigate: 'https://www.instagram.com/macaronnaya_bishkek/',
-	},
-]
+  {
+    id: 1,
+    image: youtube,
+    navigate: 'https://www.youtube.com/channel/UCFT_VAA1FDi3Y1OKF9CiJtw',
+  },
+  {
+    id: 2,
+    image: facebook,
+    navigate: 'https://www.instagram.com/macaronnaya_bishkek/',
+  },
+  {
+    id: 3,
+    image: instagram,
+    navigate: 'https://www.instagram.com/macaronnaya_bishkek/',
+  },
+  {
+    id: 4,
+    image: whatsapp,
+    navigate: 'https://www.instagram.com/macaronnaya_bishkek/',
+  },
+];
 
 const Footer = () => {
 	const { pathname } = useLocation()
@@ -68,4 +68,4 @@ const Footer = () => {
 	)
 }
 
-export default Footer
+export default Footer;

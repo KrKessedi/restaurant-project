@@ -92,4 +92,4 @@ const Navbar = ({ burger, setBurger, modalFlag, setModalFlag }) => {
 	)
 }
 
-export default Navbar
+export default Navbar;

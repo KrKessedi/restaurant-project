@@ -15,17 +15,6 @@ import {
 	registerStart,
 	registerSuccess,
 } from './userSlice'
-import {
-	getDishInLocalStorageStart,
-	getDishInLocalStorageSuccess,
-	getDishInLocalStorageFailure,
-	deleteDishInLocalStorageStart,
-	deleteDishInLocalStorageSuccess,
-	deleteDishInLocalStorageFailure,
-	updateDishInLocalStorageStart,
-	updateDishInLocalStorageSuccess,
-	updateDishInLocalStorageFailure,
-} from './dishSlice'
 import { toast } from 'react-toastify'
 
 const BASE_URL = 'https://macarons.pythonanywhere.com/'
@@ -49,7 +38,7 @@ export const register = async (dispatch, user) => {
 	console.log(user)
 	try {
 		const res = await publicReq.post(`accounts/register/`, user)
-		dispatch(registerSuccess(res.data))
+		dispatch(registerSuccess(user))
 	} catch (err) {
 		console.log(err)
 		dispatch(registerFailure())

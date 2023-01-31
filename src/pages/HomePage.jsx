@@ -9,7 +9,6 @@ import WelcomePage from '../components/lending/WelcomePage'
 
 const HomePage = () => {
 	return (
-		// <div onClick={() => setBurger(false)}>
 		<>
 			<WelcomePage />
 			<PopularDishes />

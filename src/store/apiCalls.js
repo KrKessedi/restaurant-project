@@ -16,6 +16,33 @@ import {
 	registerSuccess,
 } from './userSlice'
 
+import {
+	getDishInLocalStorageStart,
+	getDishInLocalStorageSuccess,
+	getDishInLocalStorageFailure,
+	deleteDishInLocalStorageStart,
+	deleteDishInLocalStorageSuccess,
+	deleteDishInLocalStorageFailure,
+	updateDishInLocalStorageStart,
+	updateDishInLocalStorageSuccess,
+	updateDishInLocalStorageFailure,
+	getDishStart,
+	getDishSuccess,
+	getDishFailure,
+	deleteDishFailure,
+	deleteDishSuccess,
+	deleteDishStart,
+	updateDishFailure,
+	updateDishSuccess,
+	updateDishStart,
+	addDishFailure,
+	addDishSuccess,
+	addDishStart,
+	getCategriesStart,
+	getCategriesSuccess,
+	getCategriesFailure,
+} from './dishSlice'
+
 import { toast } from 'react-toastify'
 
 const BASE_URL = 'https://macarons.pythonanywhere.com/'
@@ -23,6 +50,14 @@ const BASE_URL = 'https://macarons.pythonanywhere.com/'
 export const publicReq = axios.create({
 	baseURL: BASE_URL,
 })
+
+// const token = JSON.parse(localStorage.getItem('token'))
+// const Authorization = `JWT ${token.access}`
+// const config = {
+// 	headers: {
+// 		Authorization,
+// 	},
+// }
 
 export const login = async (dispatch, user) => {
 	dispatch(loginStart())
@@ -79,4 +114,14 @@ export const reserveTable = async (dispatch, data) => {
 	}
 }
 
-export const getDishes = async (dispatch, user) => {}
+export const getCategories = async dispatch => {
+	// dispatch(getCategriesStart())
+	try {
+		// const { data } = await publicReq.get(`product/category-list/`, config)
+		// dispatch(getCategriesSuccess(data))
+		// console.log(data)
+	} catch (err) {
+		// dispatch(getCategriesFailure())
+		console.log(err)
+	}
+}

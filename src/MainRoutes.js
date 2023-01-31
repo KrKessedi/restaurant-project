@@ -6,6 +6,7 @@ import ContactPage from './pages/ContactPage'
 import BasketPage from './pages/BasketPage'
 import ReservePage from './pages/ReservePage'
 import AboutUsPage from './pages/AboutUsPage'
+import AdminPage from './pages/AdminPage'
 
 const MainRoutes = () => {
 	return (
@@ -16,6 +17,7 @@ const MainRoutes = () => {
 				<Route path='/contacts' element={<ContactPage />} />
 				<Route path='/basket' element={<BasketPage />} />
 				<Route path='/about-us' element={<AboutUsPage />} />
+				<Route path='/admin' element={<AdminPage />} />
 			</Route>
 		</Routes>
 	)

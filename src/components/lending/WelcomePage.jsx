@@ -9,13 +9,13 @@ const WelcomePage = () => {
 	return (
 		<section
 			id='home'
-			className='flex items-center justify-center bg-bgWel bg-no-repeat bg-contain bg-center h-[calc(100vh_-_92px)] mb-20 sm:h-[77vh] 2sm:h-[60vh] relative mt-20 pt-0'
+			className='flex items-center justify-center bg-bgWel bg-no-repeat bg-contain bg-center h-[calc(100vh_-_92px)] mb-20 sm:h-[77vh] 2sm:h-[60vh] relative pt-0'
 		>
 			<motion.div
 				initial={{ translateY: '-150%' }}
 				transition={{ delay: 0, duration: 0.8 }}
 				animate={{ translateY: '-40%' }}
-				className='welcome-bg rounded-[100%] w-[1693px] h-[990px] absolute -z-2 '
+				className='welcome-bg rounded-[100%] w-[110vw] h-[110vh] absolute -z-2 '
 			></motion.div>
 			<div className='container md:mx-auto'>
 				<div className='flex flex-col items-center justify-center relative'>

@@ -14,6 +14,7 @@ import {
 	registerFailure,
 	registerStart,
 	registerSuccess,
+	setLogout,
 } from './userSlice'
 
 import {
@@ -63,7 +64,8 @@ export const login = async (dispatch, user) => {
 	dispatch(loginStart())
 	try {
 		const res = await publicReq.post(`accounts/login/`, user)
-		dispatch(loginSuccess(res.data))
+		// let currentUser =
+		dispatch(loginSuccess({ ...res.data, ...user }))
 	} catch (err) {
 		dispatch(loginFailure)
 	}
@@ -81,7 +83,10 @@ export const register = async (dispatch, user) => {
 	}
 }
 
-export const getTable = async dispatch => {
+export const logout = async (dispatch) => {
+	dispatch(setLogout())
+}
+export const getTable = async (dispatch) => {
 	dispatch(getTableStart())
 	try {
 		const res = await publicReq.get('table/list/')

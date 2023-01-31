@@ -192,6 +192,9 @@ input:focus {
 	.contact-container > div > ul > li {
 		@apply text-2xl text-[#313131] md:text-xl 3sm:text-center;
 	}
+	.about-us__container {
+		display: flex;
+	}
 }
 
 .input {

@@ -66,7 +66,7 @@ const Navbar = ({ burger, setBurger, modalFlag, setModalFlag }) => {
 							))}
 						</ul>
 					</div>
-					<div className='sm:hidden w-44 flex justify-between items-center'>
+					<div className='sm:hidden space-x-5 flex justify-between items-center'>
 						<motion.img
 							src={pathname !== '/basket' ? basket : basketActive}
 							onClick={() => navigate('/basket')}

@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Poiret+One&display=swap');
 
 * {
@@ -85,13 +86,30 @@ input:focus {
 		}
 	}
 
-	header {
+	header,
+	.welcome-bg {
 		background: linear-gradient(
 			200deg,
 			rgb(245, 186, 141, 0.9) 2%,
 			rgba(209, 65, 25, 0.9) 110%
 		);
 	}
+
+	/* .bg-bgWel {
+		background: url('./images/bgWelcome.png');
+		background-position: 50% 100%;
+		animation: bgAnimate 0.4s linear;
+	}
+
+	@keyframes bgAnimate {
+		from {
+			background-position-y: -1000%;
+		}
+
+		to {
+			background-position-y: 100%;
+		}
+	} */
 
 	nav > div > ul > li > p,
 	nav ~ ul > li > p {
@@ -107,7 +125,7 @@ input:focus {
 	}
 
 	.delivery-btn {
-		@apply text-2xl font-poiret py-3 px-8 mr-2 border-4 border-my-orange rounded-full font-medium bg-my-orange text-white hover:font-semibold transition duration-300 sm:text-base sm:font-semibold 2sm:py-2 2sm:px-5 2sm:border-2 2sm:text-sm;
+		@apply text-2xl font-poiret py-3 px-8 mr-2 border-4 border-my-orange rounded-full font-semibold hover:bg-my-orange text-black hover:font-semibold transition duration-300 sm:text-base sm:font-bold hover:text-white 2sm:py-2 2sm:px-5 2sm:border-2 2sm:text-sm;
 	}
 
 	.popular-dishes__card-block::-webkit-scrollbar {
@@ -125,16 +143,6 @@ input:focus {
 
 	.basket-card-container::-webkit-scrollbar-thumb {
 		@apply rounded-xl bg-[#de6e45] hover:bg-[#ce3700a7];
-	}
-
-	@keyframes bgAnimate {
-		from {
-			background-position: 44.4% 1060%;
-		}
-
-		to {
-			background-position: 44.4% -590%;
-		}
 	}
 
 	.navigate-btn {
@@ -183,6 +191,9 @@ input:focus {
 
 	.contact-container > div > ul > li {
 		@apply text-2xl text-[#313131] md:text-xl 3sm:text-center;
+	}
+	.about-us__container {
+		display: flex;
 	}
 }
 

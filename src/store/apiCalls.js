@@ -16,6 +16,7 @@ import {
 	registerSuccess,
 	setLogout,
 } from './userSlice'
+
 import { toast } from 'react-toastify'
 
 const BASE_URL = 'https://macarons.pythonanywhere.com/'

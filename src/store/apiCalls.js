@@ -15,6 +15,7 @@ import {
 	registerStart,
 	registerSuccess,
 } from './userSlice'
+
 import { toast } from 'react-toastify'
 
 const BASE_URL = 'https://macarons.pythonanywhere.com/'

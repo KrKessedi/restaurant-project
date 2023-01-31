@@ -7,11 +7,11 @@ import Navbar from './navbar/Navbar'
 // import '../../styles/HomePage.css'
 
 const Layout = () => {
-	const [burger, setBurger] = useState(false)
 	const [modalFlag, setModalFlag] = useState(false)
+	const [burger, setBurger] = useState(false)
 
 	return (
-		<div className='overflow-hidden relative'>
+		<div className='overflow-hidden relative pt-32'>
 			<BurgerMenu
 				setBurger={setBurger}
 				burger={burger}

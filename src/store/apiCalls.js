@@ -1,5 +1,13 @@
 import axios from 'axios'
 import {
+	getTableFailure,
+	getTableStart,
+	getTableSuccess,
+	tableFailure,
+	tableStart,
+	tableSuccess,
+} from './tableSlice'
+import {
 	loginFailure,
 	loginStart,
 	loginSuccess,
@@ -8,6 +16,7 @@ import {
 	registerSuccess,
 	setLogout,
 } from './userSlice'
+import { toast } from 'react-toastify'
 
 const BASE_URL = 'https://macarons.pythonanywhere.com/'
 
@@ -41,3 +50,37 @@ export const register = async (dispatch, user) => {
 export const logout = async (dispatch) => {
 	dispatch(setLogout())
 }
+export const getTable = async (dispatch) => {
+	dispatch(getTableStart())
+	try {
+		const res = await publicReq.get('table/list/')
+		dispatch(getTableSuccess(res.data))
+	} catch (err) {
+		dispatch(getTableFailure())
+	}
+}
+
+export const reserveTable = async (dispatch, data) => {
+	dispatch(tableStart())
+	const reserve = toast.loading('Пожалуйста подождите!!!')
+	try {
+		const res = await publicReq.put(`table/buy/${data.number}/`, data)
+		dispatch(tableSuccess(res.data))
+		toast.update(reserve, {
+			render: 'Ваша заявка принята, ждите звонка менеджера.',
+			type: 'success',
+			isLoading: false,
+			autoClose: 2000,
+		})
+	} catch (err) {
+		dispatch(tableFailure())
+		toast.update(reserve, {
+			render: 'Что-то пошло не так или стол не свободен',
+			type: 'error',
+			isLoading: false,
+			autoClose: 3000,
+		})
+	}
+}
+
+export const getDishes = async (dispatch, user) => {}

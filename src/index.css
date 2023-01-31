@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Poiret+One&display=swap');
+
+* {
+	@apply m-0 p-0 list-none font-['Source_Sans_Pro'] box-border scroll-smooth cursor-default;
+}
+
+@layer base {
+	.container {
+		@apply max-w-[1440px];
+	}
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	@apply appearance-none;
+}
+
+::-webkit-scrollbar {
+	@apply hidden;
+}
+
+input:focus {
+	@apply outline-0;
+}
+
 @layer components {
 	.modal-container {
 		@apply fixed flex top-0 left-0 w-full h-full bg-black/50 backdrop-blur-[2px]  justify-center items-center 2sm:px-8 z-50;
@@ -30,34 +56,8 @@
 	.modal-footer {
 		@apply text-my-orange mx-auto text-xl font-semibold cursor-pointer 4sm:text-[4vw];
 	}
-}
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Poiret+One&display=swap');
 
-* {
-	@apply m-0 p-0 list-none font-['Source_Sans_Pro'] box-border scroll-smooth cursor-default;
-}
-
-@layer base {
-	.container {
-		@apply max-w-[1440px];
-	}
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	@apply appearance-none;
-}
-
-::-webkit-scrollbar {
-	@apply hidden;
-}
-
-input:focus {
-	@apply outline-0;
-}
-
-@layer components {
+	/* @layer components { */
 	.logo-block {
 		background: url('./images/logo.svg') no-repeat;
 		animation: 10s logoRotate linear infinite;
@@ -93,21 +93,21 @@ input:focus {
 		);
 	}
 
-	nav > div > ul > li,
-	nav ~ ul > li {
-		@apply cursor-pointer font-semibold text-lg text-[#000000a6] hover:text-[#ffffff] hover:shadow-[0_1.5px_0_black] md:text-base transition hover:transition uppercase;
+	nav > div > ul > li > p,
+	nav ~ ul > li > p {
+		@apply cursor-pointer font-semibold text-lg text-[#000000a6] hover:text-[#ffffff] md:text-base transition hover:transition uppercase;
 	}
 
 	.disc {
 		@apply text-3xl md:text-[28px] hover:shadow-none hover:text-[#000000a6] cursor-default;
 	}
 
-	.basket-navigate-btn {
-		background: url('./images/basket.svg');
+	.disc:last-child {
+		@apply hidden;
 	}
 
 	.delivery-btn {
-		@apply text-2xl font-poiret py-3 px-8 mr-2 border-4 border-my-orange rounded-full font-medium hover:bg-my-orange hover:text-white hover:font-semibold transition duration-300 sm:text-base sm:font-semibold 2sm:py-2 2sm:px-5 2sm:border-2 2sm:text-sm;
+		@apply text-2xl font-poiret py-3 px-8 mr-2 border-4 border-my-orange rounded-full font-medium bg-my-orange text-white hover:font-semibold transition duration-300 sm:text-base sm:font-semibold 2sm:py-2 2sm:px-5 2sm:border-2 2sm:text-sm;
 	}
 
 	.popular-dishes__card-block::-webkit-scrollbar {
@@ -115,6 +115,15 @@ input:focus {
 	}
 
 	.popular-dishes__card-block::-webkit-scrollbar-thumb {
+		@apply rounded-xl bg-[#de6e45] hover:bg-[#ce3700a7];
+	}
+
+	/* .basket-card-container */
+	.basket-card-container::-webkit-scrollbar {
+		@apply w-2 rounded-xl bg-[#dddddd] block h-0;
+	}
+
+	.basket-card-container::-webkit-scrollbar-thumb {
 		@apply rounded-xl bg-[#de6e45] hover:bg-[#ce3700a7];
 	}
 
@@ -148,12 +157,16 @@ input:focus {
 		@apply -translate-x-[18%] -translate-y-[20%] duration-[1600ms];
 	}
 
-	.go-addres-btn {
-		@apply opacity-0 duration-300;
+	.addres:hover .go-addres-btn {
+		@apply opacity-100 duration-200;
 	}
 
-	.addres:hover .go-addres-btn {
-		@apply opacity-0 duration-200;
+	.tell:hover .go-tell-btn {
+		@apply opacity-100 duration-200;
+	}
+
+	.delivery-tell:hover .go-delivery-btn {
+		@apply opacity-100 duration-200;
 	}
 
 	body.burger-menu {
@@ -167,4 +180,16 @@ input:focus {
 	.about-us__list > li:nth-child(3) > p {
 		@apply 2sm:hidden;
 	}
+
+	.contact-container > div > ul > li {
+		@apply text-2xl text-[#313131] md:text-xl 3sm:text-center;
+	}
+}
+
+.input {
+	width: 280px;
+	height: 50px;
+	border: 1px solid #523526;
+	border-radius: 8px;
+	padding: 6px 12px;
 }

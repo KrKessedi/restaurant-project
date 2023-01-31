@@ -1,5 +1,6 @@
-import { social } from '../Footer'
 import { motion } from 'framer-motion'
+import { useNavigate, Link, useLocation } from 'react-router-dom'
+import { list } from './Navbar'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import avatar from '../../../images/user-avatar-svgrepo-com.svg'
@@ -8,14 +9,6 @@ import { logout } from '../../../store/apiCalls'
 const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 	const user = useSelector((state) => state.user.currentUser)
 	const dispatch = useDispatch()
-	const list = [
-		{ id: 1, title: 'Главная', to: '#' },
-		{ id: 2, title: 'О нас', to: '#about-us' },
-		{ id: 4, title: 'Меню', to: '#menu' },
-		{ id: 5, title: 'Забронировать стол', to: '#reserved' },
-		{ id: 6, title: 'Контакты', to: '#contacts' },
-	]
-
 	const style = [
 		{
 			zIndex: 10,
@@ -29,10 +22,14 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 		},
 	]
 
+	const navigate = useNavigate()
+	const { pathname } = useLocation()
+
 	return (
 		<div
 			style={burger ? style[0] : style[1]}
-			className=' burger-menu flex justify-end items-start absolute top-0 left-0 w-full min-h-[100vh]'
+			className=' fixed burger-menu flex justify-end items-start  top-0 left-0 w-full min-h-[100vh]'
+			onClick={() => setBurger(false)}
 		>
 			<div
 				style={burger ? { display: 'block' } : { display: 'none' }}
@@ -40,6 +37,7 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 				onClick={() => setBurger(false)}
 			></div>
 			<div
+				onClick={(e) => e.stopPropagation()}
 				style={
 					burger
 						? { transform: 'translateX(0)', transition: '.5s' }
@@ -49,6 +47,7 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 			>
 				<div className='w-full flex flex-row-reverse justify-between items-center mb-5'>
 					<motion.button
+						onClick={() => navigate('/basket')}
 						whileHover={{ translateY: '-2px' }}
 						className='basket-navigate-btn w-7 h-6'
 					></motion.button>
@@ -71,11 +70,16 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 				<ul className='flex flex-col gap-y-6 '>
 					{list?.map((item) => (
 						<li
-							className='text-[#523526] font-semibold hover:text-my-orange hover:duration-200 duration-150'
+							style={
+								pathname == item.to
+									? { color: '#de6e45', boxShadow: '0 1.5px 0 #de6e45' }
+									: null
+							}
+							className='text-my-brown font-semibold hover:text-my-orange hover:duration-200 duration-150'
 							key={item.id}
 							onClick={() => setBurger(false)}
 						>
-							<a href={item.to}>{item.title}</a>
+							<Link to={item.to}>{item.title}</Link>
 						</li>
 					))}
 				</ul>

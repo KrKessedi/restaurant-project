@@ -41,7 +41,7 @@ const Navbar = ({ burger, setBurger, modalFlag, setModalFlag }) => {
 				/>
 				<nav className='w-full sm:w-[56%] flex items-center justify-between md:px-10 sm:px-0'>
 					<div
-						onClick={() => navigate('/')}
+						onClick={() => navigate('/admin')}
 						className='logo-block flex items-center justify-center cursor-pointer w-[90px] h-[89px] '
 					>
 						<h3 className='logo font-times text-[32px] cursor-pointer text-white md:h-12 '>

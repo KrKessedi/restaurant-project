@@ -193,7 +193,19 @@ input:focus {
 		@apply text-2xl text-[#313131] md:text-xl 3sm:text-center;
 	}
 	.about-us__container {
-		display: flex;
+		@apply flex items-center justify-between mb-28;
+	}
+	.about-us__title {
+		@apply font-times font-bold text-5xl text-my-orange mb-16;
+	}
+	.about-us__text-block {
+		@apply space-y-8 flex flex-col;
+	}
+	.about-us__text {
+		@apply text-xl text-gray-500 font-montserrat;
+	}
+	.about-us__right {
+		@apply w-full;
 	}
 }
 

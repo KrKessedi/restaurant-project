@@ -59,6 +59,10 @@ input:focus {
 		@apply text-xl border-2 border-my-orange py-[10px] px-[20px] rounded-[30px] font-montserrat mb-7 3sm:text-base 3sm:mb-6 4sm:mb-[5vw] 4sm:py-[2vw] 4sm:text-sm;
 	}
 
+	.edit-input {
+		@apply text-xl border-2 border-my-orange py-[7px] px-[15px] rounded-xl font-montserrat 3sm:text-base 4sm:py-[2vw] 4sm:text-sm focus:bg-slate-200 duration-300 focus:duration-150;
+	}
+
 	.admin-input {
 		@apply text-xl border-2 border-my-orange py-[10px] px-[20px] rounded-2xl font-montserrat;
 	}

@@ -42,6 +42,9 @@ import {
 	getCategriesStart,
 	getCategriesSuccess,
 	getCategriesFailure,
+	getOneDishStart,
+	getOneDishSuccess,
+	getOneDishFailure,
 } from './dishSlice'
 
 import { toast } from 'react-toastify'
@@ -166,5 +169,88 @@ export const addDish = async (dispatch, data) => {
 			isLoading: false,
 			autoClose: 3000,
 		})
+	}
+}
+
+export const deleteDish = async (dispatch, item) => {
+	dispatch(deleteDishStart())
+	const dish = toast.loading('Пожалуйста подождите!!!')
+
+	try {
+		const res = await publicReq.delete(`product/product-delete/${item}/`)
+		dispatch(deleteDishSuccess(res.data))
+		toast.update(dish, {
+			render: 'Ваша блюдо удалено.',
+			type: 'success',
+			isLoading: false,
+			autoClose: 2000,
+		})
+	} catch (err) {
+		dispatch(deleteDishFailure())
+		toast.update(dish, {
+			render: 'Что-то пошло не так',
+			type: 'error',
+			isLoading: false,
+			autoClose: 3000,
+		})
+		console.log(err)
+	}
+}
+
+export const GetOneDish = async (dispatch, item, setModalFlag) => {
+	dispatch(getOneDishStart())
+	const dish = toast.loading('Пожалуйста подождите!!!')
+
+	try {
+		const res = await publicReq.get(`product/product-update/${item}/`)
+		dispatch(getOneDishSuccess(res.data))
+		setTimeout(() => {
+			setModalFlag(true)
+		}, 900)
+		toast.update(dish, {
+			render: 'Ваша блюдо найдено.',
+			type: 'success',
+			isLoading: false,
+			autoClose: 2000,
+		})
+	} catch (err) {
+		dispatch(getOneDishFailure())
+		toast.update(dish, {
+			render: 'Что-то пошло не так',
+			type: 'error',
+			isLoading: false,
+			autoClose: 3000,
+		})
+		console.log(err)
+	}
+}
+
+export const updateDish = async (dispatch, item, newObj, config) => {
+	dispatch(updateDishStart())
+	const dish = toast.loading('Пожалуйста подождите!!!')
+
+	try {
+		console.log(item)
+		const res = await publicReq.put(
+			`product/product-update/${item}/`,
+			newObj,
+			config
+		)
+		dispatch(updateDishSuccess(res.data))
+		toast.update(dish, {
+			render: 'Ваша блюдо изменено.',
+			type: 'success',
+			isLoading: false,
+			autoClose: 2000,
+		})
+	} catch (err) {
+		dispatch(updateDishFailure())
+		toast.update(dish, {
+			render: 'Что-то пошло не так',
+			type: 'error',
+			isLoading: false,
+			autoClose: 3000,
+		})
+		console.log(err)
 	}
 }

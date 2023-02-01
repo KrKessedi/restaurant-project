@@ -1,17 +1,29 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { addDish, getCategories, getDishes } from '../store/apiCalls'
+import {
+	addDish,
+	deleteDish,
+	getCategories,
+	getDishes,
+	GetOneDish,
+} from '../store/apiCalls'
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
-import { data } from 'autoprefixer'
+import UpdateDish from '../components/admin/UpdateDish'
 
 const AdminPage = () => {
-	const { dishes, categories, error } = useSelector(state => state.dishes)
+	const [modalFlag, setModalFlag] = useState(false)
+
+	const { dishes, categories, error, oneDish } = useSelector(
+		state => state.dishes
+	)
+
 	const filePicker = useRef(null)
 	const [title, setTitle] = useState('')
 	const [image, setImage] = useState('')
 	const [category, setCategory] = useState('')
 	const [description, setDescription] = useState('')
 	const [price, setPrice] = useState('')
+	const [dishDetail, setDishDetail] = useState('')
+	const [dishDetail2, setDishDetail2] = useState('')
 
 	const dispatch = useDispatch()
 
@@ -20,13 +32,11 @@ const AdminPage = () => {
 		getDishes(dispatch)
 	}, [dispatch])
 
+	console.log(dishes[0].image)
+
 	function handlePick() {
 		filePicker.current.click()
 	}
-
-	useEffect(() => {
-		// console.log(dishes)
-	}, [dishes])
 
 	function handleAdd() {
 		if (
@@ -45,16 +55,26 @@ const AdminPage = () => {
 		formData.append('description', description)
 		formData.append('price', price)
 		addDish(dispatch, formData)
+		setTitle('')
+		setImage(null)
+		setCategory('')
+		setDescription('')
+		setPrice('')
+	}
+
+	function handleSearch() {
+		GetOneDish(dispatch, dishDetail, setModalFlag)
+	}
+
+	function handleDelete() {
+		deleteDish(dispatch, dishDetail2)
 	}
 
 	return (
-		<div className='mb-96'>
+		<div className='py-24 mb-20 rounded-2xl px-16 shadow-[0_0_30px_rgb(0,0,0,0.5)] bg-slate-200'>
 			<h2 className='section-title'>Админ панель</h2>
 			<div className=''>
-				<div
-					action=''
-					className='flex flex-row items-center justify-center gap-10 flex-wrap'
-				>
+				<div className='flex flex-row items-center justify-center gap-10 flex-wrap'>
 					<input
 						className='admin-input'
 						type='text'
@@ -114,6 +134,54 @@ const AdminPage = () => {
 					>
 						Отправить
 					</button>
+				</div>
+				<div className='flex flex-col gap-x-5 items-center justify-center mt-9'>
+					<h2 className='section-title text-red-600'>Danger zone</h2>
+					<div className='w-full flex justify-center flex-col items-center'>
+						{oneDish ? (
+							<UpdateDish modalFlag={modalFlag} setModalFlag={setModalFlag} />
+						) : null}
+						<div className='w-full'>
+							<h3 className='mb-5 text-3xl font-montserrat font-bold text-red-600 '>
+								Изменить
+							</h3>
+							<div className='flex justify-start gap-x-6 mb-9'>
+								<input
+									className='admin-input'
+									type='text'
+									placeholder='Dish title'
+									value={dishDetail}
+									onChange={e => setDishDetail(e.target.value)}
+								/>
+								<button
+									onClick={handleSearch}
+									className='bg-my-orange border-2 border-my-orange rounded-2xl py-3 px-10 text-white'
+								>
+									Найти
+								</button>
+							</div>
+						</div>
+						<div className=' w-full text-end'>
+							<h3 className='mb-5 text-3xl font-montserrat font-bold text-red-600 '>
+								Удалить
+							</h3>
+							<div className=' flex justify-end gap-x-6'>
+								<input
+									className='admin-input'
+									type='text'
+									placeholder='Dish title'
+									value={dishDetail2}
+									onChange={e => setDishDetail2(e.target.value)}
+								/>
+								<button
+									onClick={handleDelete}
+									className='bg-red-600 border-2 border-red-600 rounded-2xl py-3 px-10 text-white'
+								>
+									Найти
+								</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			{/* <img src={dishes[0].image} alt='' /> */}

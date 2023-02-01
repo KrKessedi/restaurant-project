@@ -35,7 +35,7 @@ module.exports = {
 				'my-brown': '#523526',
 			},
 			fontFamily: {
-				montserrat: ['Montserrat Alternates', 'sans-serif'],
+				montserrat: ['Montserrat', 'sans-serif'],
 				poiret: ['Poiret One', 'cursive'],
 				times: ['Times_New_Roman'],
 			},

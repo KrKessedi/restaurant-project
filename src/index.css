@@ -16,6 +16,12 @@
 	}
 }
 
+.dish-category-selector:hover .dish-category-list {
+	height: 288px;
+	width: 200px;
+	transition: 0.5s;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	@apply appearance-none;
@@ -26,7 +32,7 @@ input::-webkit-inner-spin-button {
 }
 
 input:focus {
-	@apply outline-0;
+	outline: none;
 }
 
 @layer components {
@@ -48,8 +54,13 @@ input:focus {
 	.modal-form {
 		@apply flex flex-col;
 	}
+
 	.modal-input {
 		@apply text-xl border-2 border-my-orange py-[10px] px-[20px] rounded-[30px] font-montserrat mb-7 3sm:text-base 3sm:mb-6 4sm:mb-[5vw] 4sm:py-[2vw] 4sm:text-sm;
+	}
+
+	.admin-input {
+		@apply text-xl border-2 border-my-orange py-[10px] px-[20px] rounded-2xl font-montserrat;
 	}
 	.modal-btn {
 		@apply text-3xl font-montserrat rounded-[30px] bg-my-orange text-white py-[12px] px-5 mb-8 mt-3 3sm:text-xl 4sm:text-[4vw] 4sm:py-[2vw] 2sm:text-2xl 4sm:mt-[2vw] 4sm:mb-[4vw];

@@ -2,26 +2,32 @@ import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateDish } from '../../store/apiCalls'
 import { categories } from '../../pages/AdminPage'
+import {
+	getStorage,
+	ref,
+	uploadBytesResumable,
+	getDownloadURL,
+} from 'firebase/storage'
+import app from '../../firebase'
 
 const UpdateDish = ({ modalFlag, setModalFlag }) => {
 	const { oneDish, dishes } = useSelector(state => state.dishes)
 	const { currentUser } = useSelector(state => state.user)
 	const dispatch = useDispatch()
 
-	console.log(dishes)
-
 	const filePicker = useRef(null)
 
 	const [title, setTitle] = useState('')
-	const [image, setImage] = useState('')
 	const [category, setCategory] = useState('')
 	const [description, setDescription] = useState('')
 	const [price, setPrice] = useState('')
+	const [file, setFile] = useState(null)
+	const [loaded, setLoaded] = useState('')
 
+	let inputs = { title, category, price, description }
 	useEffect(() => {
 		if (oneDish) {
 			setTitle(oneDish.title)
-			setImage(oneDish.image)
 			setCategory(oneDish.category)
 			setDescription(oneDish.description)
 			setPrice(oneDish.price)
@@ -32,12 +38,44 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 		e.preventDefault()
 		let formData = new FormData()
 		formData.append('title', title)
-		// formData.append('image', image)
 		formData.append('category', category)
 		formData.append('description', description)
 		formData.append('price', price)
 
-		updateDish(dispatch, oneDish.title, formData, setModalFlag)
+		const fileName = new Date().getTime() + file.name
+		const storage = getStorage(app)
+		const storageRef = ref(storage, fileName)
+		const uploadTask = uploadBytesResumable(storageRef, file)
+
+		uploadTask.on(
+			'state_changed',
+			snapshot => {
+				const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+				setLoaded('Загруска выполнена на ' + progress + '%')
+
+				switch (snapshot.state) {
+					case 'paused':
+						console.log('Upload is paused')
+						break
+					case 'running':
+						console.log('Upload is running')
+						break
+					default:
+				}
+			},
+			error => {
+				console.log(error)
+			},
+			() => {
+				getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+					const dishe = {
+						...inputs,
+						photo: downloadURL,
+					}
+					updateDish(dispatch, oneDish.title, dishe, setModalFlag)
+				})
+			}
+		)
 	}
 
 	function handlePick(e) {
@@ -90,7 +128,7 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 						type='file'
 						// value={image}
 						// accept='image/*,.png,.jpg,.web'
-						onChange={e => setImage(`image: ${e.target.files[0]}`)}
+						onChange={e => setFile(e.target.files[0])}
 					/>
 					<button
 						onClick={handlePick}

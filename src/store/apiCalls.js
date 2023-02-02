@@ -15,6 +15,12 @@ import {
 	registerStart,
 	registerSuccess,
 	setLogout,
+	forgotPasswordStart,
+	forgotPasswordSuccess,
+	forgotPasswordFailure,
+	restorePasswordStart,
+	restorePasswordSuccess,
+	restorePasswordFailure,
 } from './userSlice'
 
 import {
@@ -90,7 +96,7 @@ export const login = async (dispatch, user) => {
 
 export const register = async (dispatch, user) => {
 	dispatch(registerStart())
-	const reserve = toast.loading('Пожалуйста подождите!!!')
+	const re = toast.loading('Пожалуйста подождите!!!')
 
 	console.log(user)
 	try {
@@ -233,7 +239,7 @@ export const updateDish = async (dispatch, item, newObj, config) => {
 	const dish = toast.loading('Пожалуйста подождите!!!')
 
 	try {
-		console.log(item)
+		// console.log(item)
 		const res = await publicReq.put(
 			`product/product-update/${item}/`,
 			newObj,
@@ -250,6 +256,66 @@ export const updateDish = async (dispatch, item, newObj, config) => {
 		dispatch(updateDishFailure())
 		toast.update(dish, {
 			render: 'Что-то пошло не так',
+			type: 'error',
+			isLoading: false,
+			autoClose: 3000,
+		})
+		console.log(err)
+	}
+}
+
+export const forgotPassword = async (dispatch, email, setModal) => {
+	dispatch(forgotPasswordStart())
+	const emailAlert = toast.loading('Пожалуйста подождите!!!')
+	try {
+		const res = await publicReq.post('accounts/forgot/', { email })
+		dispatch(forgotPasswordSuccess())
+		setModal('confirmation')
+		toast.update(emailAlert, {
+			render: 'Email найден.',
+			type: 'success',
+			isLoading: false,
+			autoClose: 2000,
+		})
+	} catch (err) {
+		dispatch(forgotPasswordFailure())
+		toast.update(emailAlert, {
+			render: 'Email не найден',
+			type: 'error',
+			isLoading: false,
+			autoClose: 3000,
+		})
+		// console.log(err)
+	}
+}
+
+export const restorePassword = async (dispatch, code) => {
+	dispatch(restorePasswordStart())
+	try {
+		dispatch(restorePasswordSuccess(code))
+	} catch (err) {
+		dispatch(restorePasswordFailure())
+	}
+}
+
+export const restorePassword2 = async (dispatch, data, setModalFlag) => {
+	// dispatch(restorePasswordStart())
+	const emailAlert = toast.loading('Пожалуйста подождите!!!')
+	console.log(data)
+	try {
+		const res = await publicReq.post('accounts/restore/', data)
+		// dispatch(restorePasswordSuccess(res.data))
+		setModalFlag(false)
+		toast.update(emailAlert, {
+			render: 'Email найден.',
+			type: 'success',
+			isLoading: false,
+			autoClose: 2000,
+		})
+	} catch (err) {
+		// dispatch(restorePasswordFailure())
+		toast.update(emailAlert, {
+			render: 'Email не найден',
 			type: 'error',
 			isLoading: false,
 			autoClose: 3000,

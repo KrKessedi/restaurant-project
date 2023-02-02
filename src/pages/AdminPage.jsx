@@ -139,11 +139,11 @@ const AdminPage = () => {
 			}
 		)
 
-		setTitle('')
-		setFile(null)
+		// setTitle('')
+		// setFile(null)
 		// setCategory('')
-		setDescription('')
-		setPrice('')
+		// setDescription('')
+		// setPrice('')
 	}
 
 	function handleSearch() {

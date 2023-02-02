@@ -72,7 +72,7 @@ export default function MenuPage() {
 							<img
 								src={item.photo}
 								alt=''
-								className=' w-52 absolute top-0 md:w-44 md:-top-1 sm:w-40'
+								className=' w-52 absolute top-0 md:w-44 md:-top-1 sm:w-40 h-[200px]'
 							/>
 							<div className='rounded-2xl pt-40 sm:pt-28 flex flex-col justify-center items-center w-full h-5/6 bg-my-light-gray '>
 								<h5 className='font-semibold font-["Montserat"] text-xl mb-3 uppercase md:text-lg'>

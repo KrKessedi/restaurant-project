@@ -9,9 +9,6 @@ const LoginModal = ({ setModal, setModalFlag }) => {
 
 	const error = useSelector((state) => state.user.error)
 	const dispatch = useDispatch()
-	// useEffect(() => {
-	// 	// error
-	// }, [login])
 	const handleClick = (e) => {
 		e.preventDefault()
 		if (!email.trim() || !password.trim()) {

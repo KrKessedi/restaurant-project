@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { restorePassword } from '../../store/apiCalls'
 
 export default function Confirmation({ setModal, setModalFlag }) {
+	const [code, setCode] = useState('')
+	const dispatch = useDispatch()
+	const handleClick = () => {
+		if (!code.trim()) return
+		restorePassword(dispatch, code)
+		setModal('newPassword')
+	}
 	return (
 		<div className='modal-container' onClick={() => setModalFlag(false)}>
 			<div
@@ -9,14 +18,19 @@ export default function Confirmation({ setModal, setModalFlag }) {
 					e.stopPropagation()
 				}}
 			>
-				<h3 className='modal-title'>Введите СМС-код</h3>
-				<span className='modal-text'>Введите код из СМС,</span>
+				<h3 className='modal-title'>Введите код</h3>
+				<span className='modal-text'>Введите код из почты</span>
 				<span className='modal-text modal-text-bold'>
 					Для продолжения сброса пароля Вам нужно ввести код, который Вам пришел
-					в СМС.
+					на почту.
 				</span>
-				<input type='text' className='modal-input' placeholder='СМС код' />
-				<button className='modal-btn' onClick={() => setModal('newPassword')}>
+				<input
+					type='text'
+					className='modal-input'
+					placeholder='СМС код'
+					onChange={(e) => setCode(e.target.value)}
+				/>
+				<button className='modal-btn' onClick={handleClick}>
 					Подтвердить
 				</button>
 			</div>

@@ -6,6 +6,7 @@ const userSlice = createSlice({
 		currentUser: null,
 		isFetching: false,
 		error: false,
+		code: null,
 	},
 	reducers: {
 		loginStart: (state) => {
@@ -37,7 +38,31 @@ const userSlice = createSlice({
 		setLogout: (state) => {
 			state.currentUser = null
 		},
-		passwordRecovery(state, actions) {},
+		forgotPasswordStart: (state) => {
+			state.isFetching = true
+			state.error = false
+		},
+		forgotPasswordSuccess: (state, action) => {
+			state.isFetching = false
+			state.error = false
+		},
+		forgotPasswordFailure: (state) => {
+			state.isFetching = false
+			state.error = true
+		},
+		restorePasswordStart: (state) => {
+			state.isFetching = true
+			state.error = false
+		},
+		restorePasswordSuccess: (state, action) => {
+			state.isFetching = false
+			state.code = action.payload
+			state.error = false
+		},
+		restorePasswordFailure: (state) => {
+			state.isFetching = false
+			state.error = true
+		},
 	},
 })
 
@@ -49,6 +74,12 @@ export const {
 	registerSuccess,
 	registerFailure,
 	setLogout,
+	forgotPasswordStart,
+	forgotPasswordSuccess,
+	forgotPasswordFailure,
+	restorePasswordStart,
+	restorePasswordSuccess,
+	restorePasswordFailure,
 } = userSlice.actions
 
 export default userSlice.reducer

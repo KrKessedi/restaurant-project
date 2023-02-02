@@ -1,8 +1,14 @@
 import { motion } from 'framer-motion'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { list } from './Navbar'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import avatar from '../../../images/user-avatar-svgrepo-com.svg'
+import { logout } from '../../../store/apiCalls'
 
 const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
+	const user = useSelector((state) => state.user.currentUser)
+	const dispatch = useDispatch()
 	const style = [
 		{
 			zIndex: 10,
@@ -22,38 +28,42 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 	return (
 		<div
 			style={burger ? style[0] : style[1]}
-			className=' burger-menu flex justify-end items-start absolute top-0 left-0 w-full min-h-[100vh]'
+			className=' burger-menu flex justify-end items-start absolute top-0 left-0 w-full h-full'
 			onClick={() => setBurger(false)}
 		>
 			<div
-				style={burger ? { display: 'block' } : { display: 'none' }}
-				className='w-full h-full absolute -z-1'
-				onClick={() => setBurger(false)}
-			></div>
-			<div
-				onClick={e => e.stopPropagation()}
+				onClick={(e) => e.stopPropagation()}
 				style={
 					burger
 						? { transform: 'translateX(0)', transition: '.5s' }
 						: { transform: 'translateX(400px)', transition: '.5s' }
 				}
-				className='w-[275px] h-[400px] bg-white px-5 py-9 rounded-2xl shadow-[0_0_15px_white_,_inset_0_0_10px_rgb(0,0,0,.4)] mt-9 mr-9'
+				className='w-[275px] h-[400px] fixed bg-white px-5 py-9 rounded-2xl shadow-[0_0_15px_white_,_inset_0_0_10px_rgb(0,0,0,.4)] mt-9 mr-9'
 			>
-				<div className='w-full flex flex-row-reverse justify-between items-center mb-8'>
+				<div className='w-full flex flex-row-reverse justify-between items-center mb-5'>
 					<motion.button
 						onClick={() => navigate('/basket')}
 						whileHover={{ translateY: '-2px' }}
 						className='basket-navigate-btn w-7 h-6'
 					></motion.button>
-					<button
-						className='login-navigate-btn h-11 bg-my-orange rounded-[30px] px-9 text-white font-semibold'
-						onClick={() => setModalFlag(true)}
-					>
-						Вход
-					</button>
+					{!user ? (
+						<button
+							className='login-navigate-btn h-11 bg-my-orange rounded-[30px] px-9 text-white font-semibold '
+							onClick={() => {
+								setModalFlag(true)
+								setBurger(false)
+							}}
+						>
+							Вход
+						</button>
+					) : (
+						<div className='w-[40px]'>
+							<img src={avatar} alt='avatar' />
+						</div>
+					)}
 				</div>
-				<ul className='flex flex-col gap-y-6 mb-[180px]'>
-					{list?.map(item => (
+				<ul className='flex flex-col gap-y-6 '>
+					{list?.map((item) => (
 						<li
 							style={
 								pathname == item.to
@@ -68,6 +78,17 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 						</li>
 					))}
 				</ul>
+				{user && (
+					<button
+						className='mx-auto w-2/3 mt-9 rounded-xl bg-my-orange py-2   hover:bg-red-600 duration-200 hover:duration-200 border-none'
+						onClick={() => {
+							logout(dispatch)
+							setBurger(false)
+						}}
+					>
+						Выйти
+					</button>
+				)}
 			</div>
 		</div>
 	)

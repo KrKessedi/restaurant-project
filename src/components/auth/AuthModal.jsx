@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import Confirmation from './Confirmation'
 import LoginModal from './LoginModal'

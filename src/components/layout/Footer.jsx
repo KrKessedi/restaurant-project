@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import '../../styles/Footer.css';
 import youtube from '../../images/youtube.svg'
 import facebook from '../../images/facebook.svg'
 import instagram from '../../images/instagram.svg'
 import whatsapp from '../../images/whatsapp.svg'
 import { useLocation } from 'react-router-dom'
+import { useState } from 'react'
 
 export const social = [
 	{

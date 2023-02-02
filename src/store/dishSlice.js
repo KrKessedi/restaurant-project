@@ -6,6 +6,7 @@ export const dishSlice = createSlice({
 		dishes: [],
 		dishesInLocalStorage: [],
 		categories: [],
+		oneDish: null,
 		currentDish: 'завтраки',
 		isFetching: false,
 		error: false,
@@ -131,21 +132,21 @@ export const dishSlice = createSlice({
 			state.error = true
 		},
 
-		// categories
-
-		getCategriesStart: (state) => {
+		getOneDishStart: (state) => {
 			state.isFetching = true
 			state.error = false
 		},
-		getCategriesSuccess: (state, action) => {
+		getOneDishSuccess: (state, action) => {
 			state.isFetching = true
-			state.categories = action.payload
+			state.oneDish = action.payload
 			state.error = false
 		},
-		getCategriesFailure: (state) => {
+		getOneDishFailure: (state) => {
 			state.isFetching = false
 			state.error = true
 		},
+
+		// categories
 		changeCurrentDish: (state, action) => {
 			state.currentDish = action.payload
 		},
@@ -174,9 +175,9 @@ export const {
 	addDishFailure,
 	addDishSuccess,
 	addDishStart,
-	getCategriesStart,
-	getCategriesSuccess,
-	getCategriesFailure,
 	changeCurrentDish,
+	getOneDishStart,
+	getOneDishSuccess,
+	getOneDishFailure,
 } = dishSlice.actions
 export default dishSlice.reducer

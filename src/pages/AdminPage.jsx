@@ -1,18 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react'
-import {
-	addDish,
-	deleteDish,
-	getDishes,
-	GetOneDish,
-	getDishesInLocalStorage,
-} from '../store/apiCalls'
+import { addDish, deleteDish, getDishes, GetOneDish } from '../store/apiCalls'
 import { useDispatch, useSelector } from 'react-redux'
 import UpdateDish from '../components/dish/UpdateDish'
+
+import {
+	getStorage,
+	ref,
+	uploadBytesResumable,
+	getDownloadURL,
+} from 'firebase/storage'
+import app from '../firebase'
 
 export const categories = [
 	{
 		id: 1,
-		title: 'Завтраки',
+		title: 'завтраки',
 		slug: 'breakfast',
 	},
 	{
@@ -22,37 +24,37 @@ export const categories = [
 	},
 	{
 		id: 3,
-		title: 'Горячие блюдо ',
+		title: 'горячие блюдо ',
 		slug: 'hot_dish',
 	},
 	{
 		id: 4,
-		title: 'Паста и Ризотто',
+		title: 'паста и ризотто',
 		slug: 'past_and_risotto',
 	},
 	{
 		id: 5,
-		title: 'Закуски и гарниры',
+		title: 'закуски и гарниры',
 		slug: 'snacks',
 	},
 	{
 		id: 6,
-		title: 'Детское меню',
+		title: 'детское меню',
 		slug: 'childrens_menu',
 	},
 	{
 		id: 7,
-		title: 'Салаты',
+		title: 'салаты',
 		slug: 'salads',
 	},
 	{
 		id: 8,
-		title: 'Соусы',
+		title: 'соусы',
 		slug: 'cauces',
 	},
 	{
 		id: 9,
-		title: 'Напитки',
+		title: 'напитки',
 		slug: 'drinks',
 	},
 ]
@@ -64,13 +66,15 @@ const AdminPage = () => {
 
 	const filePicker = useRef(null)
 	const [title, setTitle] = useState('')
-	const [image, setImage] = useState('')
-	const [category, setCategory] = useState('')
+	const [category, setCategory] = useState('завтраки')
 	const [description, setDescription] = useState('')
 	const [price, setPrice] = useState(0)
 	const [dishDetail, setDishDetail] = useState('')
 	const [dishDetail2, setDishDetail2] = useState('')
 
+	const [file, setFile] = useState(null)
+	const [loaded, setLoaded] = useState('Сохранить изменения')
+	let inputs = { title, category, price, description }
 	const dispatch = useDispatch()
 
 	console.log(dishes)
@@ -93,20 +97,47 @@ const AdminPage = () => {
 			alert('Some inputs are empty')
 			return
 		}
-		let formData = new FormData()
-		formData.append('title', title)
-		formData.append('photo', image)
-		formData.append('category', category)
-		formData.append('description', description)
-		formData.append('price', price)
-		if (!error) {
-			addDish(dispatch, formData)
-			setTitle('')
-			setImage(null)
-			setCategory('')
-			setDescription('')
-			setPrice(0)
-		}
+
+		const fileName = new Date().getTime() + file.name
+		const storage = getStorage(app)
+		const storageRef = ref(storage, fileName)
+		const uploadTask = uploadBytesResumable(storageRef, file)
+
+		uploadTask.on(
+			'state_changed',
+			snapshot => {
+				const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+				setLoaded('Загруска выполнена на ' + progress + '%')
+
+				switch (snapshot.state) {
+					case 'paused':
+						console.log('Upload is paused')
+						break
+					case 'running':
+						console.log('Upload is running')
+						break
+					default:
+				}
+			},
+			error => {
+				console.log(error)
+			},
+			() => {
+				getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+					const dishe = {
+						...inputs,
+						photo: downloadURL,
+					}
+					addDish(dispatch, dishe)
+				})
+			}
+		)
+
+		setTitle('')
+		setFile(null)
+		// setCategory('')
+		setDescription('')
+		setPrice('')
 	}
 
 	function handleSearch() {
@@ -134,7 +165,7 @@ const AdminPage = () => {
 						className='hidden'
 						type='file'
 						accept='image/*,.png,.jpg,.web'
-						onChange={e => setImage(e.target.files[0])}
+						onChange={e => setFile(e.target.files[0])}
 					/>
 					<button
 						onClick={handlePick}
@@ -144,14 +175,14 @@ const AdminPage = () => {
 					</button>
 					<select
 						id='large'
-						onChange={e => setCategory(e.target.value)}
+						onChange={e => setCategory(e.target.value.toLowerCase())}
 						// onChange={e => console.log(e.target.valuse)}
 						value={category}
 						className='block px-6 border-2 border-my-orange py-3 text-base text-white rounded-2xl bg-my-orange'
 					>
 						{categories?.map(item => (
 							<option
-								// value={`Category object (${item.slug})`}
+								// value={Category object (${item.slug})}
 								// onClick={e => console.log('e.target.value')}
 								value={item.title}
 								key={item.id}
@@ -231,7 +262,6 @@ const AdminPage = () => {
 					</div>
 				</div>
 			</div>
-			{/* <img src={dishes[0].imaage} alt='' /> */}
 		</div>
 	)
 }

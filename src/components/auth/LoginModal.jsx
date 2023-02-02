@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { login } from '../../store/apiCalls'
@@ -8,7 +9,9 @@ const LoginModal = ({ setModal, setModalFlag }) => {
 
 	const error = useSelector((state) => state.user.error)
 	const dispatch = useDispatch()
-
+	// useEffect(() => {
+	// 	// error
+	// }, [login])
 	const handleClick = (e) => {
 		e.preventDefault()
 		if (!email.trim() || !password.trim()) {
@@ -18,7 +21,6 @@ const LoginModal = ({ setModal, setModalFlag }) => {
 		login(dispatch, { email, password })
 		!error && setModalFlag(false)
 	}
-
 	return (
 		<div className='modal-container' onClick={() => setModalFlag(false)}>
 			<div

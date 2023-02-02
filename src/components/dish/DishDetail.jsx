@@ -39,7 +39,7 @@ const DishDetail = ({ detail, setDetail }) => {
 					className='modal-block flex-row w-auto gap-x-14'
 					onClick={e => e.stopPropagation()}
 				>
-					<img src={spagetti} alt='' className='w-72' />
+					<img src={detailDish.photo} alt='' className='w-72' />
 					<div className='w-[500px]'>
 						<h3 className='text-6xl mb-10 text-my-brown'>{detailDish.title}</h3>
 						<p className='text-xl text-black mb-10'>{detailDish.description}</p>

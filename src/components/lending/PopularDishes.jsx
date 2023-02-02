@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import popularDish from '../../images/image 97.svg'
 import fullStar from '../../images/star-fill.svg'
 import emptyStar from '../../images/star-empty.svg'
@@ -10,6 +10,7 @@ import DishDetail from '../dish/DishDetail'
 const PopularDishes = () => {
 	const { dishes } = useSelector(state => state.dishes)
 	const [detail, setDetail] = useState(false)
+	const [allDishes, setAllDishes] = useState(null)
 
 	// console.log(dishes)
 	// const dishes = [
@@ -70,6 +71,10 @@ const PopularDishes = () => {
 
 	const dispatch = useDispatch()
 
+	useEffect(() => {
+		Math.random(dishes)
+	}, [dishes])
+
 	function handleGet(title) {
 		getDetailDish(dispatch, title, setDetail)
 	}
@@ -86,12 +91,12 @@ const PopularDishes = () => {
 							key={item.title}
 						>
 							<img
-								src={item.image}
+								src={item.photo}
 								alt=''
 								className=' w-52 absolute top-0 md:w-44 md:-top-1 sm:w-40'
 							/>
 							<div className='rounded-2xl pt-40 sm:pt-28 flex flex-col justify-center items-center w-full h-5/6 bg-my-light-gray '>
-								<h5 className='font-semibold font-["Montserat"] text-xl mb-3 uppercase md:text-lg'>
+								<h5 className='font-semibold font-["Montserat"] text-xl mb-3 md:text-lg'>
 									{item.title}
 								</h5>
 								{/* <div className=' w-[122px] flex mb-1 justify-center items-start'>

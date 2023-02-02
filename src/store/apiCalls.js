@@ -72,17 +72,31 @@ export const publicReq = axios.create({
 
 export const login = async (dispatch, user) => {
 	dispatch(loginStart())
+	const reserve = toast.loading('Пожалуйста подождите!!!')
 	try {
 		const res = await publicReq.post(`accounts/login/`, user)
-		// let currentUser =
 		dispatch(loginSuccess({ ...res.data, ...user }))
+		toast.update(reserve, {
+			render: 'Вы успешно вошли',
+			type: 'success',
+			isLoading: false,
+			autoClose: 2000,
+		})
 	} catch (err) {
-		dispatch(loginFailure)
+		dispatch(loginFailure())
+		toast.update(reserve, {
+			render: 'Что-то пошло не так или стол не свободен',
+			type: 'error',
+			isLoading: false,
+			autoClose: 3000,
+		})
 	}
 }
 
 export const register = async (dispatch, user) => {
 	dispatch(registerStart())
+	const reserve = toast.loading('Пожалуйста подождите!!!')
+
 	console.log(user)
 	try {
 		const res = await publicReq.post(`accounts/register/`, user)
@@ -158,6 +172,7 @@ export const addDish = async (dispatch, data) => {
 		})
 	} catch (err) {
 		dispatch(addDishFailure())
+		console.log(err)
 		toast.update(dish, {
 			render: 'Что-то пошло не так',
 			type: 'error',
@@ -200,9 +215,9 @@ export const GetOneDish = async (dispatch, item, setModalFlag) => {
 	try {
 		const res = await publicReq.get(`product/product-update/${item}/`)
 		dispatch(getOneDishSuccess(res.data))
-		setTimeout(() => {
-			setModalFlag(true)
-		}, 900)
+		// setTimeout(() => {
+		setModalFlag(true)
+		// }, 900)
 		toast.update(dish, {
 			render: 'Ваша блюдо найдено.',
 			type: 'success',
@@ -294,7 +309,6 @@ export const deleteDishInLocalStorage = async (dispatch, item) => {
 	const dish = toast.loading('Пожалуйста подождите!!!')
 
 	try {
-		// const res = await publicReq.delete(`product/product-delete/${item}/`)
 		dispatch(deleteDishInLocalStorageSuccess(item))
 		toast.update(dish, {
 			render: 'Ваша блюдо удалено из корзины.',

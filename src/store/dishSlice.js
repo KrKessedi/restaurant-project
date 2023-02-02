@@ -6,6 +6,7 @@ export const dishSlice = createSlice({
 		dishes: [],
 		cart: [],
 		oneDish: null,
+		currentDish: 'завтраки',
 		detailDish: null,
 		isFetching: false,
 		error: false,
@@ -47,6 +48,20 @@ export const dishSlice = createSlice({
 		},
 
 		updateDishInLocalStorageFailure: state => {
+			state.isFetching = false
+			state.error = true
+		},
+
+		addDishInLocalStorageStart: state => {
+			state.isFetching = true
+			state.error = false
+		},
+		addDishInLocalStorageSuccess: (state, action) => {
+			state.isFetching = false
+			state.cart.push(action.payload)
+			state.error = false
+		},
+		addDishInLocalStorageFailure: state => {
 			state.isFetching = false
 			state.error = true
 		},
@@ -150,6 +165,9 @@ export const dishSlice = createSlice({
 			state.isFetching = false
 			state.error = true
 		},
+		changeCurrentDish: (state, action) => {
+			state.currentDish = action.payload
+		},
 	},
 })
 
@@ -181,5 +199,6 @@ export const {
 	getDetailDishStart,
 	getDetailDishSuccess,
 	getDetailDishFailure,
+	changeCurrentDish,
 } = dishSlice.actions
 export default dishSlice.reducer

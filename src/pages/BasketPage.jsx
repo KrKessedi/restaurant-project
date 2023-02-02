@@ -3,37 +3,14 @@ import popularDish from '../images/image 97.svg'
 import minus from '../images/minus.svg'
 import plus from '../images/plus.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import { getDishesInLocalStorage } from '../store/apiCalls'
+import {
+	deleteDishInLocalStorage,
+	getDishesInLocalStorage,
+} from '../store/apiCalls'
 
 const BasketPage = () => {
 	const dispatch = useDispatch()
 	const { cart } = useSelector(state => state.dishes)
-	// const cart = [
-	// 	{
-	// 		id: 1,
-	// 		title: 'Спагетти с курицей и с грибами',
-	// 		desc: 'Описание:Паста в сливочном соусе – рецепт изысканного итальянского блюда с нежным молочным привкусом и тонким ароматом специй.',
-	// 		image: popularDish,
-	// 		price: 288,
-	// 		count: 1,
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		title: 'Спагетти с курицей',
-	// 		desc: 'Описание:Паста в сливочном соусе – рецепт изысканного итальянского блюда с нежным молочным привкусом и тонким ароматом специй.',
-	// 		image: popularDish,
-	// 		price: 288,
-	// 		count: 1,
-	// 	},
-	// 	{
-	// 		id: 3,
-	// 		title: 'Спагетти с курицей и с грибами',
-	// 		desc: 'Описание:Паста в сливочном соусе – рецепт изысканного итальянского блюда с нежным молочным привкусом и тонким ароматом специй.',
-	// 		image: popularDish,
-	// 		price: 288,
-	// 		count: 1,
-	// 	},
-	// ]
 
 	console.log(cart)
 
@@ -51,7 +28,9 @@ const BasketPage = () => {
 		setCount(count)
 	}, [])
 
-	//	console.log(cart)
+	function handleDelete(name) {
+		deleteDishInLocalStorage(dispatch, name)
+	}
 
 	return (
 		<div className='w-[88vw] mx-auto mt-8 mb-10 px-8 py-9 bg-my-light-gray rounded-2xl shadow-[-6px_-4px_19px_rgba(0,0,0,0.25),_7px_8px_16px_rgba(0,0,0,0.25)]'>
@@ -93,13 +72,12 @@ const BasketPage = () => {
 							<h3 className='text-my-orange text-3xl text-montserrat'>
 								{item.price} сом
 							</h3>
-							{/* <div className='flex gap-x-3 items-end'>
-								<img src={minus} alt='' />
-								<p className='text-my-brown text-3xl text-montserrat'>
-									{item.count}
-								</p>
-								<img src={plus} alt='' />
-							</div> */}
+							<button
+								className='px-6 py-2 rounded-xl text-xl font-semibold text-white bg-red-600 '
+								onClick={() => handleDelete(item.title)}
+							>
+								Удалить
+							</button>
 						</div>
 					</div>
 				))}

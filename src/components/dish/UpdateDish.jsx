@@ -1,21 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateDish } from '../../store/apiCalls'
+import { categories } from '../../pages/AdminPage'
 
 const UpdateDish = ({ modalFlag, setModalFlag }) => {
-	const { categories, oneDish } = useSelector(state => state.dishes)
+	const { oneDish, dishes } = useSelector(state => state.dishes)
 	const { currentUser } = useSelector(state => state.user)
 	const dispatch = useDispatch()
 
+	console.log(dishes)
+
 	const filePicker = useRef(null)
-
-	const Authorization = `JWT ${currentUser.access}`
-
-	const config = {
-		headers: {
-			Authorization,
-		},
-	}
 
 	const [title, setTitle] = useState('')
 	const [image, setImage] = useState('')
@@ -37,14 +32,12 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 		e.preventDefault()
 		let formData = new FormData()
 		formData.append('title', title)
-		formData.append('image', image)
+		// formData.append('image', image)
 		formData.append('category', category)
 		formData.append('description', description)
 		formData.append('price', price)
 
-		console.log(oneDish.title)
-
-		updateDish(dispatch, oneDish.title, formData, config)
+		updateDish(dispatch, oneDish.title, formData, setModalFlag)
 	}
 
 	function handlePick(e) {
@@ -79,7 +72,11 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 			>
 				<h3 className='modal-title'>Изменить блюдо</h3>
 
-				<form action='' className='flex flex-col items-center gap-y-9'>
+				<form
+					onSubmit={e => e.preventDefault()}
+					action=''
+					className='flex flex-col items-center gap-y-9'
+				>
 					<input
 						className='edit-input'
 						type='text'
@@ -91,8 +88,9 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 						ref={filePicker}
 						className='hidden'
 						type='file'
-						accept='image/*,.png,.jpg,.web'
-						onChange={e => setImage(e.target.files[0])}
+						// value={image}
+						// accept='image/*,.png,.jpg,.web'
+						onChange={e => setImage(`image: ${e.target.files[0]}`)}
 					/>
 					<button
 						onClick={handlePick}
@@ -111,11 +109,11 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 							<option
 								// value={`Category object (${item.slug})`}
 								// onClick={e => console.log('e.target.value')}
-								value={`${item.slug}/${item.name}`}
-								key={item.name}
+								value={item.slug}
+								key={item.title}
 								className=' hover:duration-200 hover:bg-black bg-white text-black duration-150 hover:text-white capitalize py-1'
 							>
-								{item.name}
+								{item.title}
 							</option>
 						))}
 					</select>

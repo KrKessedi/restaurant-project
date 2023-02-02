@@ -2,37 +2,82 @@ import React, { useState, useRef, useEffect } from 'react'
 import {
 	addDish,
 	deleteDish,
-	getCategories,
 	getDishes,
 	GetOneDish,
+	getDishesInLocalStorage,
 } from '../store/apiCalls'
 import { useDispatch, useSelector } from 'react-redux'
-import UpdateDish from '../components/admin/UpdateDish'
+import UpdateDish from '../components/dish/UpdateDish'
+
+export const categories = [
+	{
+		id: 1,
+		title: 'Завтраки',
+		slug: 'breakfast',
+	},
+	{
+		id: 2,
+		title: 'супы',
+		slug: 'soups',
+	},
+	{
+		id: 3,
+		title: 'Горячие блюдо ',
+		slug: 'hot_dish',
+	},
+	{
+		id: 4,
+		title: 'Паста и Ризотто',
+		slug: 'past_and_risotto',
+	},
+	{
+		id: 5,
+		title: 'Закуски и гарниры',
+		slug: 'snacks',
+	},
+	{
+		id: 6,
+		title: 'Детское меню',
+		slug: 'childrens_menu',
+	},
+	{
+		id: 7,
+		title: 'Салаты',
+		slug: 'salads',
+	},
+	{
+		id: 8,
+		title: 'Соусы',
+		slug: 'cauces',
+	},
+	{
+		id: 9,
+		title: 'Напитки',
+		slug: 'drinks',
+	},
+]
 
 const AdminPage = () => {
 	const [modalFlag, setModalFlag] = useState(false)
 
-	const { dishes, categories, error, oneDish } = useSelector(
-		state => state.dishes
-	)
+	const { dishes, error, oneDish } = useSelector(state => state.dishes)
 
 	const filePicker = useRef(null)
 	const [title, setTitle] = useState('')
 	const [image, setImage] = useState('')
 	const [category, setCategory] = useState('')
 	const [description, setDescription] = useState('')
-	const [price, setPrice] = useState('')
+	const [price, setPrice] = useState(0)
 	const [dishDetail, setDishDetail] = useState('')
 	const [dishDetail2, setDishDetail2] = useState('')
 
 	const dispatch = useDispatch()
 
+	console.log(dishes)
+
 	useEffect(() => {
-		getCategories(dispatch)
 		getDishes(dispatch)
 	}, [dispatch])
-
-	console.log(dishes[0].image)
 
 	function handlePick() {
 		filePicker.current.click()
@@ -50,16 +95,18 @@ const AdminPage = () => {
 		}
 		let formData = new FormData()
 		formData.append('title', title)
-		formData.append('image', image)
+		formData.append('photo', image)
 		formData.append('category', category)
 		formData.append('description', description)
 		formData.append('price', price)
-		addDish(dispatch, formData)
-		setTitle('')
-		setImage(null)
-		setCategory('')
-		setDescription('')
-		setPrice('')
+		if (!error) {
+			addDish(dispatch, formData)
+			setTitle('')
+			setImage(null)
+			setCategory('')
+			setDescription('')
+			setPrice(0)
+		}
 	}
 
 	function handleSearch() {
@@ -67,7 +114,7 @@ const AdminPage = () => {
 	}
 
 	function handleDelete() {
-		deleteDish(dispatch, dishDetail2)
+		deleteDish(dispatch, dishDetail2, setDishDetail2)
 	}
 
 	return (
@@ -106,11 +153,11 @@ const AdminPage = () => {
 							<option
 								// value={`Category object (${item.slug})`}
 								// onClick={e => console.log('e.target.value')}
-								value={`${item.slug}/${item.name}`}
-								key={item.name}
+								value={item.title}
+								key={item.id}
 								className=' hover:duration-200 hover:bg-black bg-white text-black duration-150 hover:text-white capitalize py-1'
 							>
-								{item.name}
+								{item.title}
 							</option>
 						))}
 					</select>
@@ -123,7 +170,7 @@ const AdminPage = () => {
 					/>
 					<input
 						className='admin-input'
-						type='text'
+						type='number'
 						placeholder='price'
 						value={price}
 						onChange={e => setPrice(e.target.value)}
@@ -184,7 +231,7 @@ const AdminPage = () => {
 					</div>
 				</div>
 			</div>
-			{/* <img src={dishes[0].image} alt='' /> */}
+			{/* <img src={dishes[0].imaage} alt='' /> */}
 		</div>
 	)
 }

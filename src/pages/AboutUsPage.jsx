@@ -8,16 +8,17 @@ import woman from '../images/Mask-group.png'
 import yummy from '../images/Mask-group-2.png'
 import coffee from '../images/Mask-group-3.png'
 import breakfast from '../images/Mask-group-4.png'
+import AboutUsBg from '../images/about-us-bg.svg'
 
 export default function AboutUsPage() {
 	return (
 		<div className='min-h-[100vh]'>
 			<motion.img
-				src={bgImg}
+				src={AboutUsBg}
 				initial={{ translateY: '-150%' }}
 				transition={{ delay: 0, duration: 0.8 }}
 				animate={{ translateY: '-35%' }}
-				className='absolute -z-2 '
+				className='absolute -z-2 -left-[4%] top-1 min-w-[110vw] lg:top-24'
 			></motion.img>
 			<div className='container md:mx-auto'>
 				<div className='flex flex-col items-center justify-center relative min-h-[700px] mb-64'>

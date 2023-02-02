@@ -9,17 +9,17 @@ const WelcomePage = () => {
 	return (
 		<section
 			id='home'
-			className='flex items-center justify-center bg-bgWel bg-no-repeat bg-contain bg-center h-[calc(100vh_-_92px)] mb-20 sm:h-[77vh] 2sm:h-[60vh] relative pt-0'
+			className='flex items-center justify-center bg-bgWel bg-no-repeat bg-contain bg-center h-[calc(100vh_-_92px)] mb-20 sm:-mt-8 sm:h-[77vh] 2sm:h-[60vh] relative pt-0'
 		>
 			<motion.div
 				initial={{ translateY: '-150%' }}
 				transition={{ delay: 0, duration: 0.8 }}
 				animate={{ translateY: '-40%' }}
-				className='welcome-bg rounded-[100%] w-[110vw] h-[110vh] absolute -z-2 '
+				className='welcome-bg rounded-[100%] w-[110vw] h-[110vh] absolute -z-2 md:-top-32 sm:-top-32 2sm:h-[75vh] 3sm:h-[60vh] 3sm:-top-20 '
 			></motion.div>
 			<div className='container md:mx-auto'>
 				<div className='flex flex-col items-center justify-center relative'>
-					<h1 className='text-white font-times text-9xl font-extrabold tracking-tighter 2sm:text-8xl'>
+					<h1 className='text-white font-times text-9xl font-extrabold tracking-tighter md:text-[12vw]'>
 						МАКАРОННАЯ
 					</h1>
 					<motion.img
@@ -31,12 +31,12 @@ const WelcomePage = () => {
 						className='mb-20 w-2/6'
 					/>
 					<motion.img
-						initial={{ translateY: '200%' }}
-						animate={{ translateY: 0 }}
+						initial={{ translateY: '200%', opacity: 0 }}
+						animate={{ translateY: 0, opacity: 1 }}
 						transition={{ duration: 0.8 }}
 						src={bgDish}
 						alt=''
-						className='absolute w-4/5 -z-1'
+						className='absolute w-4/5 -z-1 top-[2%]'
 					/>
 					{/* <h4 className='text-2xl font-medium my-10 text-center 2sm:w-11/12 font-poiret sm:text-lg sm:font-semibold sm:my-7'>
 						еда и сладости еда и сладости еда и сладости еда и сладости

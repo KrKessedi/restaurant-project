@@ -2,34 +2,40 @@ import React, { useEffect, useState } from 'react'
 import popularDish from '../images/image 97.svg'
 import minus from '../images/minus.svg'
 import plus from '../images/plus.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import { getDishesInLocalStorage } from '../store/apiCalls'
 
 const BasketPage = () => {
-	const dishes = [
-		{
-			id: 1,
-			title: 'Спагетти с курицей и с грибами',
-			desc: 'Описание:Паста в сливочном соусе – рецепт изысканного итальянского блюда с нежным молочным привкусом и тонким ароматом специй.',
-			image: popularDish,
-			price: 288,
-			count: 1,
-		},
-		{
-			id: 2,
-			title: 'Спагетти с курицей',
-			desc: 'Описание:Паста в сливочном соусе – рецепт изысканного итальянского блюда с нежным молочным привкусом и тонким ароматом специй.',
-			image: popularDish,
-			price: 288,
-			count: 1,
-		},
-		{
-			id: 3,
-			title: 'Спагетти с курицей и с грибами',
-			desc: 'Описание:Паста в сливочном соусе – рецепт изысканного итальянского блюда с нежным молочным привкусом и тонким ароматом специй.',
-			image: popularDish,
-			price: 288,
-			count: 1,
-		},
-	]
+	const dispatch = useDispatch()
+	const { cart } = useSelector(state => state.dishes)
+	// const cart = [
+	// 	{
+	// 		id: 1,
+	// 		title: 'Спагетти с курицей и с грибами',
+	// 		desc: 'Описание:Паста в сливочном соусе – рецепт изысканного итальянского блюда с нежным молочным привкусом и тонким ароматом специй.',
+	// 		image: popularDish,
+	// 		price: 288,
+	// 		count: 1,
+	// 	},
+	// 	{
+	// 		id: 2,
+	// 		title: 'Спагетти с курицей',
+	// 		desc: 'Описание:Паста в сливочном соусе – рецепт изысканного итальянского блюда с нежным молочным привкусом и тонким ароматом специй.',
+	// 		image: popularDish,
+	// 		price: 288,
+	// 		count: 1,
+	// 	},
+	// 	{
+	// 		id: 3,
+	// 		title: 'Спагетти с курицей и с грибами',
+	// 		desc: 'Описание:Паста в сливочном соусе – рецепт изысканного итальянского блюда с нежным молочным привкусом и тонким ароматом специй.',
+	// 		image: popularDish,
+	// 		price: 288,
+	// 		count: 1,
+	// 	},
+	// ]
+
+	console.log(cart)
 
 	const [totalPrice, setTotalPrice] = useState(0)
 	const [count, setCount] = useState(0)
@@ -37,15 +43,15 @@ const BasketPage = () => {
 	useEffect(() => {
 		let totalPrice = 0
 		let count = 0
-		dishes?.reduce((prev, next) => (totalPrice = prev + next.price), totalPrice)
+		cart?.reduce((prev, next) => (totalPrice = prev + +next.price), totalPrice)
 		setTotalPrice(totalPrice)
-		dishes?.forEach((item, index) => {
+		cart?.forEach((item, index) => {
 			count = index + 1
 		})
 		setCount(count)
 	}, [])
 
-	console.log(totalPrice)
+	//	console.log(cart)
 
 	return (
 		<div className='w-[88vw] mx-auto mt-8 mb-10 px-8 py-9 bg-my-light-gray rounded-2xl shadow-[-6px_-4px_19px_rgba(0,0,0,0.25),_7px_8px_16px_rgba(0,0,0,0.25)]'>
@@ -67,31 +73,33 @@ const BasketPage = () => {
 				</div>
 			</div>
 			<div className='basket-card-container h-[450px] overscroll-none overflow-scroll rounded-2xl py-3 pr-4 mb-10 bg-[#e2e2e2]'>
-				{dishes?.map(item => (
+				{cart?.map(item => (
 					<div
 						className='flex flex-row justify-between items-center border-b-4 border-b-my-brown border-dashed px-24 py-6 '
-						key={item.id}
+						key={item.title}
 					>
 						<div className=''>
-							<img src={item.image} alt='' className='w-36' />
+							<img src={item.photo} alt='' className='w-36' />
 						</div>
 						<div className=' w-[537px] flex flex-col gap-y-3'>
 							<h4 className='text-my-brown font-semibold text-2xl'>
 								{item.title}
 							</h4>
-							<h5 className='text-my-brown font-semibold'>{item.desc}</h5>
+							<h5 className='text-my-brown font-semibold'>
+								{item.description}
+							</h5>
 						</div>
 						<div className='flex flex-col items-center gap-y-6'>
 							<h3 className='text-my-orange text-3xl text-montserrat'>
-								{item.price} с
+								{item.price} сом
 							</h3>
-							<div className='flex gap-x-3 items-end'>
+							{/* <div className='flex gap-x-3 items-end'>
 								<img src={minus} alt='' />
 								<p className='text-my-brown text-3xl text-montserrat'>
 									{item.count}
 								</p>
 								<img src={plus} alt='' />
-							</div>
+							</div> */}
 						</div>
 					</div>
 				))}

@@ -96,22 +96,26 @@ export const login = async (dispatch, user) => {
 
 export const register = async (dispatch, user) => {
 	dispatch(registerStart())
-	const re = toast.loading('Пожалуйста подождите!!!')
-
-	console.log(user)
+	const reserve = toast.loading('Пожалуйста подождите!!!')
 	try {
 		const res = await publicReq.post(`accounts/register/`, user)
 		dispatch(registerSuccess(user))
+		toast.update(reserve, {
+			render: 'Вы успешно зарегистрировались',
+			type: 'success',
+			isLoading: false,
+			autoClose: 2000,
+		})
 	} catch (err) {
 		console.log(err)
 		dispatch(registerFailure())
 	}
 }
 
-export const logout = async (dispatch) => {
+export const logout = async dispatch => {
 	dispatch(setLogout())
 }
-export const getTable = async (dispatch) => {
+export const getTable = async dispatch => {
 	dispatch(getTableStart())
 	try {
 		const res = await publicReq.get('table/list/')
@@ -144,7 +148,7 @@ export const reserveTable = async (dispatch, data) => {
 	}
 }
 
-export const getDishes = async (dispatch) => {
+export const getDishes = async dispatch => {
 	dispatch(getDishStart())
 	try {
 		const { data } = await publicReq.get(`product/product-list/`)

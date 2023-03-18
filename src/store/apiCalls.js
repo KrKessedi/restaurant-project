@@ -33,6 +33,9 @@ import {
 	updateDishInLocalStorageStart,
 	updateDishInLocalStorageSuccess,
 	updateDishInLocalStorageFailure,
+	addDishInLocalStorageStart,
+	addDishInLocalStorageSuccess,
+	addDishInLocalStorageFailure,
 	getDishStart,
 	getDishSuccess,
 	getDishFailure,
@@ -45,12 +48,12 @@ import {
 	addDishFailure,
 	addDishSuccess,
 	addDishStart,
-	getCategriesStart,
-	getCategriesSuccess,
-	getCategriesFailure,
 	getOneDishStart,
 	getOneDishSuccess,
 	getOneDishFailure,
+	getDetailDishStart,
+	getDetailDishSuccess,
+	getDetailDishFailure,
 } from './dishSlice'
 
 import { toast } from 'react-toastify'
@@ -70,6 +73,8 @@ export const publicReq = axios.create({
 // 		Authorization,
 // 	},
 // }
+
+// AUTHORIZATION
 
 export const login = async (dispatch, user) => {
 	dispatch(loginStart())
@@ -124,6 +129,8 @@ export const getTable = async dispatch => {
 		dispatch(getTableFailure())
 	}
 }
+
+// TABLE
 
 export const reserveTable = async (dispatch, data) => {
 	dispatch(tableStart())
@@ -185,13 +192,14 @@ export const addDish = async (dispatch, data) => {
 	}
 }
 
-export const deleteDish = async (dispatch, item) => {
+export const deleteDish = async (dispatch, item, setDetail) => {
 	dispatch(deleteDishStart())
 	const dish = toast.loading('Пожалуйста подождите!!!')
 
 	try {
 		const res = await publicReq.delete(`product/product-delete/${item}/`)
 		dispatch(deleteDishSuccess(res.data))
+		setDetail('')
 		toast.update(dish, {
 			render: 'Ваша блюдо удалено.',
 			type: 'success',
@@ -217,9 +225,9 @@ export const GetOneDish = async (dispatch, item, setModalFlag) => {
 	try {
 		const res = await publicReq.get(`product/product-update/${item}/`)
 		dispatch(getOneDishSuccess(res.data))
-		setTimeout(() => {
-			setModalFlag(true)
-		}, 900)
+		// setTimeout(() => {
+		setModalFlag(true)
+		// }, 900)
 		toast.update(dish, {
 			render: 'Ваша блюдо найдено.',
 			type: 'success',
@@ -238,18 +246,28 @@ export const GetOneDish = async (dispatch, item, setModalFlag) => {
 	}
 }
 
-export const updateDish = async (dispatch, item, newObj, config) => {
+export const getDetailDish = async (dispatch, item, setDetail) => {
+	dispatch(getDetailDishStart())
+
+	try {
+		const res = await publicReq.get(`product/product-update/${item}/`)
+		dispatch(getDetailDishSuccess(res.data))
+		setDetail(true)
+	} catch (err) {
+		dispatch(getDetailDishFailure())
+		console.log(err)
+	}
+}
+
+export const updateDish = async (dispatch, item, newObj, setModalFlag) => {
 	dispatch(updateDishStart())
 	const dish = toast.loading('Пожалуйста подождите!!!')
 
 	try {
-		// console.log(item)
-		const res = await publicReq.put(
-			`product/product-update/${item}/`,
-			newObj,
-			config
-		)
+		console.log(item)
+		const res = await publicReq.patch(`product/product-update/${item}/`, newObj)
 		dispatch(updateDishSuccess(res.data))
+		setModalFlag(false)
 		toast.update(dish, {
 			render: 'Ваша блюдо изменено.',
 			type: 'success',
@@ -289,9 +307,24 @@ export const forgotPassword = async (dispatch, email, setModal) => {
 			isLoading: false,
 			autoClose: 3000,
 		})
-		// console.log(err)
 	}
 }
+// LOCALSTORAGE
+
+export const addDishInLocalStorage = (dispatch, data) => {
+	dispatch(addDishInLocalStorageSuccess(data))
+	toast.success('Ваша блюдо добавлена в корзину.', {
+		position: 'top-right',
+		autoClose: 2000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: 'light',
+	})
+}
+// console.log(err)
 
 export const restorePassword = async (dispatch, code) => {
 	dispatch(restorePasswordStart())
@@ -317,9 +350,33 @@ export const restorePassword2 = async (dispatch, data, setModalFlag) => {
 			autoClose: 2000,
 		})
 	} catch (err) {
-		// dispatch(restorePasswordFailure())
+		// dispatch(deleteDishInLocalStorageFailure())
 		toast.update(emailAlert, {
-			render: 'Email не найден',
+			render: 'Что-то пошло не так',
+			type: 'error',
+			isLoading: false,
+			autoClose: 3000,
+		})
+		console.log(err)
+	}
+}
+
+export const deleteDishInLocalStorage = async (dispatch, item) => {
+	dispatch(deleteDishInLocalStorageStart())
+	const dish = toast.loading('Пожалуйста подождите!!!')
+
+	try {
+		dispatch(deleteDishInLocalStorageSuccess(item))
+		toast.update(dish, {
+			render: 'Ваша блюдо удалено из корзины.',
+			type: 'success',
+			isLoading: false,
+			autoClose: 2000,
+		})
+	} catch (err) {
+		dispatch(deleteDishInLocalStorageFailure())
+		toast.update(dish, {
+			render: 'Что-то пошло не так',
 			type: 'error',
 			isLoading: false,
 			autoClose: 3000,

@@ -4,10 +4,10 @@ export const dishSlice = createSlice({
 	name: 'dish',
 	initialState: {
 		dishes: [],
-		dishesInLocalStorage: [],
-		categories: [],
+		cart: [],
 		oneDish: null,
 		currentDish: 'завтраки',
+		detailDish: null,
 		isFetching: false,
 		error: false,
 	},
@@ -15,66 +15,52 @@ export const dishSlice = createSlice({
 	reducers: {
 		// localStorage
 
-		getDishInLocalStorageStart: (state) => {
-			state.isFetching = true
-			state.error = false
-		},
-
-		getDishInLocalStorageSuccess: (state, action) => {
-			state.isFetching = true
-			state.dishesInLocalStorage = action.payload
-			state.error = false
-		},
-
-		getDishInLocalStorageFailure: (state) => {
-			state.isFetching = false
-			state.error = true
-		},
-
-		deleteDishInLocalStorageStart: (state) => {
+		deleteDishInLocalStorageStart: state => {
 			state.isFetching = true
 			state.error = false
 		},
 
 		deleteDishInLocalStorageSuccess: (state, action) => {
 			state.isFetching = false
-			state.dishesInLocalStorage.splice(
-				state.dishesInLocalStorage.findIndex(
-					(item) => item.id === action.payload
-				),
+			state.cart.splice(
+				state.cart.findIndex(item => item.title === action.payload),
 				1
 			)
 			state.error = false
 		},
 
-		deleteDishInLocalStorageFailure: (state) => {
+		deleteDishInLocalStorageFailure: state => {
 			state.isFetching = false
 			state.error = true
 		},
 
-		updateDishInLocalStorageStart: (state) => {
+		updateDishInLocalStorageStart: state => {
 			state.isFetching = true
 			state.error = false
 		},
 
 		updateDishInLocalStorageSuccess: (state, action) => {
 			state.isFetching = false
-			state.dishesInLocalStorage[
-				state.dishesInLocalStorage.findIndex(
-					(item) => item.id === action.payload.id
-				)
+			state.cart[
+				state.cart.findIndex(item => item.title === action.payload.title)
 			] = action.payload.Dish
 			state.error = false
 		},
 
-		updateDishInLocalStorageFailure: (state) => {
+		updateDishInLocalStorageFailure: state => {
 			state.isFetching = false
 			state.error = true
 		},
 
+		addDishInLocalStorageSuccess: (state, action) => {
+			state.isFetching = false
+			state.cart.push(action.payload)
+			state.error = false
+		},
+
 		// localStorage
 
-		getDishStart: (state) => {
+		getDishStart: state => {
 			state.isFetching = true
 			state.error = false
 		},
@@ -83,42 +69,42 @@ export const dishSlice = createSlice({
 			state.dishes = action.payload
 			state.error = false
 		},
-		getDishFailure: (state) => {
+		getDishFailure: state => {
 			state.isFetching = false
 			state.error = true
 		},
-		deleteDishStart: (state) => {
+		deleteDishStart: state => {
 			state.isFetching = true
 			state.error = false
 		},
 		deleteDishSuccess: (state, action) => {
 			state.isFetching = false
 			state.dishes.splice(
-				state.dishes.findIndex((item) => item.id === action.payload),
+				state.dishes.findIndex(item => item.title === action.payload),
 				1
 			)
 			state.error = false
 		},
-		deleteDishFailure: (state) => {
+		deleteDishFailure: state => {
 			state.isFetching = false
 			state.error = true
 		},
-		updateDishStart: (state) => {
+		updateDishStart: state => {
 			state.isFetching = true
 			state.error = false
 		},
 		updateDishSuccess: (state, action) => {
 			state.isFetching = false
 			state.dishes[
-				state.dishes.findIndex((item) => item.id === action.payload.id)
+				state.dishes.findIndex(item => item.title === action.payload.title)
 			] = action.payload.Dish
 			state.error = false
 		},
-		updateDishFailure: (state) => {
+		updateDishFailure: state => {
 			state.isFetching = false
 			state.error = true
 		},
-		addDishStart: (state) => {
+		addDishStart: state => {
 			state.isFetching = true
 			state.error = false
 		},
@@ -127,12 +113,11 @@ export const dishSlice = createSlice({
 			state.dishes.push(action.payload)
 			state.error = false
 		},
-		addDishFailure: (state) => {
+		addDishFailure: state => {
 			state.isFetching = false
 			state.error = true
 		},
-
-		getOneDishStart: (state) => {
+		getOneDishStart: state => {
 			state.isFetching = true
 			state.error = false
 		},
@@ -141,12 +126,23 @@ export const dishSlice = createSlice({
 			state.oneDish = action.payload
 			state.error = false
 		},
-		getOneDishFailure: (state) => {
+		getOneDishFailure: state => {
 			state.isFetching = false
 			state.error = true
 		},
-
-		// categories
+		getDetailDishStart: state => {
+			state.isFetching = true
+			state.error = false
+		},
+		getDetailDishSuccess: (state, action) => {
+			state.isFetching = true
+			state.detailDish = action.payload
+			state.error = false
+		},
+		getDetailDishFailure: state => {
+			state.isFetching = false
+			state.error = true
+		},
 		changeCurrentDish: (state, action) => {
 			state.currentDish = action.payload
 		},
@@ -154,9 +150,9 @@ export const dishSlice = createSlice({
 })
 
 export const {
-	getDishInLocalStorageStart,
-	getDishInLocalStorageSuccess,
-	getDishInLocalStorageFailure,
+	addDishInLocalStorageStart,
+	addDishInLocalStorageSuccess,
+	addDishInLocalStorageFailure,
 	deleteDishInLocalStorageStart,
 	deleteDishInLocalStorageSuccess,
 	deleteDishInLocalStorageFailure,
@@ -175,9 +171,12 @@ export const {
 	addDishFailure,
 	addDishSuccess,
 	addDishStart,
-	changeCurrentDish,
 	getOneDishStart,
 	getOneDishSuccess,
 	getOneDishFailure,
+	getDetailDishStart,
+	getDetailDishSuccess,
+	getDetailDishFailure,
+	changeCurrentDish,
 } = dishSlice.actions
 export default dishSlice.reducer

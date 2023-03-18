@@ -1,13 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
-import {
-	addDish,
-	deleteDish,
-	getCategories,
-	getDishes,
-	GetOneDish,
-} from '../store/apiCalls'
+import { addDish, deleteDish, getDishes, GetOneDish } from '../store/apiCalls'
 import { useDispatch, useSelector } from 'react-redux'
-import UpdateDish from '../components/admin/UpdateDish'
+import UpdateDish from '../components/dish/UpdateDish'
 
 import {
 	getStorage,
@@ -20,7 +14,7 @@ import app from '../firebase'
 export const categories = [
 	{
 		id: 1,
-		title: 'Завтраки',
+		title: 'завтраки',
 		slug: 'breakfast',
 	},
 	{
@@ -30,37 +24,37 @@ export const categories = [
 	},
 	{
 		id: 3,
-		title: 'Горячие блюдо ',
+		title: 'горячие блюдо ',
 		slug: 'hot_dish',
 	},
 	{
 		id: 4,
-		title: 'Паста и Ризотто',
+		title: 'паста и ризотто',
 		slug: 'past_and_risotto',
 	},
 	{
 		id: 5,
-		title: 'Закуски и гарниры',
+		title: 'закуски и гарниры',
 		slug: 'snacks',
 	},
 	{
 		id: 6,
-		title: 'Детское меню',
+		title: 'детское меню',
 		slug: 'childrens_menu',
 	},
 	{
 		id: 7,
-		title: 'Салаты',
+		title: 'салаты',
 		slug: 'salads',
 	},
 	{
 		id: 8,
-		title: 'Соусы',
+		title: 'соусы',
 		slug: 'cauces',
 	},
 	{
 		id: 9,
-		title: 'Напитки',
+		title: 'напитки',
 		slug: 'drinks',
 	},
 ]
@@ -68,13 +62,13 @@ export const categories = [
 const AdminPage = () => {
 	const [modalFlag, setModalFlag] = useState(false)
 
-	const { dishes, error, oneDish } = useSelector((state) => state.dishes)
+	const { dishes, error, oneDish } = useSelector(state => state.dishes)
 
 	const filePicker = useRef(null)
 	const [title, setTitle] = useState('')
-	const [category, setCategory] = useState('')
+	const [category, setCategory] = useState('завтраки')
 	const [description, setDescription] = useState('')
-	const [price, setPrice] = useState('')
+	const [price, setPrice] = useState(0)
 	const [dishDetail, setDishDetail] = useState('')
 	const [dishDetail2, setDishDetail2] = useState('')
 
@@ -83,11 +77,11 @@ const AdminPage = () => {
 	let inputs = { title, category, price, description }
 	const dispatch = useDispatch()
 
+	console.log(dishes)
+
 	useEffect(() => {
 		getDishes(dispatch)
 	}, [dispatch])
-
-	// console.log(dishes[0].image)
 
 	function handlePick() {
 		filePicker.current.click()
@@ -111,7 +105,7 @@ const AdminPage = () => {
 
 		uploadTask.on(
 			'state_changed',
-			(snapshot) => {
+			snapshot => {
 				const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
 				setLoaded('Загруска выполнена на ' + progress + '%')
 
@@ -125,11 +119,11 @@ const AdminPage = () => {
 					default:
 				}
 			},
-			(error) => {
+			error => {
 				console.log(error)
 			},
 			() => {
-				getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+				getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
 					const dishe = {
 						...inputs,
 						photo: downloadURL,
@@ -151,7 +145,7 @@ const AdminPage = () => {
 	}
 
 	function handleDelete() {
-		deleteDish(dispatch, dishDetail2)
+		deleteDish(dispatch, dishDetail2, setDishDetail2)
 	}
 
 	return (
@@ -164,14 +158,14 @@ const AdminPage = () => {
 						type='text'
 						placeholder='title'
 						value={title}
-						onChange={(e) => setTitle(e.target.value)}
+						onChange={e => setTitle(e.target.value)}
 					/>
 					<input
 						ref={filePicker}
 						className='hidden'
 						type='file'
 						accept='image/*,.png,.jpg,.web'
-						onChange={(e) => setFile(e.target.files[0])}
+						onChange={e => setFile(e.target.files[0])}
 					/>
 					<button
 						onClick={handlePick}
@@ -181,12 +175,12 @@ const AdminPage = () => {
 					</button>
 					<select
 						id='large'
-						onChange={(e) => setCategory(e.target.value.toLowerCase())}
+						onChange={e => setCategory(e.target.value.toLowerCase())}
 						// onChange={e => console.log(e.target.valuse)}
 						value={category}
 						className='block px-6 border-2 border-my-orange py-3 text-base text-white rounded-2xl bg-my-orange'
 					>
-						{categories?.map((item) => (
+						{categories?.map(item => (
 							<option
 								// value={Category object (${item.slug})}
 								// onClick={e => console.log('e.target.value')}
@@ -203,14 +197,14 @@ const AdminPage = () => {
 						type='text'
 						placeholder='description'
 						value={description}
-						onChange={(e) => setDescription(e.target.value)}
+						onChange={e => setDescription(e.target.value)}
 					/>
 					<input
 						className='admin-input'
-						type='text'
+						type='number'
 						placeholder='price'
 						value={price}
-						onChange={(e) => setPrice(e.target.value)}
+						onChange={e => setPrice(e.target.value)}
 					/>
 					<button
 						className='bg-my-orange border-2 border-my-orange rounded-2xl py-3 px-10 text-white'
@@ -235,7 +229,7 @@ const AdminPage = () => {
 									type='text'
 									placeholder='Dish title'
 									value={dishDetail}
-									onChange={(e) => setDishDetail(e.target.value)}
+									onChange={e => setDishDetail(e.target.value)}
 								/>
 								<button
 									onClick={handleSearch}
@@ -255,7 +249,7 @@ const AdminPage = () => {
 									type='text'
 									placeholder='Dish title'
 									value={dishDetail2}
-									onChange={(e) => setDishDetail2(e.target.value)}
+									onChange={e => setDishDetail2(e.target.value)}
 								/>
 								<button
 									onClick={handleDelete}

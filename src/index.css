@@ -69,6 +69,9 @@ input:focus {
 	.modal-btn {
 		@apply text-3xl font-montserrat rounded-[30px] bg-my-orange text-white py-[12px] px-5 mb-8 mt-3 3sm:text-xl 4sm:text-[4vw] 4sm:py-[2vw] 2sm:text-2xl 4sm:mt-[2vw] 4sm:mb-[4vw];
 	}
+	.detail-btn {
+		@apply text-xl font-montserrat rounded-[30px] bg-my-orange text-white py-[12px] px-5 3sm:text-xl 4sm:text-[4vw] 4sm:py-[2vw] 2sm:text-2xl 4sm:mt-[2vw] 4sm:mb-[4vw];
+	}
 	.modal-footer {
 		@apply text-my-orange mx-auto text-xl font-semibold cursor-pointer 4sm:text-[4vw];
 	}

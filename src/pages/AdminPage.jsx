@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { addDish, deleteDish, getDishes, GetOneDish } from '../store/apiCalls'
+import React, { useState, useRef } from 'react'
+import { addDish, deleteDish, GetOneDish } from '../store/apiCalls'
 import { useDispatch, useSelector } from 'react-redux'
 import UpdateDish from '../components/dish/UpdateDish'
 
@@ -62,8 +62,7 @@ export const categories = [
 const AdminPage = () => {
 	const [modalFlag, setModalFlag] = useState(false)
 
-	const { dishes, error, oneDish } = useSelector(state => state.dishes)
-
+	const { oneDish } = useSelector(state => state.dishes)
 	const filePicker = useRef(null)
 	const [title, setTitle] = useState('')
 	const [category, setCategory] = useState('завтраки')
@@ -76,12 +75,6 @@ const AdminPage = () => {
 	const [loaded, setLoaded] = useState('Сохранить изменения')
 	let inputs = { title, category, price, description }
 	const dispatch = useDispatch()
-
-	console.log(dishes)
-
-	useEffect(() => {
-		getDishes(dispatch)
-	}, [dispatch])
 
 	function handlePick() {
 		filePicker.current.click()
@@ -98,6 +91,7 @@ const AdminPage = () => {
 			return
 		}
 
+		console.log(loaded)
 		const fileName = new Date().getTime() + file.name
 		const storage = getStorage(app)
 		const storageRef = ref(storage, fileName)

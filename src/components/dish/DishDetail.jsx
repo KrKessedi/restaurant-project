@@ -1,14 +1,10 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addDishInLocalStorage } from '../../store/apiCalls'
-import spagetti from '../../images/pasta and risotto.png'
 
 const DishDetail = ({ detail, setDetail }) => {
 	const dispatch = useDispatch()
-
 	const { detailDish } = useSelector(state => state.dishes)
-
-	// console.log(detailDish)
 
 	function handleAdd(dish) {
 		addDishInLocalStorage(dispatch, dish)
@@ -39,7 +35,11 @@ const DishDetail = ({ detail, setDetail }) => {
 					className='modal-block flex-row w-auto gap-x-14'
 					onClick={e => e.stopPropagation()}
 				>
-					<img src={detailDish.photo} alt='' className='w-72' />
+					<img
+						src={detailDish.photo}
+						alt=''
+						className='w-72 rounded-2xl object-cover h-auto'
+					/>
 					<div className='w-[500px]'>
 						<h3 className='text-6xl mb-10 text-my-brown'>{detailDish.title}</h3>
 						<p className='text-xl text-black mb-10'>{detailDish.description}</p>

@@ -4,15 +4,8 @@ import bgMenu from '../images/bgMenu.png'
 import bgMenu2 from '../images/bgMenu2.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeCurrentDish } from '../store/dishSlice'
-import fullStar from '../images/star-fill.svg'
-import emptyStar from '../images/star-empty.svg'
-import Rating from 'react-rating'
 import DishDetail from '../components/dish/DishDetail'
-import {
-	addDishInLocalStorage,
-	getDetailDish,
-	getDishes,
-} from '../store/apiCalls'
+import { getDetailDish, getDishes } from '../store/apiCalls'
 
 const menuCategory = [
 	{ id: 1, title: 'затраки' },
@@ -32,11 +25,11 @@ export default function MenuPage() {
 	const dispatch = useDispatch()
 	const currentDish = useSelector(state => state.dishes.currentDish)
 	const dishes = useSelector(state => state.dishes.dishes)
-	let dishesFilter = dishes.filter(
-		item => item.category.toLowerCase() === currentDish
-	)
+	let dishesFilter = dishes.filter(item => currentDish === item.category)
 
-	// useEffect(getDishes(), [])
+	useEffect(() => {
+		getDishes(dispatch)
+	}, [dispatch])
 
 	function handleGet(title) {
 		getDetailDish(dispatch, title, setDetail)
@@ -81,15 +74,15 @@ export default function MenuPage() {
 						{currentDish}
 					</h2>
 					<div className='flex flex-wrap gap-5 mb-12'>
-						{dishesFilter?.map(item => (
+						{dishesFilter?.map((item, i) => (
 							<div
 								className='w-52 min-w-[23.3%] md:min-w-[31%] lg:min-w-[28%] sm:min-w-[38%] 2sm:min-w-[65%] 2sm:snap-start sm:h-[320px] h-[355px] relative flex flex-col items-center justify-center'
-								key={item.title}
+								key={i}
 							>
 								<img
 									src={item.photo}
 									alt=''
-									className=' w-52 absolute top-0 md:w-44 md:-top-1 sm:w-40'
+									className=' w-52 object-cover rounded-xl absolute top-0 md:w-44 md:-top-1 sm:w-40'
 								/>
 								<div className='rounded-2xl pt-40 sm:pt-28 flex flex-col justify-center items-center w-full h-5/6 bg-my-light-gray '>
 									<h5 className='font-semibold font-["Montserat"] text-xl mb-3 uppercase md:text-lg'>

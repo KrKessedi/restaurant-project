@@ -11,23 +11,23 @@ import {
 import app from '../../firebase'
 
 const UpdateDish = ({ modalFlag, setModalFlag }) => {
-	const { oneDish, dishes } = useSelector(state => state.dishes)
-	const { currentUser } = useSelector(state => state.user)
+	const { oneDish } = useSelector(state => state.dishes)
 	const dispatch = useDispatch()
 
 	const filePicker = useRef(null)
 
-	const [title, setTitle] = useState('')
-	const [category, setCategory] = useState('')
-	const [description, setDescription] = useState('')
-	const [price, setPrice] = useState('')
-	const [file, setFile] = useState(null)
-	const [loaded, setLoaded] = useState('')
+	const [title, setTitle] = useState(oneDish.title)
+	const [file, setFile] = useState(oneDish.photo)
+	const [category, setCategory] = useState(oneDish.category)
+	const [description, setDescription] = useState(oneDish.description)
+	const [price, setPrice] = useState(oneDish.price)
+	const [loaded, setLoaded] = useState('Сохранить изменения')
 
 	let inputs = { title, category, price, description }
 	useEffect(() => {
 		if (oneDish) {
 			setTitle(oneDish.title)
+			setFile(oneDish.photo)
 			setCategory(oneDish.category)
 			setDescription(oneDish.description)
 			setPrice(oneDish.price)
@@ -177,7 +177,7 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 					</button>
 				</form>
 				<button
-					className=' text-2xl font-montserrat rounded-[30px] bg-my-orange text-white py-2 px-5 absolute bottom-0 right-0 hover:rounded-tr-none hover:rounded-bl-none hover:font-semibold hover:bg-black hover:duration-200 duration-150'
+					className=' text-2xl font-montserrat rounded-[30px] bg-my-orange text-white py-2 px-5 absolute bottom-0 right-0 hover:rounded-tr-none hover:rounded-bl-none hover:bg-black hover:duration-200 duration-150'
 					onClick={() => setModalFlag(false)}
 				>
 					Отмена

@@ -8,7 +8,7 @@ import DishDetail from '../components/dish/DishDetail'
 import { getDetailDish, getDishes } from '../store/apiCalls'
 
 const menuCategory = [
-	{ id: 1, title: 'затраки' },
+	{ id: 1, title: 'завтраки' },
 	{ id: 2, title: 'супы' },
 	{ id: 3, title: 'горячие блюдо' },
 	{ id: 4, title: 'паста и ризотто' },

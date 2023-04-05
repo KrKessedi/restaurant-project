@@ -3,12 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateDish } from '../../store/apiCalls'
 import { categories } from '../../pages/AdminPage'
 
-const UpdateDish = ({ modalFlag, setModalFlag }) => {
-	const { oneDish, dishes } = useSelector(state => state.dishes)
-	const { currentUser } = useSelector(state => state.user)
-	const dispatch = useDispatch()
+import {
+	getStorage,
+	ref,
+	uploadBytesResumable,
+	getDownloadURL,
+} from 'firebase/storage'
+import app from '../../firebase'
 
-	console.log(dishes)
+const UpdateDish = ({ modalFlag, setModalFlag }) => {
+	const { oneDish } = useSelector(state => state.dishes)
+	const dispatch = useDispatch()
 
 	const filePicker = useRef(null)
 
@@ -17,27 +22,74 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 	const [category, setCategory] = useState('')
 	const [description, setDescription] = useState('')
 	const [price, setPrice] = useState('')
+	const [loaded, setLoaded] = useState('Сохранить изменения')
 
 	useEffect(() => {
 		if (oneDish) {
 			setTitle(oneDish.title)
-			setImage(oneDish.image)
+			setImage(oneDish.photo)
 			setCategory(oneDish.category)
 			setDescription(oneDish.description)
 			setPrice(oneDish.price)
 		}
 	}, [oneDish])
 
-	function handleEdit(e) {
-		e.preventDefault()
-		let formData = new FormData()
-		formData.append('title', title)
-		// formData.append('image', image)
-		formData.append('category', category)
-		formData.append('description', description)
-		formData.append('price', price)
+	function handleEdit() {
+		console.log(loaded)
+		const fileName = new Date().getTime() + image.name
+		const storage = getStorage(app)
+		const storageRef = ref(storage, fileName)
+		const uploadTask = uploadBytesResumable(storageRef, image)
 
-		updateDish(dispatch, oneDish.title, formData, setModalFlag)
+		if (image !== oneDish.photo) {
+			uploadTask.on(
+				'state_changed',
+				snapshot => {
+					const progress =
+						(snapshot.bytesTransferred / snapshot.totalBytes) * 100
+					setLoaded('Загруска выполнена на ' + progress + '%')
+
+					switch (snapshot.state) {
+						case 'paused':
+							console.log('Upload is paused')
+							break
+						case 'running':
+							console.log('Upload is running')
+							break
+						default:
+					}
+				},
+				error => {
+					console.log(error, 'qwerty')
+				},
+				() => {
+					getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+						const dishe = {
+							title,
+							category,
+							description,
+							price,
+							photo: downloadURL,
+						}
+						updateDish(dispatch, oneDish.title, dishe, setModalFlag)
+					})
+				}
+			)
+		} else {
+			const dishe = {
+				title,
+				category,
+				description,
+				price,
+				photo: image,
+			}
+			updateDish(dispatch, oneDish.title, dishe, setModalFlag)
+		}
+
+		setTitle('')
+		// setImage(null)
+		setDescription('')
+		setPrice('')
 	}
 
 	function handlePick(e) {
@@ -90,7 +142,7 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 						type='file'
 						// value={image}
 						// accept='image/*,.png,.jpg,.web'
-						onChange={e => setImage(`image: ${e.target.files[0]}`)}
+						onChange={e => setImage(e.target.files[0])}
 					/>
 					<button
 						onClick={handlePick}
@@ -139,7 +191,7 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 					</button>
 				</form>
 				<button
-					className=' text-2xl font-montserrat rounded-[30px] bg-my-orange text-white py-2 px-5 absolute bottom-0 right-0 hover:rounded-tr-none hover:rounded-bl-none hover:font-semibold hover:bg-black hover:duration-200 duration-150'
+					className=' text-2xl font-montserrat rounded-[30px] bg-my-orange text-white py-2 px-5 absolute bottom-0 right-0 hover:rounded-tr-none hover:rounded-bl-none hover:bg-black hover:duration-200 duration-150'
 					onClick={() => setModalFlag(false)}
 				>
 					Отмена

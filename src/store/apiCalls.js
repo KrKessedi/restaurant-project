@@ -18,15 +18,9 @@ import {
 } from './userSlice'
 
 import {
-	getDishInLocalStorageStart,
-	getDishInLocalStorageSuccess,
-	getDishInLocalStorageFailure,
 	deleteDishInLocalStorageStart,
 	deleteDishInLocalStorageSuccess,
 	deleteDishInLocalStorageFailure,
-	updateDishInLocalStorageStart,
-	updateDishInLocalStorageSuccess,
-	updateDishInLocalStorageFailure,
 	addDishInLocalStorageStart,
 	addDishInLocalStorageSuccess,
 	addDishInLocalStorageFailure,
@@ -58,18 +52,6 @@ export const publicReq = axios.create({
 	baseURL: BASE_URL,
 })
 
-// const token = JSON.parse(localStorage.getItem('persist:root'))
-
-// const Authorization = `JWT ${token.user.currentUser.access}`
-// console.log(typeof token.table)
-// const config = {
-// 	headers: {
-// 		Authorization,
-// 	},
-// }
-
-// AUTHORIZATION
-
 export const login = async (dispatch, user) => {
 	dispatch(loginStart())
 	const reserve = toast.loading('Пожалуйста подождите!!!')
@@ -95,11 +77,10 @@ export const login = async (dispatch, user) => {
 
 export const register = async (dispatch, user) => {
 	dispatch(registerStart())
-	const reserve = toast.loading('Пожалуйста подождите!!!')
 
 	console.log(user)
 	try {
-		const res = await publicReq.post(`accounts/register/`, user)
+		await publicReq.post(`accounts/register/`, user)
 		dispatch(registerSuccess(user))
 	} catch (err) {
 		console.log(err)
@@ -148,9 +129,8 @@ export const reserveTable = async (dispatch, data) => {
 export const getDishes = async dispatch => {
 	dispatch(getDishStart())
 	try {
-		const { data } = await publicReq.get(`product/product-list/`)
+		const { data } = await publicReq(`product/product-list/`)
 		dispatch(getDishSuccess(data))
-		// console.log(data)
 	} catch (err) {
 		dispatch(getDishFailure())
 		console.log(err)

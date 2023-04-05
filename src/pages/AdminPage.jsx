@@ -15,47 +15,38 @@ export const categories = [
 	{
 		id: 1,
 		title: 'завтраки',
-		slug: 'breakfast',
 	},
 	{
 		id: 2,
 		title: 'супы',
-		slug: 'soups',
 	},
 	{
 		id: 3,
 		title: 'горячие блюдо ',
-		slug: 'hot_dish',
 	},
 	{
 		id: 4,
 		title: 'паста и ризотто',
-		slug: 'past_and_risotto',
 	},
 	{
 		id: 5,
 		title: 'закуски и гарниры',
-		slug: 'snacks',
 	},
 	{
 		id: 6,
 		title: 'детское меню',
-		slug: 'childrens_menu',
 	},
 	{
 		id: 7,
 		title: 'салаты',
-		slug: 'salads',
 	},
 	{
 		id: 8,
 		title: 'соусы',
-		slug: 'cauces',
 	},
 	{
 		id: 9,
 		title: 'напитки',
-		slug: 'drinks',
 	},
 ]
 
@@ -170,14 +161,11 @@ const AdminPage = () => {
 					<select
 						id='large'
 						onChange={e => setCategory(e.target.value.toLowerCase())}
-						// onChange={e => console.log(e.target.valuse)}
 						value={category}
 						className='block px-6 border-2 border-my-orange py-3 text-base text-white rounded-2xl bg-my-orange'
 					>
 						{categories?.map(item => (
 							<option
-								// value={Category object (${item.slug})}
-								// onClick={e => console.log('e.target.value')}
 								value={item.title}
 								key={item.id}
 								className=' hover:duration-200 hover:bg-black bg-white text-black duration-150 hover:text-white capitalize py-1'

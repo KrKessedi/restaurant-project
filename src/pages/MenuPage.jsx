@@ -35,6 +35,8 @@ export default function MenuPage() {
 		getDetailDish(dispatch, title, setDetail)
 	}
 
+	console.log(dishes.map(item => `${item.title} : ${item.category}`))
+
 	return (
 		<>
 			<DishDetail detail={detail} setDetail={setDetail} />

@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import popularDish from '../../images/image 97.svg'
-import fullStar from '../../images/star-fill.svg'
-import emptyStar from '../../images/star-empty.svg'
-import Rating from 'react-rating'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addDishInLocalStorage, getDetailDish } from '../../store/apiCalls'
+import { getDetailDish } from '../../store/apiCalls'
 import DishDetail from '../dish/DishDetail'
 
 const PopularDishes = () => {
 	const { dishes } = useSelector(state => state.dishes)
 	const [detail, setDetail] = useState(false)
-	const [allDishes, setAllDishes] = useState(null)
 
 	// console.log(dishes)
 	// const dishes = [
@@ -86,7 +81,7 @@ const PopularDishes = () => {
 					{dishes?.map(item => (
 						<div
 							className='snap-center min-w-[23.3%] md:min-w-[31%] lg:min-w-[28%] sm:min-w-[38%] 2sm:min-w-[65%] 2sm:snap-start sm:h-[320px] h-[355px] relative flex flex-col items-center justify-center'
-							key={item.title}
+							key={item}
 						>
 							{item ? (
 								<>

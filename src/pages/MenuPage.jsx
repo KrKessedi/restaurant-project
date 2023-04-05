@@ -85,7 +85,7 @@ export default function MenuPage() {
 									className=' w-52 object-cover rounded-xl absolute top-0 md:w-44 md:-top-1 sm:w-40'
 								/>
 								<div className='rounded-2xl pt-40 sm:pt-28 flex flex-col justify-center items-center w-full h-5/6 bg-my-light-gray '>
-									<h5 className='font-semibold font-["Montserat"] text-xl mb-3 uppercase md:text-lg'>
+									<h5 className='font-semibold font-["Montserat"] text-xl mb-3 uppercase md:text-lg text-center'>
 										{item.title}
 									</h5>
 									{/* <div className=' w-[122px] flex mb-1 justify-center items-start'>

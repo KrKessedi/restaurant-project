@@ -1,13 +1,12 @@
 import { motion } from 'framer-motion'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { list } from './Navbar'
-import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import avatar from '../../../images/user-avatar-svgrepo-com.svg'
 import { logout } from '../../../store/apiCalls'
 
 const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
-	const user = useSelector((state) => state.user.currentUser)
+	const user = useSelector(state => state.user.currentUser)
 	const dispatch = useDispatch()
 	const style = [
 		{
@@ -32,7 +31,7 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 			onClick={() => setBurger(false)}
 		>
 			<div
-				onClick={(e) => e.stopPropagation()}
+				onClick={e => e.stopPropagation()}
 				style={
 					burger
 						? { transform: 'translateX(0)', transition: '.5s' }
@@ -63,10 +62,10 @@ const BurgerMenu = ({ burger, setBurger, setModalFlag }) => {
 					)}
 				</div>
 				<ul className='flex flex-col gap-y-6 '>
-					{list?.map((item) => (
+					{list?.map(item => (
 						<li
 							style={
-								pathname == item.to
+								pathname === item.to
 									? { color: '#de6e45', boxShadow: '0 1.5px 0 #de6e45' }
 									: null
 							}

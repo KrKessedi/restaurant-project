@@ -25,7 +25,7 @@ const Navbar = ({ burger, setBurger, modalFlag, setModalFlag }) => {
 	// const [modalFlag, setModalFlag] = useState(false)
 	const [userMenu, setUserMenu] = useState(false)
 	const navigate = useNavigate()
-	const user = useSelector((state) => state.user.currentUser)
+	const user = useSelector(state => state.user.currentUser)
 	const { pathname } = useLocation()
 	const dispatch = useDispatch()
 
@@ -50,11 +50,11 @@ const Navbar = ({ burger, setBurger, modalFlag, setModalFlag }) => {
 					</div>
 					<div className='md:hidden flex items-center justify-around w-[80%]'>
 						<ul className='w-[750px] lg:w-[690px] md:w-[670px] flex justify-between items-end'>
-							{list?.map((item) => (
+							{list?.map(item => (
 								<li key={item.id}>
 									<p
 										style={
-											pathname == item.to
+											pathname === item.to
 												? { color: 'white', boxShadow: '0 1.5px 0 white' }
 												: null
 										}
@@ -101,7 +101,7 @@ const Navbar = ({ burger, setBurger, modalFlag, setModalFlag }) => {
 										className='flex justify-end items-start absolute top-0 left-0 w-full min-h-[100vh] user-menu bg-black/50 backdrop-blur-[2px] '
 									>
 										<div
-											onClick={(e) => e.stopPropagation()}
+											onClick={e => e.stopPropagation()}
 											style={
 												userMenu
 													? { transform: 'translateX(0)', transition: '.5s' }
@@ -129,11 +129,11 @@ const Navbar = ({ burger, setBurger, modalFlag, setModalFlag }) => {
 					</div>
 				</nav>
 				<ul className=' hidden w-[70%] sm:hidden md:flex justify-between items-end md:items-center pb-5'>
-					{list?.map((item) => (
+					{list?.map(item => (
 						<li key={item.id}>
 							<p
 								style={
-									pathname == item.to
+									pathname === item.to
 										? { color: 'white', boxShadow: '0 1.5px 0 white' }
 										: null
 								}

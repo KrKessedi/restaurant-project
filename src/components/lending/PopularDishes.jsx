@@ -7,70 +7,13 @@ const PopularDishes = () => {
 	const { dishes } = useSelector(state => state.dishes)
 	const [detail, setDetail] = useState(false)
 
-	// console.log(dishes)
-	// const dishes = [
-	// 	{
-	// 		image: popularDish,
-	// 		rating: 3,
-	// 		id: 1,
-	// 		title: 'паста и ризотто',
-	// 		price: 300,
-	// 	},
-
-	// 	{
-	// 		image: popularDish,
-	// 		rating: 5,
-	// 		id: 2,
-	// 		title: 'паста и ризотто',
-	// 		price: 300,
-	// 	},
-
-	// 	{
-	// 		image: popularDish,
-	// 		rating: 5,
-	// 		id: 3,
-	// 		title: 'паста и ризотто',
-	// 		price: 300,
-	// 	},
-
-	// 	{
-	// 		image: popularDish,
-	// 		rating: 3,
-	// 		id: 4,
-	// 		title: 'паста и ризотто',
-	// 		price: 300,
-	// 	},
-
-	// 	{
-	// 		image: popularDish,
-	// 		rating: 4,
-	// 		id: 5,
-	// 		title: 'паста и ризотто',
-	// 		price: 300,
-	// 	},
-	// 	{
-	// 		image: popularDish,
-	// 		rating: 4,
-	// 		id: 6,
-	// 		title: 'паста и ризотто',
-	// 		price: 300,
-	// 	},
-	// 	{
-	// 		image: popularDish,
-	// 		rating: 4,
-	// 		id: 7,
-	// 		title: 'паста и ризотто',
-	// 		price: 300,
-	// 	},
-	// ]
-
 	const dispatch = useDispatch()
 
 	function handleGet(title) {
 		getDetailDish(dispatch, title, setDetail)
 	}
 
-	console.log(dishes)
+	const dishesSlice = dishes.slice(0, 10)
 
 	return (
 		<>
@@ -78,7 +21,7 @@ const PopularDishes = () => {
 			<section className='popular-dishes-section mt-1 mb-20 w-full'>
 				<h2 className='section-title'>Популярные блюда</h2>
 				<div className='popular-dishes__card-block flex gap-x-8 overflow-x-scroll w-[93%] m-auto justify-between flex-row pb-7 scroll-smooth md:w-[94%] snap-x'>
-					{dishes?.map(item => (
+					{dishesSlice?.map(item => (
 						<div
 							className='snap-center min-w-[23.3%] md:min-w-[31%] lg:min-w-[28%] sm:min-w-[38%] 2sm:min-w-[65%] 2sm:snap-start sm:h-[320px] h-[355px] relative flex flex-col items-center justify-center'
 							key={item}
@@ -88,7 +31,7 @@ const PopularDishes = () => {
 									<img
 										src={item.photo}
 										alt=''
-										className=' w-52 absolute top-0 md:w-44 md:-top-1 sm:w-40'
+										className=' w-52 rounded-2xl absolute top-0 md:w-44 md:-top-1 sm:w-40'
 									/>
 									<div className='rounded-2xl pt-40 sm:pt-28 flex flex-col justify-center items-center w-full h-5/6 bg-my-light-gray '>
 										<h5 className='font-semibold font-["Montserat"] text-xl mb-3 md:text-lg'>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 
 import Confirmation from './Confirmation'
 import LoginModal from './LoginModal'
@@ -61,7 +60,7 @@ const AuthModal = ({ setModalFlag }) => {
 			),
 		},
 	]
-	return <>{modals.map((item) => (item.id === modal ? item.modal : null))}</>
+	return <>{modals.map(item => (item.id === modal ? item.modal : null))}</>
 }
 
 export default AuthModal

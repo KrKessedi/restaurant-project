@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { login } from '../../store/apiCalls'
@@ -7,9 +6,9 @@ const LoginModal = ({ setModal, setModalFlag }) => {
 	const [email, setEmail] = useState()
 	const [password, setPassword] = useState()
 
-	const error = useSelector((state) => state.user.error)
+	const error = useSelector(state => state.user.error)
 	const dispatch = useDispatch()
-	const handleClick = (e) => {
+	const handleClick = e => {
 		e.preventDefault()
 		if (!email.trim() || !password.trim()) {
 			alert('Some inputs are empty!')
@@ -22,7 +21,7 @@ const LoginModal = ({ setModal, setModalFlag }) => {
 		<div className='modal-container' onClick={() => setModalFlag(false)}>
 			<div
 				className='modal-block'
-				onClick={(e) => {
+				onClick={e => {
 					e.stopPropagation()
 				}}
 			>
@@ -36,13 +35,13 @@ const LoginModal = ({ setModal, setModalFlag }) => {
 						type='text'
 						className='modal-input'
 						placeholder='Email'
-						onChange={(e) => setEmail(e.target.value)}
+						onChange={e => setEmail(e.target.value)}
 					/>
 					<input
 						type='text'
 						className='modal-input'
 						placeholder='Пароль'
-						onChange={(e) => setPassword(e.target.value)}
+						onChange={e => setPassword(e.target.value)}
 					/>
 					<p
 						className='underline text-[#D14019] font-montserrat font-medium text-lg mb-6 cursor-pointer 3sm:text-base 4sm:text-[3vw] 4sm:mb-[4vw]'

@@ -5,9 +5,11 @@ import { useDispatch } from 'react-redux'
 
 function App() {
 	const dispatch = useDispatch()
+
 	useEffect(() => {
 		getDishes(dispatch)
-	}, [])
+	}, [dispatch])
+
 	return (
 		<>
 			<MainRoutes />

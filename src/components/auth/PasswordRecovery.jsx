@@ -1,11 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import { forgotPassword } from '../../store/apiCalls'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 export default function PasswordRecovery({ setModal, setModalFlag }) {
 	const dispatch = useDispatch()
-	const error = useSelector((state) => state.user.error)
 	const [email, setEmail] = useState('')
 	const handleClick = () => {
 		if (!email.trim()) {
@@ -17,7 +16,7 @@ export default function PasswordRecovery({ setModal, setModalFlag }) {
 		<div className='modal-container' onClick={() => setModalFlag(false)}>
 			<div
 				className='modal-block'
-				onClick={(e) => {
+				onClick={e => {
 					e.stopPropagation()
 				}}
 			>
@@ -28,7 +27,7 @@ export default function PasswordRecovery({ setModal, setModalFlag }) {
 				</span>
 				<input
 					type='text'
-					onChange={(e) => setEmail(e.target.value)}
+					onChange={e => setEmail(e.target.value)}
 					className='modal-input'
 					placeholder='Email'
 				/>

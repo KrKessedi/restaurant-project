@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { restorePassword } from '../../store/apiCalls'
 
 export default function Confirmation({ setModal, setModalFlag }) {
@@ -14,7 +14,7 @@ export default function Confirmation({ setModal, setModalFlag }) {
 		<div className='modal-container' onClick={() => setModalFlag(false)}>
 			<div
 				className='modal-block'
-				onClick={(e) => {
+				onClick={e => {
 					e.stopPropagation()
 				}}
 			>
@@ -28,7 +28,7 @@ export default function Confirmation({ setModal, setModalFlag }) {
 					type='text'
 					className='modal-input'
 					placeholder='СМС код'
-					onChange={(e) => setCode(e.target.value)}
+					onChange={e => setCode(e.target.value)}
 				/>
 				<button className='modal-btn' onClick={handleClick}>
 					Подтвердить

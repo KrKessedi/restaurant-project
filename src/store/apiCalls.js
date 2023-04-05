@@ -27,9 +27,7 @@ import {
 	deleteDishInLocalStorageStart,
 	deleteDishInLocalStorageSuccess,
 	deleteDishInLocalStorageFailure,
-	addDishInLocalStorageStart,
 	addDishInLocalStorageSuccess,
-	addDishInLocalStorageFailure,
 	getDishStart,
 	getDishSuccess,
 	getDishFailure,
@@ -271,7 +269,7 @@ export const forgotPassword = async (dispatch, email, setModal) => {
 	dispatch(forgotPasswordStart())
 	const emailAlert = toast.loading('Пожалуйста подождите!!!')
 	try {
-		const res = await publicReq.post('accounts/forgot/', { email })
+		await publicReq.post('accounts/forgot/', { email })
 		dispatch(forgotPasswordSuccess())
 		setModal('confirmation')
 		toast.update(emailAlert, {
@@ -321,7 +319,7 @@ export const restorePassword2 = async (dispatch, data, setModalFlag) => {
 	const emailAlert = toast.loading('Пожалуйста подождите!!!')
 	console.log(data)
 	try {
-		const res = await publicReq.post('accounts/restore/', data)
+		await publicReq.post('accounts/restore/', data)
 		// dispatch(restorePasswordSuccess(res.data))
 		setModalFlag(false)
 		toast.update(emailAlert, {

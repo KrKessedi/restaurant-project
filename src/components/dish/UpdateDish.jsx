@@ -74,6 +74,7 @@ const UpdateDish = ({ modalFlag, setModalFlag }) => {
 					}
 					updateDish(dispatch, oneDish.title, dishe, setModalFlag)
 				})
+				console.log(loaded)
 			}
 		)
 	}

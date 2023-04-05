@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
-// import '../../styles/Footer.css';
+import React from 'react'
 import youtube from '../../images/youtube.svg'
 import facebook from '../../images/facebook.svg'
 import instagram from '../../images/instagram.svg'
 import whatsapp from '../../images/whatsapp.svg'
 import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
 
 export const social = [
 	{
@@ -34,7 +32,7 @@ const Footer = () => {
 	const { pathname } = useLocation()
 	return (
 		<footer
-			style={pathname == '/contacts' ? { display: 'none' } : null}
+			style={pathname === '/contacts' ? { display: 'none' } : null}
 			className='pt-1 mx-auto mb-10 w-[91.1%]'
 			id='contacts'
 		>

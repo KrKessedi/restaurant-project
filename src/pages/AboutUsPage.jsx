@@ -1,8 +1,6 @@
 import React from 'react'
-import bgImg from '../images/Ellipse1.svg'
 import bgMac from '../images/bgMacarons.png'
 import macaron from '../images/macaron.svg'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import woman from '../images/Mask-group.png'
 import yummy from '../images/Mask-group-2.png'

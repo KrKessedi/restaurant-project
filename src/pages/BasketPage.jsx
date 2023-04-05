@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import popularDish from '../images/image 97.svg'
-import minus from '../images/minus.svg'
-import plus from '../images/plus.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-	deleteDishInLocalStorage,
-	getDishesInLocalStorage,
-} from '../store/apiCalls'
+import { deleteDishInLocalStorage } from '../store/apiCalls'
 
 const BasketPage = () => {
 	const dispatch = useDispatch()
@@ -26,7 +20,7 @@ const BasketPage = () => {
 			count = index + 1
 		})
 		setCount(count)
-	}, [])
+	}, [cart])
 
 	function handleDelete(name) {
 		deleteDishInLocalStorage(dispatch, name)

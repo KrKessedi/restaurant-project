@@ -52,7 +52,11 @@ const BasketPage = () => {
 						key={item.title}
 					>
 						<div className=''>
-							<img src={item.photo} alt='' className='w-36' />
+							<img
+								src={item.photo}
+								alt=''
+								className='w-36 rounded-2xl object-cover'
+							/>
 						</div>
 						<div className=' w-[537px] flex flex-col gap-y-3'>
 							<h4 className='text-my-brown font-semibold text-2xl'>
